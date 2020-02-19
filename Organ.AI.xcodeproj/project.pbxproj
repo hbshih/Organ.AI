@@ -58,9 +58,11 @@
 		B51B4C4523FD62140043CAD5 /* Organ.AI */ = {
 			isa = PBXGroup;
 			children = (
+				B51B4C5F23FD623C0043CAD5 /* Controller */,
+				B51B4C5E23FD62380043CAD5 /* View */,
+				B51B4C5D23FD62230043CAD5 /* Model */,
 				B51B4C4623FD62140043CAD5 /* AppDelegate.swift */,
 				B51B4C4823FD62140043CAD5 /* SceneDelegate.swift */,
-				B51B4C4A23FD62140043CAD5 /* ViewController.swift */,
 				B51B4C4C23FD62140043CAD5 /* Main.storyboard */,
 				B51B4C5223FD62150043CAD5 /* Assets.xcassets */,
 				B51B4C5423FD62150043CAD5 /* LaunchScreen.storyboard */,
@@ -68,6 +70,28 @@
 				B51B4C4F23FD62140043CAD5 /* Organ_AI.xcdatamodeld */,
 			);
 			path = Organ.AI;
+			sourceTree = "<group>";
+		};
+		B51B4C5D23FD62230043CAD5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		B51B4C5E23FD62380043CAD5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B51B4C4A23FD62140043CAD5 /* ViewController.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		B51B4C5F23FD623C0043CAD5 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
