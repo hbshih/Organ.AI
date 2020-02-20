@@ -4,11 +4,18 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Organ.AI.xcscheme_^#shared#^_</key>
+		<key>FSCalendar.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>2</integer>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-Organ.AI.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
 		</dict>
 	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict/>
 </dict>
 </plist>
