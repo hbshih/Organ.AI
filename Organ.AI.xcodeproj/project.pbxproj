@@ -14,8 +14,7 @@
 		B51B4C5123FD62140043CAD5 /* Organ_AI.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B51B4C4F23FD62140043CAD5 /* Organ_AI.xcdatamodeld */; };
 		B51B4C5323FD62150043CAD5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B51B4C5223FD62150043CAD5 /* Assets.xcassets */; };
 		B51B4C5623FD62150043CAD5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B51B4C5423FD62150043CAD5 /* LaunchScreen.storyboard */; };
-		B537C76F23FEE38B005D0C5E /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B537C76E23FEE38B005D0C5E /* CalendarViewController.swift */; };
-		B537C77123FEFAA9005D0C5E /* FSCalendarScopeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B537C77023FEFAA9005D0C5E /* FSCalendarScopeViewController.swift */; };
+		B537C77123FEFAA9005D0C5E /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B537C77023FEFAA9005D0C5E /* CalendarViewController.swift */; };
 		B537C77323FF01D9005D0C5E /* CalendarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B537C77223FF01D9005D0C5E /* CalendarTableViewCell.swift */; };
 		DCC6A1F5D8689E4FE2DD7EC3 /* Pods_Organ_AI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E08A92D4A5791B29E5063E69 /* Pods_Organ_AI.framework */; };
 /* End PBXBuildFile section */
@@ -31,8 +30,7 @@
 		B51B4C5223FD62150043CAD5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B51B4C5523FD62150043CAD5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B51B4C5723FD62150043CAD5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B537C76E23FEE38B005D0C5E /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
-		B537C77023FEFAA9005D0C5E /* FSCalendarScopeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FSCalendarScopeViewController.swift; sourceTree = "<group>"; };
+		B537C77023FEFAA9005D0C5E /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		B537C77223FF01D9005D0C5E /* CalendarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTableViewCell.swift; sourceTree = "<group>"; };
 		C54E4E5935D2FD57F234F7F2 /* Pods-Organ.AI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Organ.AI.release.xcconfig"; path = "Pods/Target Support Files/Pods-Organ.AI/Pods-Organ.AI.release.xcconfig"; sourceTree = "<group>"; };
 		E08A92D4A5791B29E5063E69 /* Pods_Organ_AI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Organ_AI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -94,7 +92,6 @@
 				B51B4C4623FD62140043CAD5 /* AppDelegate.swift */,
 				B51B4C4823FD62140043CAD5 /* SceneDelegate.swift */,
 				B51B4C4C23FD62140043CAD5 /* Main.storyboard */,
-				B537C77023FEFAA9005D0C5E /* FSCalendarScopeViewController.swift */,
 				B51B4C5223FD62150043CAD5 /* Assets.xcassets */,
 				B51B4C5423FD62150043CAD5 /* LaunchScreen.storyboard */,
 				B51B4C5723FD62150043CAD5 /* Info.plist */,
@@ -114,8 +111,8 @@
 			isa = PBXGroup;
 			children = (
 				B51B4C4A23FD62140043CAD5 /* ViewController.swift */,
-				B537C76E23FEE38B005D0C5E /* CalendarViewController.swift */,
 				B537C77223FF01D9005D0C5E /* CalendarTableViewCell.swift */,
+				B537C77023FEFAA9005D0C5E /* CalendarViewController.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -238,12 +235,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B537C76F23FEE38B005D0C5E /* CalendarViewController.swift in Sources */,
 				B51B4C4B23FD62140043CAD5 /* ViewController.swift in Sources */,
 				B51B4C5123FD62140043CAD5 /* Organ_AI.xcdatamodeld in Sources */,
 				B537C77323FF01D9005D0C5E /* CalendarTableViewCell.swift in Sources */,
 				B51B4C4723FD62140043CAD5 /* AppDelegate.swift in Sources */,
-				B537C77123FEFAA9005D0C5E /* FSCalendarScopeViewController.swift in Sources */,
+				B537C77123FEFAA9005D0C5E /* CalendarViewController.swift in Sources */,
 				B51B4C4923FD62140043CAD5 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
