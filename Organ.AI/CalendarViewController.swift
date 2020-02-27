@@ -1,22 +1,24 @@
 //
-//  FSCalendarScopeViewController.swift
-//  FSCalendarSwiftExample/Users/ben/Desktop/Organ.AI/Organ.AI/CalendarTableViewCell.swift
+//  AddEventsViewController.swift
+//  Organ.AI
 //
-//  Created by dingwenchao on 30/12/2016.
-//  Copyright © 2016 wenchao. All rights reserved.
+//  Created by Ben on 2020/2/22.
+//  Copyright © 2020 Organ.AI. All rights reserved.
 //
 
 import UIKit
 import FSCalendar
 
-class CalendarViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, FSCalendarDataSource, FSCalendarDelegate, UIGestureRecognizerDelegate {
+class CalendarViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, FSCalendarDataSource, FSCalendarDelegate, UIGestureRecognizerDelegate
+{
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var calendar: FSCalendar!
     
     @IBOutlet weak var calendarHeightConstraint: NSLayoutConstraint!
+    
     var datesWithEvent: [String: [String]] = ["2020/02/14": ["Hang out", "Meeting with Ather"] , "2020/02/18": ["Uppsala"]]
- //   var eventDescription = ["Hang out", "Week"]
+    var eventDetail: [String: [String:String]] = ["id_1": ["title": "Hang out with Ather", "detail": "Bring a gift", "location":"Stockholm"]]
     
     
     fileprivate lazy var dateFormatter: DateFormatter = {
@@ -48,6 +50,21 @@ class CalendarViewController: UIViewController, UITableViewDataSource, UITableVi
         
         // For UITest
         self.calendar.accessibilityIdentifier = "calendar"
+        
+        
+        let calendarManager = CalendarModel()
+        var calendarData = calendarManager.getCalendar()
+      //  print("All Calendar Data: \(calendarData)")
+        
+        var event_id = calendarData["event_id"] as! [String]
+        var calendar_id = calendarData["id"] as! String
+        var date_occupied = calendarData["date_occupied"] as! [String: [String]]
+        
+        print(event_id)
+        print(calendar_id)
+        print(date_occupied)
+        
+        
         
     }
     
