@@ -17,9 +17,16 @@ class CalendarViewController: UIViewController, UITableViewDataSource, UITableVi
     
     @IBOutlet weak var calendarHeightConstraint: NSLayoutConstraint!
     
-    var datesWithEvent: [String: [String]] = ["2020/02/14": ["Hang out", "Meeting with Ather"] , "2020/02/18": ["Uppsala"]]
-    var eventDetail: [String: [String:String]] = ["id_1": ["title": "Hang out with Ather", "detail": "Bring a gift", "location":"Stockholm"]]
+    var datesWithEvent: [String: [String]] = ["2020/02/14": ["id_1", "id_2"] , "2020/02/18": ["id_3"]]
+    var eventDetail: [String: [String:String]] = ["id_1": ["startingTime":"12:00","endingTime":"13:00","title": "Hang out with Ather1", "detail": "Bring a gift", "location":"Stockholm"],"id_2": ["startingTime":"12:00","endingTime":"13:00","title": "Hang out with Ather2", "detail": "Bring a gift", "location":"Stockholm"],"id_3": ["startingTime":"12:00","endingTime":"13:00","title": "Hang out with Ather3", "detail": "Bring a gift", "location":"Stockholm"]]
     
+    var datesWithEventDetails: [String: [String:String]] = [:]
+    
+    fileprivate lazy var dayFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd"
+        return formatter
+    }()
     
     fileprivate lazy var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -33,13 +40,13 @@ class CalendarViewController: UIViewController, UITableViewDataSource, UITableVi
         panGesture.minimumNumberOfTouches = 1
         panGesture.maximumNumberOfTouches = 2
         return panGesture
-    }()
+        }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         if UIDevice.current.model.hasPrefix("iPad") {
-        self.calendarHeightConstraint.constant = 400
+            self.calendarHeightConstraint.constant = 400
         }
         
         self.calendar.select(Date())
@@ -54,7 +61,7 @@ class CalendarViewController: UIViewController, UITableViewDataSource, UITableVi
         
         let calendarManager = CalendarModel()
         var calendarData = calendarManager.getCalendar()
-      //  print("All Calendar Data: \(calendarData)")
+        //  print("All Calendar Data: \(calendarData)")
         
         var event_id = calendarData["event_id"] as! [String]
         var calendar_id = calendarData["id"] as! String
@@ -64,8 +71,13 @@ class CalendarViewController: UIViewController, UITableViewDataSource, UITableVi
         print(calendar_id)
         print(date_occupied)
         
+        var eventManager = EventModel()
         
-        
+        for event in event_id
+        {
+            
+        }
+        print(datesWithEventDetails)
     }
     
     deinit {
@@ -74,7 +86,22 @@ class CalendarViewController: UIViewController, UITableViewDataSource, UITableVi
     
     // MARK:- UIGestureRecognizerDelegate
     
+    @IBAction func ToggleCalendarPresent(_ sender: Any) {
+        
+      /*  let shouldBegin = self.tableView.contentOffset.y <= -self.tableView.contentInset.top
+        if shouldBegin {
+            let velocity = self.scopeGesture.velocity(in: self.view)
+            switch self.calendar.scope {
+            case .month:
+                velocity.y < 0
+            case .week:
+                velocity.y > 0
+            }
+        }*/
+        
+    }
     func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        
         let shouldBegin = self.tableView.contentOffset.y <= -self.tableView.contentInset.top
         if shouldBegin {
             let velocity = self.scopeGesture.velocity(in: self.view)
@@ -89,11 +116,11 @@ class CalendarViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
-         let dateString = self.dateFormatter.string(from: date)
+        let dateString = self.dateFormatter.string(from: date)
         if self.datesWithEvent.keys.contains(dateString){
-                return datesWithEvent[dateString]!.count
-               }
-               return 0
+            return datesWithEvent[dateString]!.count
+        }
+        return 0
     }
     
     func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {
@@ -103,14 +130,18 @@ class CalendarViewController: UIViewController, UITableViewDataSource, UITableVi
     
     var numberOfEvents = 0
     var selectedDate = ""
+    var selectedDay = ""
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         
         let dateString = self.dateFormatter.string(from: date)
+        let dayString = self.dayFormatter.string(from: date)
         if self.datesWithEvent.keys.contains(dateString) {
-           // print("Date Selected has events")
+            // print("Date Selected has events")
             numberOfEvents = datesWithEvent[dateString]!.count
             selectedDate = dateString
+            selectedDay = dayString
+            //print(selectedDate)
             tableView.reloadData()
         }else
         {
@@ -125,7 +156,7 @@ class CalendarViewController: UIViewController, UITableViewDataSource, UITableVi
             calendar.setCurrentPage(date, animated: true)
         }
     }
-
+    
     func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
         print("\(self.dateFormatter.string(from: calendar.currentPage))")
     }
@@ -149,14 +180,19 @@ class CalendarViewController: UIViewController, UITableViewDataSource, UITableVi
             print(indexPath.row)
             if let cell = tableView.dequeueReusableCell(withIdentifier: "cell_events", for: indexPath) as? CalendarTableViewCell
             {
-                cell.eventDescription.text = datesWithEvent[selectedDate]![indexPath.row]
+                cell.eventDescription.text =
+                    eventDetail[datesWithEvent[selectedDate]![indexPath.row]]?["title"]
+                cell.endingTime.text = eventDetail[datesWithEvent[selectedDate]![indexPath.row]]?["endingTime"]
+                    cell.startingTime.text = eventDetail[datesWithEvent[selectedDate]![indexPath.row]]?["startingTime"]
+                    cell.date.text = selectedDay
+                
                 return cell
             }else
             {
                 return UITableViewCell()
             }
         }
-
+        
     }
     
     
@@ -175,6 +211,6 @@ class CalendarViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     // MARK:- Target actions
-
+    
     
 }

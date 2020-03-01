@@ -34,47 +34,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NQg-xA-aly" customClass="FSCalendar">
-                                <rect key="frame" x="0.0" y="44" width="414" height="300"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="300" id="NHG-fs-amc"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="fakedSelectedDay">
-                                        <integer key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="allowsSelection" value="YES"/>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="allowsMultipleSelection" value="NO"/>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="firstWeekday">
-                                        <integer key="value" value="2"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="eventDefaultColor">
-                                        <color key="value" red="0.25882352939999997" green="0.67843137249999996" blue="0.63529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="weekdayTextColor">
-                                        <color key="value" red="0.25882352939999997" green="0.67843137249999996" blue="0.63529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="headerTitleColor">
-                                        <color key="value" red="0.25882352939999997" green="0.67843137249999996" blue="0.63529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="todayColor">
-                                        <color key="value" red="0.25882352939999997" green="0.67843137249999996" blue="0.63529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="selectionColor">
-                                        <color key="value" red="0.25882352939999997" green="0.67843137249999996" blue="0.63529411759999999" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="useVeryShortWeekdaySymbols" value="YES"/>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="fakeSubtitles" value="YES"/>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="fakeEventDots" value="YES"/>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <outlet property="dataSource" destination="h4j-j6-ViB" id="MWZ-rU-gNf"/>
-                                    <outlet property="delegate" destination="h4j-j6-ViB" id="LYR-QE-mCE"/>
-                                </connections>
-                            </view>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jIt-R0-JGI">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <items>
+                                    <navigationItem title="Organai" id="VUt-hA-yLd">
+                                        <barButtonItem key="leftBarButtonItem" title="Week" id="wSh-Fi-rsN">
+                                            <connections>
+                                                <action selector="ToggleCalendarPresent:" destination="h4j-j6-ViB" id="a5n-lM-XaI"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="GRl-P9-31F">
-                                <rect key="frame" x="0.0" y="360" width="414" height="502"/>
+                                <rect key="frame" x="0.0" y="404" width="414" height="458"/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="Wrz-wz-ctl" userLabel="Footer">
                                     <rect key="frame" x="0.0" y="197.5" width="414" height="69"/>
@@ -122,17 +95,81 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PXD-je-Nuf">
-                                                    <rect key="frame" x="20" y="11" width="260" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tTw-9j-jo4">
+                                                    <rect key="frame" x="0.0" y="0.0" width="4" height="44"/>
+                                                    <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="4" id="vkT-uL-5HI"/>
+                                                    </constraints>
+                                                </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rdz-JI-b7d">
+                                                    <rect key="frame" x="4" y="0.0" width="50" height="44"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="50" id="F7a-ng-09O"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OgG-1z-3H4">
+                                                    <rect key="frame" x="54" y="0.0" width="50" height="44"/>
+                                                    <subviews>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="mYh-ag-ydI">
+                                                            <rect key="frame" x="0.0" y="0.0" width="50" height="44"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jj4-PO-cgW">
+                                                                    <rect key="frame" x="7.5" y="0.0" width="35.5" height="22"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2z7-CY-O57">
+                                                                    <rect key="frame" x="7.5" y="22" width="35.5" height="22"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                        </stackView>
+                                                    </subviews>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="bottom" secondItem="mYh-ag-ydI" secondAttribute="bottom" id="8Vi-Is-yIK"/>
+                                                        <constraint firstAttribute="trailing" secondItem="mYh-ag-ydI" secondAttribute="trailing" id="THU-iU-o4K"/>
+                                                        <constraint firstItem="mYh-ag-ydI" firstAttribute="top" secondItem="OgG-1z-3H4" secondAttribute="top" id="XTa-qm-lXc"/>
+                                                        <constraint firstAttribute="width" constant="50" id="dqD-j1-e60"/>
+                                                        <constraint firstItem="mYh-ag-ydI" firstAttribute="leading" secondItem="OgG-1z-3H4" secondAttribute="leading" id="jco-64-P8h"/>
+                                                    </constraints>
+                                                </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uWf-uH-4VC">
+                                                    <rect key="frame" x="104" y="0.0" width="310" height="44"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="OgG-1z-3H4" firstAttribute="top" secondItem="lqy-Ao-fUs" secondAttribute="top" id="1il-4Y-KEQ"/>
+                                                <constraint firstAttribute="bottom" secondItem="OgG-1z-3H4" secondAttribute="bottom" id="22e-R5-kj3"/>
+                                                <constraint firstItem="uWf-uH-4VC" firstAttribute="leading" secondItem="OgG-1z-3H4" secondAttribute="trailing" id="3nM-wK-jdw"/>
+                                                <constraint firstItem="uWf-uH-4VC" firstAttribute="top" secondItem="lqy-Ao-fUs" secondAttribute="top" id="611-lL-052"/>
+                                                <constraint firstAttribute="bottom" secondItem="tTw-9j-jo4" secondAttribute="bottom" id="7Kq-5I-GX7"/>
+                                                <constraint firstItem="tTw-9j-jo4" firstAttribute="leading" secondItem="lqy-Ao-fUs" secondAttribute="leading" id="CHU-PF-UTr"/>
+                                                <constraint firstItem="OgG-1z-3H4" firstAttribute="leading" secondItem="rdz-JI-b7d" secondAttribute="trailing" id="W65-PI-c8Z"/>
+                                                <constraint firstItem="tTw-9j-jo4" firstAttribute="top" secondItem="lqy-Ao-fUs" secondAttribute="top" id="Zus-XM-Cud"/>
+                                                <constraint firstItem="rdz-JI-b7d" firstAttribute="top" secondItem="lqy-Ao-fUs" secondAttribute="top" id="aEx-Li-fIw"/>
+                                                <constraint firstAttribute="trailing" secondItem="uWf-uH-4VC" secondAttribute="trailing" id="asQ-T6-ED0"/>
+                                                <constraint firstAttribute="bottom" secondItem="rdz-JI-b7d" secondAttribute="bottom" id="s5V-ib-oWu"/>
+                                                <constraint firstAttribute="bottom" secondItem="uWf-uH-4VC" secondAttribute="bottom" id="sxm-JX-Ebe"/>
+                                                <constraint firstItem="rdz-JI-b7d" firstAttribute="leading" secondItem="tTw-9j-jo4" secondAttribute="trailing" id="xl1-V5-Vml"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="eventDescription" destination="PXD-je-Nuf" id="FSV-c5-7uI"/>
+                                            <outlet property="date" destination="rdz-JI-b7d" id="o8k-WG-hb0"/>
+                                            <outlet property="endingTime" destination="2z7-CY-O57" id="DKb-Bf-jSE"/>
+                                            <outlet property="eventDescription" destination="uWf-uH-4VC" id="ljx-up-axD"/>
+                                            <outlet property="importantLevelColor" destination="tTw-9j-jo4" id="lqs-zA-LOV"/>
+                                            <outlet property="startingTime" destination="Jj4-PO-cgW" id="ftm-4i-plW"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -141,6 +178,45 @@
                                     <outlet property="delegate" destination="h4j-j6-ViB" id="qqh-AB-Zlf"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NQg-xA-aly" customClass="FSCalendar">
+                                <rect key="frame" x="0.0" y="88" width="414" height="300"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="NHG-fs-amc"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fakedSelectedDay">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="allowsSelection" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="allowsMultipleSelection" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="firstWeekday">
+                                        <integer key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="eventDefaultColor">
+                                        <color key="value" red="0.25882352939999997" green="0.67843137249999996" blue="0.63529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="weekdayTextColor">
+                                        <color key="value" red="0.25882352939999997" green="0.67843137249999996" blue="0.63529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="headerTitleColor">
+                                        <color key="value" red="0.25882352939999997" green="0.67843137249999996" blue="0.63529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="todayColor">
+                                        <color key="value" red="0.25882352939999997" green="0.67843137249999996" blue="0.63529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="selectionColor">
+                                        <color key="value" red="0.25882352939999997" green="0.67843137249999996" blue="0.63529411759999999" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="useVeryShortWeekdaySymbols" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="fakeSubtitles" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="fakeEventDots" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="dataSource" destination="h4j-j6-ViB" id="MWZ-rU-gNf"/>
+                                    <outlet property="delegate" destination="h4j-j6-ViB" id="LYR-QE-mCE"/>
+                                </connections>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -148,9 +224,12 @@
                             <constraint firstItem="r7U-78-xix" firstAttribute="top" secondItem="GRl-P9-31F" secondAttribute="bottom" id="AyY-k8-rkw"/>
                             <constraint firstItem="GRl-P9-31F" firstAttribute="trailing" secondItem="NQg-xA-aly" secondAttribute="trailing" id="DfD-0m-vcj"/>
                             <constraint firstAttribute="trailing" secondItem="NQg-xA-aly" secondAttribute="trailing" id="QC0-wn-aIn"/>
+                            <constraint firstItem="NQg-xA-aly" firstAttribute="top" secondItem="jIt-R0-JGI" secondAttribute="bottom" id="aVt-kK-L6k"/>
+                            <constraint firstItem="SLg-hM-oA4" firstAttribute="trailing" secondItem="jIt-R0-JGI" secondAttribute="trailing" id="cg1-6S-o1J"/>
+                            <constraint firstItem="jIt-R0-JGI" firstAttribute="top" secondItem="SLg-hM-oA4" secondAttribute="top" id="hDe-Yw-YkC"/>
                             <constraint firstItem="GRl-P9-31F" firstAttribute="top" secondItem="NQg-xA-aly" secondAttribute="bottom" constant="16" id="kmA-Af-pni"/>
                             <constraint firstItem="GRl-P9-31F" firstAttribute="leading" secondItem="NQg-xA-aly" secondAttribute="leading" id="s9C-fC-0jq"/>
-                            <constraint firstItem="NQg-xA-aly" firstAttribute="top" secondItem="GeH-mZ-3s6" secondAttribute="bottom" id="vZd-M8-1DO"/>
+                            <constraint firstItem="jIt-R0-JGI" firstAttribute="leading" secondItem="SLg-hM-oA4" secondAttribute="leading" id="sKA-VW-1Na"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="SLg-hM-oA4"/>
                     </view>
@@ -169,7 +248,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zCI-Pv-WNQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="878" y="134"/>
+            <point key="canvasLocation" x="876.81159420289862" y="133.92857142857142"/>
         </scene>
     </scenes>
 </document>

@@ -15,6 +15,7 @@
 		B51B4C5123FD62140043CAD5 /* Organ_AI.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B51B4C4F23FD62140043CAD5 /* Organ_AI.xcdatamodeld */; };
 		B51B4C5323FD62150043CAD5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B51B4C5223FD62150043CAD5 /* Assets.xcassets */; };
 		B51B4C5623FD62150043CAD5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B51B4C5423FD62150043CAD5 /* LaunchScreen.storyboard */; };
+		B52F34AB24082A7C00042A75 /* EventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52F34AA24082A7C00042A75 /* EventModel.swift */; };
 		B537C77123FEFAA9005D0C5E /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B537C77023FEFAA9005D0C5E /* CalendarViewController.swift */; };
 		B537C77323FF01D9005D0C5E /* CalendarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B537C77223FF01D9005D0C5E /* CalendarTableViewCell.swift */; };
 		B584D05324015B98001715EC /* AddEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B584D05224015B98001715EC /* AddEventsViewController.swift */; };
@@ -33,6 +34,7 @@
 		B51B4C5223FD62150043CAD5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B51B4C5523FD62150043CAD5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B51B4C5723FD62150043CAD5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B52F34AA24082A7C00042A75 /* EventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
 		B537C77023FEFAA9005D0C5E /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		B537C77223FF01D9005D0C5E /* CalendarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTableViewCell.swift; sourceTree = "<group>"; };
 		B584D05224015B98001715EC /* AddEventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventsViewController.swift; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				B50B0AC22407F56B003A1E8D /* CalendarModel.swift */,
+				B52F34AA24082A7C00042A75 /* EventModel.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -242,6 +245,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B51B4C4B23FD62140043CAD5 /* ViewController.swift in Sources */,
+				B52F34AB24082A7C00042A75 /* EventModel.swift in Sources */,
 				B50B0AC32407F56B003A1E8D /* CalendarModel.swift in Sources */,
 				B51B4C5123FD62140043CAD5 /* Organ_AI.xcdatamodeld in Sources */,
 				B537C77323FF01D9005D0C5E /* CalendarTableViewCell.swift in Sources */,

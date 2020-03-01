@@ -11,6 +11,10 @@ import UIKit
 class CalendarTableViewCell: UITableViewCell {
 
 
+    @IBOutlet weak var importantLevelColor: UIView!
+    @IBOutlet weak var date: UILabel!
+    @IBOutlet weak var startingTime: UILabel!
+    @IBOutlet weak var endingTime: UILabel!
     @IBOutlet weak var eventDescription: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
