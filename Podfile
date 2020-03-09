@@ -6,6 +6,7 @@ target 'Organ.AI' do
   use_frameworks!
   
   pod 'FSCalendar'
+  pod 'ExpandableCell'
   #pod 'CalendarKit'
 
   # Pods for Organ.AI

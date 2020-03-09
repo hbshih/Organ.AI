@@ -1,16 +1,21 @@
 PODS:
+  - ExpandableCell (1.3.0)
   - FSCalendar (2.8.1)
 
 DEPENDENCIES:
+  - ExpandableCell
   - FSCalendar
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - FSCalendar
+  trunk:
+    - ExpandableCell
 
 SPEC CHECKSUMS:
+  ExpandableCell: 69ca7d71971c171473a7a30964d2127f4c6ceaf6
   FSCalendar: 5245140456fcbcac5824c203b98bd8068bdfee1a
 
-PODFILE CHECKSUM: 2718b04b0ea26c2211c166ce552989279d2f2289
+PODFILE CHECKSUM: 13e6c02598021043fb7340ed21a067d3c0dabb03
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.9.0

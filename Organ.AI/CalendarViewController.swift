@@ -9,16 +9,25 @@
 import UIKit
 import FSCalendar
 
+struct cellData
+{
+    var opened = Bool()
+    var title = String()
+    var sectionData = [String]()
+}
+
 class CalendarViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, FSCalendarDataSource, FSCalendarDelegate, UIGestureRecognizerDelegate
 {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var calendar: FSCalendar!
-    
+    @IBOutlet weak var weekMonthToggleOutlet: UIBarButtonItem!
     @IBOutlet weak var calendarHeightConstraint: NSLayoutConstraint!
     
+    var tableViewData = [cellData]()
+    
     var datesWithEvent: [String: [String]] = ["2020/02/14": ["id_1", "id_2"] , "2020/02/18": ["id_3"]]
-    var eventDetail: [String: [String:String]] = ["id_1": ["startingTime":"12:00","endingTime":"13:00","title": "Hang out with Ather1", "detail": "Bring a gift", "location":"Stockholm"],"id_2": ["startingTime":"12:00","endingTime":"13:00","title": "Hang out with Ather2", "detail": "Bring a gift", "location":"Stockholm"],"id_3": ["startingTime":"12:00","endingTime":"13:00","title": "Hang out with Ather3", "detail": "Bring a gift", "location":"Stockholm"]]
+    var eventDetail: [String: [String:String]] = ["id_1": ["startingTime":"12:00","endingTime":"13:00","title": "Hang out with Ather1", "detail": "Bring a gift1", "location":"Stockholm"],"id_2": ["startingTime":"12:00","endingTime":"13:00","title": "Hang out with Ather2", "detail": "Bring a gift2", "location":"Copenhagen"],"id_3": ["startingTime":"12:00","endingTime":"13:00","title": "Hang out with Ather3", "detail": "Bring a gift3", "location":"Stockholm"]]
     
     var datesWithEventDetails: [String: [String:String]] = [:]
     
@@ -78,6 +87,11 @@ class CalendarViewController: UIViewController, UITableViewDataSource, UITableVi
             
         }
         print(datesWithEventDetails)
+        
+        tableViewData = [cellData(opened: false, title: "2020/02/14", sectionData: ["id1"]),
+                         cellData(opened: false, title: "2020/02/14", sectionData: ["id2"]),
+                         cellData(opened: false, title: "2020/02/18", sectionData: ["id3"])]
+        
     }
     
     deinit {
@@ -86,19 +100,41 @@ class CalendarViewController: UIViewController, UITableViewDataSource, UITableVi
     
     // MARK:- UIGestureRecognizerDelegate
     
+    var calendarWeekView = true
+    
     @IBAction func ToggleCalendarPresent(_ sender: Any) {
         
-      /*  let shouldBegin = self.tableView.contentOffset.y <= -self.tableView.contentInset.top
-        if shouldBegin {
-            let velocity = self.scopeGesture.velocity(in: self.view)
-            switch self.calendar.scope {
-            case .month:
-                velocity.y < 0
-            case .week:
-                velocity.y > 0
-            }
-        }*/
+        // let scope: FSCalendarScope = (indexPath.row == 0) ? .month : .week
         
+        
+        
+        if calendarWeekView
+        {
+            calendarWeekView = false
+            self.calendar.setScope(.month, animated: true)
+            weekMonthToggleOutlet.title = "Week"
+        }else
+        {
+            calendarWeekView = true
+            self.calendar.setScope(.week, animated: true)
+            weekMonthToggleOutlet.title = "Month"
+        }
+        
+        
+        
+        
+        /*
+         let shouldBegin = self.tableView.contentOffset.y <= -self.tableView.contentInset.top
+         if shouldBegin {
+         let velocity = self.scopeGesture.velocity(in: self.view)
+         switch self.calendar.scope {
+         case .month:
+         velocity.y < 0
+         case .week:
+         velocity.y > 0
+         }
+         }
+         */
     }
     func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
         
@@ -164,46 +200,121 @@ class CalendarViewController: UIViewController, UITableViewDataSource, UITableVi
     // MARK:- UITableViewDataSource
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        
+        return numberOfEvents
+        
+        //return 2
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return [2,numberOfEvents][section]
+        
+        
+        if tableViewData[section].opened == true
+        {
+            print("section.data")
+            print(tableViewData[section].sectionData)
+            return tableViewData[section].sectionData.count + 1
+        }else
+        {
+           
+            if numberOfEvents != 0
+            {
+                return 1
+            }else
+            {
+                return 0
+            }
+            
+         //   return numberOfEvents
+        }
+        
+        //  return [2,numberOfEvents][section]
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section == 0 {
-            let identifier = ["cell_month", "cell_week"][indexPath.row]
-            let cell = tableView.dequeueReusableCell(withIdentifier: identifier)!
+        
+        var dataIndex = indexPath.row - 1
+        if indexPath.row == 0
+        {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell_events") as? CalendarTableViewCell else {return UITableViewCell()}
+                    cell.eventDescription.text =
+                        eventDetail[datesWithEvent[selectedDate]![indexPath.section]]?["title"]
+            cell.endingTime.text = eventDetail[datesWithEvent[selectedDate]![indexPath.section]]?["endingTime"]
+            cell.startingTime.text = eventDetail[datesWithEvent[selectedDate]![indexPath.section]]?["startingTime"]
+            cell.date.text = selectedDay
+            
+            //cell.eventDescription.text = tableViewData[indexPath.section]
+            
+            
             return cell
-        } else {
-            print(indexPath.row)
-            if let cell = tableView.dequeueReusableCell(withIdentifier: "cell_events", for: indexPath) as? CalendarTableViewCell
-            {
-                cell.eventDescription.text =
-                    eventDetail[datesWithEvent[selectedDate]![indexPath.row]]?["title"]
-                cell.endingTime.text = eventDetail[datesWithEvent[selectedDate]![indexPath.row]]?["endingTime"]
-                    cell.startingTime.text = eventDetail[datesWithEvent[selectedDate]![indexPath.row]]?["startingTime"]
-                    cell.date.text = selectedDay
-                
-                return cell
-            }else
-            {
-                return UITableViewCell()
-            }
+        }else
+        {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "eventDetailCell") as? eventDetailTableViewCell else {return UITableViewCell()}
+            
+            cell.eventLocation.text = eventDetail[datesWithEvent[selectedDate]![indexPath.section]]?["location"]
+            cell.eventNote.text = eventDetail[datesWithEvent[selectedDate]![indexPath.section]]?["detail"]
+            
+            //    cell.eventDescription.text = tableViewData[indexPath.section].sectionData[dataIndex]
+            return cell
         }
+        /*
+         if indexPath.section == 0 {
+         let identifier = ["cell_month", "cell_week"][indexPath.row]
+         let cell = tableView.dequeueReusableCell(withIdentifier: identifier)!
+         return cell
+         } else {
+         print(indexPath.row)
+         if let cell = tableView.dequeueReusableCell(withIdentifier: "cell_events", for: indexPath) as? CalendarTableViewCell
+         {
+         cell.eventDescription.text =
+         eventDetail[datesWithEvent[selectedDate]![indexPath.row]]?["title"]
+         cell.endingTime.text = eventDetail[datesWithEvent[selectedDate]![indexPath.row]]?["endingTime"]
+         cell.startingTime.text = eventDetail[datesWithEvent[selectedDate]![indexPath.row]]?["startingTime"]
+         cell.date.text = selectedDay
+         
+         return cell
+         }else
+         {
+         return UITableViewCell()
+         }
+         }*/
         
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        if indexPath.row == 1
+        {
+            return 110
+        }
+        else
+        {
+            return 55
+        }
+    }
     
     // MARK:- UITableViewDelegate
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        if indexPath.section == 0 {
-            let scope: FSCalendarScope = (indexPath.row == 0) ? .month : .week
-            self.calendar.setScope(scope, animated: true)
+        
+        if tableViewData[indexPath.section].opened == true
+        {
+            tableViewData[indexPath.section].opened = false
+            let sections = IndexSet.init(integer: indexPath.section)
+            tableView.reloadSections(sections, with: .none)
+        }else
+        {
+            tableViewData[indexPath.section].opened = true
+            let sections = IndexSet.init(integer: indexPath.section)
+            tableView.reloadSections(sections, with: .none)
+            //tableView.sectionHeaderHeight = 110
         }
+        /*
+         tableView.deselectRow(at: indexPath, animated: true)
+         if indexPath.section == 0 {
+         let scope: FSCalendarScope = (indexPath.row == 0) ? .month : .week
+         self.calendar.setScope(scope, animated: true)
+         }*/
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
