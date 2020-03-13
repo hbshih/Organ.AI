@@ -20,6 +20,7 @@
 		B537C77123FEFAA9005D0C5E /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B537C77023FEFAA9005D0C5E /* CalendarViewController.swift */; };
 		B537C77323FF01D9005D0C5E /* CalendarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B537C77223FF01D9005D0C5E /* CalendarTableViewCell.swift */; };
 		B584D05324015B98001715EC /* AddEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B584D05224015B98001715EC /* AddEventsViewController.swift */; };
+		B5D7E878241BB0490037862F /* DateFormatHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D7E877241BB0490037862F /* DateFormatHandler.swift */; };
 		DCC6A1F5D8689E4FE2DD7EC3 /* Pods_Organ_AI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E08A92D4A5791B29E5063E69 /* Pods_Organ_AI.framework */; };
 /* End PBXBuildFile section */
 
@@ -40,6 +41,7 @@
 		B537C77023FEFAA9005D0C5E /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		B537C77223FF01D9005D0C5E /* CalendarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTableViewCell.swift; sourceTree = "<group>"; };
 		B584D05224015B98001715EC /* AddEventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventsViewController.swift; sourceTree = "<group>"; };
+		B5D7E877241BB0490037862F /* DateFormatHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatHandler.swift; sourceTree = "<group>"; };
 		C54E4E5935D2FD57F234F7F2 /* Pods-Organ.AI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Organ.AI.release.xcconfig"; path = "Pods/Target Support Files/Pods-Organ.AI/Pods-Organ.AI.release.xcconfig"; sourceTree = "<group>"; };
 		E08A92D4A5791B29E5063E69 /* Pods_Organ_AI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Organ_AI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -132,6 +134,7 @@
 		B51B4C5F23FD623C0043CAD5 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				B5D7E877241BB0490037862F /* DateFormatHandler.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -252,6 +255,7 @@
 				B52F34AB24082A7C00042A75 /* EventModel.swift in Sources */,
 				B50B0AC32407F56B003A1E8D /* CalendarModel.swift in Sources */,
 				B51B4C5123FD62140043CAD5 /* Organ_AI.xcdatamodeld in Sources */,
+				B5D7E878241BB0490037862F /* DateFormatHandler.swift in Sources */,
 				B537C77323FF01D9005D0C5E /* CalendarTableViewCell.swift in Sources */,
 				B51B4C4723FD62140043CAD5 /* AppDelegate.swift in Sources */,
 				B584D05324015B98001715EC /* AddEventsViewController.swift in Sources */,
