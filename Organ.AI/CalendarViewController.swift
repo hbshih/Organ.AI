@@ -35,8 +35,8 @@ class CalendarViewController: UIViewController, UITableViewDataSource, UITableVi
     private var calendarEventDetail = ["id_1": ["Date": "2020/03/14", "StartingTime": "12:00", "EndingTime": "13:00", "Title": "Going to School", "Detail": "Bring Homework", "Location": "KTH Sweden", "Invitees": ["Brian","Ben"]],
                                        "id_2": ["Date": "2020/03/14", "StartingTime": "12:00", "EndingTime": "13:00", "Title": "Time to Go out", "Detail": "Bring Homework", "Location": "KTH Sweden", "Invitees": ["Brian","Ben"]],
                                        "id_3": ["Date": "2020/03/17", "StartingTime": "12:00", "EndingTime": "13:00", "Title": "Going to School1", "Detail": "Bring Homework", "Location": "KTH Sweden", "Invitees": ["Brian","Ben"]],
-                                       "id_4": ["Date": "2020/03/19", "StartingTime": "12:00", "EndingTime": "13:00", "Title": "Going to School2", "Detail": "Bring Homework", "Location": "KTH Sweden", "Invitees": ["Brian","Ben"]],
-                                       "id_5": ["Date": "2020/03/19", "StartingTime": "12:00", "EndingTime": "13:00", "Title": "Going to School3", "Detail": "Bring Homework", "Location": "KTH Sweden", "Invitees": ["Brian","Ben"]]]
+                                       "id_4": ["Date": "2020/03/19", "StartingTime": "12:00", "EndingTime": "13:00", "Title": "Going to School2", "Detail": "Bring Homework3", "Location": "KTH Sweden", "Invitees": ["Brian","Ben"]],
+                                       "id_5": ["Date": "2020/03/19", "StartingTime": "12:00", "EndingTime": "13:00", "Title": "Going to School3", "Detail": "Bring Homework2", "Location": "KTH Sweden", "Invitees": ["Brian","Ben"]]]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -194,7 +194,8 @@ class CalendarViewController: UIViewController, UITableViewDataSource, UITableVi
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableViewData[section].opened == true
         {
-            return tableViewData[section].sectionData.count + 1
+            return 2
+            //return tableViewData[section].sectionData.count + 1
         }else
         {
             if numberOfEventInDate != 0
@@ -210,51 +211,38 @@ class CalendarViewController: UIViewController, UITableViewDataSource, UITableVi
     // Cell View
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
+        // data for the selected day
+        var presentDataList = [cellData]()
+        presentDataList.removeAll()
+        
+        
+        for data in tableViewData{
+            if data.title == selectedDate
+            {
+                presentDataList.append(data)
+            }
+        }
+        
+        print(presentDataList)
+        
         // Event
         if indexPath.row == 0
         {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell_events") as? CalendarTableViewCell else {return UITableViewCell()}
             
-            var newDataList = [0:""]
-            newDataList.removeAll()
-            
-            var counter = 0
-            
-            for data in tableViewData
-            {
-                if data.title == selectedDate
-                {
-                    
-                //    newDataList[0] = []
-                    
-             //       newDataList["Title"] = data.sectionData["Title"] as? String
-//newDataList["Start"] = data.sectionData["StartingTime"] as? String
-            //        newDataList["End"] = data.sectionData["Ending"] as? String
-         ////           newDataList["Location"] = data.sectionData["Location"] as? String
-         //           newDataList["Detail"] = data.sectionData["Detail"] as? String
-     //               cell.eventDescription.text = data.sectionData["Title"] as? String
-                  /*  cell.eventDescription.text = tableViewData[indexPath.section].sectionData["Title"] as? String
-                    cell.startingTime.text = tableViewData[indexPath.section].sectionData["StartingTime"] as? String
-                    cell.endingTime.text = tableViewData[indexPath.section].sectionData["EndingTime"] as? String*/
-     //               cell.date.text = selectedDay
-               //     counter += 1
-                }
-            }
-            
-            /*
-            cell.eventDescription.text =
-                        eventDetail[datesWithEvent[selectedDate]![indexPath.section]]?["title"]
-            cell.endingTime.text = eventDetail[datesWithEvent[selectedDate]![indexPath.section]]?["endingTime"]
-            cell.startingTime.text = eventDetail[datesWithEvent[selectedDate]![indexPath.section]]?["startingTime"]
-            cell.date.text = selectedDay*/
+            cell.eventDescription.text = presentDataList[indexPath.section].sectionData["Title"] as? String
+            cell.startingTime.text = presentDataList[indexPath.section].sectionData["StartingTime"] as? String
+            cell.endingTime.text = presentDataList[indexPath.section].sectionData["EndingTime"] as? String
+            cell.date.text = selectedDay
             return cell
         }else
         {
             // Event Detail
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "eventDetailCell") as? eventDetailTableViewCell else {return UITableViewCell()}
             
-            cell.eventLocation.text = tableViewData[indexPath.section].sectionData["Location"] as? String
-            cell.eventNote.text = tableViewData[indexPath.section].sectionData["Detail"] as? String
+            
+            cell.eventLocation.text = presentDataList[indexPath.section].sectionData["Location"] as? String
+            cell.eventNote.text = presentDataList[indexPath.section].sectionData["Detail"] as? String
             /*
             cell.eventLocation.text = eventDetail[datesWithEvent[selectedDate]![indexPath.section]]?["location"]
             cell.eventNote.text = eventDetail[datesWithEvent[selectedDate]![indexPath.section]]?["detail"]*/
