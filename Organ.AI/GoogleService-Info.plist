@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>485313206866-gkcc0vhuc1k3hmq4ornn188u64ced1a4.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.485313206866-gkcc0vhuc1k3hmq4ornn188u64ced1a4</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAz4ih-lCvrClPgwnygp12KHlyI9aLkkuo</string>
+	<key>GCM_SENDER_ID</key>
+	<string>485313206866</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>Organ.AI.Organ-AI</string>
+	<key>PROJECT_ID</key>
+	<string>organai-app</string>
+	<key>STORAGE_BUCKET</key>
+	<string>organai-app.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:485313206866:ios:f93a30a8c83035e9e6dd8b</string>
+	<key>DATABASE_URL</key>
+	<string>https://organai-app.firebaseio.com</string>
+</dict>
+</plist>
