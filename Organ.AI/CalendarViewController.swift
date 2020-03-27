@@ -58,6 +58,9 @@ class CalendarViewController: UIViewController, UITableViewDataSource, UITableVi
         // Load Calendar data
         let calendarManager = CalendarModel()
         
+        let fh = FirestoreHandler()
+        fh.getData(collection: "User")
+        
         var calendarData = calendarManager.getCalendar()
         //  print("All Calendar Data: \(calendarData)")
         
