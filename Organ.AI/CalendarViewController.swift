@@ -8,6 +8,7 @@
 
 import UIKit
 import FSCalendar
+import SwiftCheckboxDialog
 
 struct cellData
 {
@@ -16,13 +17,15 @@ struct cellData
     var sectionData = [String: Any]()
 }
 
-class CalendarViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, FSCalendarDataSource, FSCalendarDelegate, UIGestureRecognizerDelegate
+class CalendarViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, FSCalendarDataSource, FSCalendarDelegate, UIGestureRecognizerDelegate, CheckboxDialogViewDelegate
 {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var calendar: FSCalendar!
     @IBOutlet weak var weekMonthToggleOutlet: UIBarButtonItem!
     @IBOutlet weak var calendarHeightConstraint: NSLayoutConstraint!
+    
+    
     
     // Data Accesible
     var tableViewData = [cellData]()
@@ -40,6 +43,11 @@ class CalendarViewController: UIViewController, UITableViewDataSource, UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if #available(iOS 13.0, *) {
+            // Always adopt a light interface style.
+            overrideUserInterfaceStyle = .light
+        }
         
         // Setting Calendar UI
         
@@ -83,6 +91,14 @@ class CalendarViewController: UIViewController, UITableViewDataSource, UITableVi
             }
         }
         
+        UserDefaults.standard.array(forKey: "")
+        
+        
+        
+        
+        
+        
+        
         /*
         tableViewData = [cellData(opened: false, title: "2020/03/14", sectionData: ["id1"]),
                          cellData(opened: false, title: "2020/03/14", sectionData: ["id2"]),
@@ -92,6 +108,43 @@ class CalendarViewController: UIViewController, UITableViewDataSource, UITableVi
     
     deinit {
         print("\(#function)")
+    }
+    
+    var checkboxDialogViewController: CheckboxDialogViewController!
+    @IBAction func selectCalendarDisplay(_ sender: Any) {
+        
+        let allCalendars = EventsCalendarManager().loadCalendars()
+        
+        print("all calendar")
+        print(allCalendars)
+        
+        var tableData :[(name: String, translated: String)] = []
+        for calendar in allCalendars
+        {
+            tableData.append((name: calendar, translated: calendar))
+        }
+        
+        self.checkboxDialogViewController = CheckboxDialogViewController()
+        self.checkboxDialogViewController.titleDialog = "Countries"
+        self.checkboxDialogViewController.tableData = tableData
+        self.checkboxDialogViewController.componentName = DialogCheckboxViewEnum.countries
+        self.checkboxDialogViewController.delegateDialogTableView = self
+        self.checkboxDialogViewController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+        self.present(self.checkboxDialogViewController, animated: false, completion: nil)
+        
+        print(UserDefaults.standard.array(forKey: "selectedCalendars"))
+        
+    }
+    
+    func onCheckboxPickerValueChange(_ component: DialogCheckboxViewEnum, values: TranslationDictionary) {
+        print(values.keys)
+        let newNames: [String] = Array(values.keys)
+        UserDefaults.standard.set(newNames, forKey: "selectedCalendars")
+        
+        tableViewData = EventsCalendarManager().loadEvents(selectedCalendars: newNames)
+        tableView.reloadData()
+        calendar.reloadData()
+        //UserDefaults.standard.set(newNames,)
     }
     
     // Controlling week view or month view
@@ -236,6 +289,7 @@ class CalendarViewController: UIViewController, UITableViewDataSource, UITableVi
             cell.eventDescription.text = presentDataList[indexPath.section].sectionData["Title"] as? String
             cell.startingTime.text = presentDataList[indexPath.section].sectionData["StartingTime"] as? String
             cell.endingTime.text = presentDataList[indexPath.section].sectionData["EndingTime"] as? String
+            cell.importantLevelColor.backgroundColor = presentDataList[indexPath.section].sectionData["Color"] as? UIColor
             cell.date.text = selectedDay
             return cell
         }else

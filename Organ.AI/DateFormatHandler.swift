@@ -18,6 +18,14 @@ struct DateFormatHandler
         return dateString
     }
     
+    func dateToFormattedTimeString(date: Date) -> String
+    {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm"
+        let dateString = formatter.string(from: date)
+        return dateString
+    }
+    
     func dayToDayFormattedString(date: Date) -> String
     {
         let formatter = DateFormatter()

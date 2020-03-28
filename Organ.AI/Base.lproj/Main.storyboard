@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="h4j-j6-ViB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="l1i-wd-kYJ">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,7 +22,42 @@
             </objects>
             <point key="canvasLocation" x="-129" y="134"/>
         </scene>
-        <!--Data Source-->
+        <!--Onboarding View Controller-->
+        <scene sceneID="G8x-hI-FyX">
+            <objects>
+                <viewController id="l1i-wd-kYJ" customClass="OnboardingViewController" customModule="Organ_AI" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="brh-Fw-qk9">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gof-da-zSO">
+                                <rect key="frame" x="129" y="433" width="157" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Grant Calendar Access"/>
+                                <connections>
+                                    <action selector="checkAccess:" destination="l1i-wd-kYJ" eventType="touchUpInside" id="NjZ-As-4an"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wTP-z6-Bzh">
+                                <rect key="frame" x="186" y="491" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="zE2-V1-jFs"/>
+                    </view>
+                    <connections>
+                        <segue destination="h4j-j6-ViB" kind="show" identifier="segueToHome" id="U4x-gD-0yB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JUU-Eh-WPW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="828.98550724637687" y="130.58035714285714"/>
+        </scene>
+        <!--FSCalendarScopeExample-->
         <scene sceneID="fC0-fg-4Nx">
             <objects>
                 <viewController title="FSCalendarScopeExample" id="h4j-j6-ViB" customClass="CalendarViewController" customModule="Organ_AI" customModuleProvider="target" sceneMemberID="viewController">
@@ -31,11 +66,11 @@
                         <viewControllerLayoutGuide type="bottom" id="r7U-78-xix"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="e41-B6-Lza">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jIt-R0-JGI">
-                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                                 <items>
                                     <navigationItem title="Organai" id="VUt-hA-yLd">
                                         <barButtonItem key="leftBarButtonItem" title="Month" id="wSh-Fi-rsN">
@@ -43,11 +78,16 @@
                                                 <action selector="ToggleCalendarPresent:" destination="h4j-j6-ViB" id="a5n-lM-XaI"/>
                                             </connections>
                                         </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Calendar" id="8yF-TY-Op1">
+                                            <connections>
+                                                <action selector="selectCalendarDisplay:" destination="h4j-j6-ViB" id="Aru-YI-9dR"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="GRl-P9-31F">
-                                <rect key="frame" x="0.0" y="404" width="414" height="458"/>
+                                <rect key="frame" x="0.0" y="372" width="414" height="436"/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="Wrz-wz-ctl" userLabel="Footer">
                                     <rect key="frame" x="0.0" y="307.5" width="414" height="69"/>
@@ -317,7 +357,7 @@
                                 </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NQg-xA-aly" customClass="FSCalendar">
-                                <rect key="frame" x="0.0" y="88" width="414" height="300"/>
+                                <rect key="frame" x="0.0" y="56" width="414" height="300"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="300" id="NHG-fs-amc"/>
@@ -387,7 +427,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zCI-Pv-WNQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="876.81159420289862" y="133.92857142857142"/>
+            <point key="canvasLocation" x="1606" y="134"/>
         </scene>
     </scenes>
 </document>
