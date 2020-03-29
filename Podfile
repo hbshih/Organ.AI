@@ -21,6 +21,8 @@ target 'Organ.AI' do
   pod 'FirebaseFirestoreSwift'
   
   pod "SwiftCheckboxDialog"
+  
+  pod 'Former'
 
   # Pods for Organ.AI
 

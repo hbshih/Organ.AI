@@ -147,6 +147,14 @@ class CalendarViewController: UIViewController, UITableViewDataSource, UITableVi
         //UserDefaults.standard.set(newNames,)
     }
     
+    @IBAction func addNewEvent(_ sender: Any) {
+        
+        performSegue(withIdentifier: "segue", sender: nil)
+
+        /*
+        Bundle.main.loadNibNamed(String(describing: ManualAddEntryViewController.self), owner: self, options: nil)*/
+        
+    }
     // Controlling week view or month view
     private var calendarWeekView = true
     @IBAction func ToggleCalendarPresent(_ sender: Any) {

@@ -19,8 +19,10 @@
 		B52F34AB24082A7C00042A75 /* EventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52F34AA24082A7C00042A75 /* EventModel.swift */; };
 		B537C77123FEFAA9005D0C5E /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B537C77023FEFAA9005D0C5E /* CalendarViewController.swift */; };
 		B537C77323FF01D9005D0C5E /* CalendarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B537C77223FF01D9005D0C5E /* CalendarTableViewCell.swift */; };
+		B54CB246243113DD00E471DB /* UIColor+FormerDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54CB244243113DC00E471DB /* UIColor+FormerDemo.swift */; };
+		B54CB247243113DD00E471DB /* String+FormerDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54CB245243113DD00E471DB /* String+FormerDemo.swift */; };
+		B54CB2492431163C00E471DB /* AddEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54CB2482431163C00E471DB /* AddEventViewController.swift */; };
 		B56614B6242F43DB0035AECF /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56614B5242F43DB0035AECF /* OnboardingViewController.swift */; };
-		B584D05324015B98001715EC /* AddEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B584D05224015B98001715EC /* AddEventsViewController.swift */; };
 		B5883CEC242D0FB0003ECBF0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B5883CEB242D0FB0003ECBF0 /* GoogleService-Info.plist */; };
 		B5D7E878241BB0490037862F /* DateFormatHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D7E877241BB0490037862F /* DateFormatHandler.swift */; };
 		B5DE2BCA242D9F23001120E3 /* FirestoreHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DE2BC9242D9F23001120E3 /* FirestoreHandler.swift */; };
@@ -44,8 +46,10 @@
 		B52F34AA24082A7C00042A75 /* EventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
 		B537C77023FEFAA9005D0C5E /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		B537C77223FF01D9005D0C5E /* CalendarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTableViewCell.swift; sourceTree = "<group>"; };
+		B54CB244243113DC00E471DB /* UIColor+FormerDemo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+FormerDemo.swift"; sourceTree = "<group>"; };
+		B54CB245243113DD00E471DB /* String+FormerDemo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+FormerDemo.swift"; sourceTree = "<group>"; };
+		B54CB2482431163C00E471DB /* AddEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEventViewController.swift; sourceTree = "<group>"; };
 		B56614B5242F43DB0035AECF /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
-		B584D05224015B98001715EC /* AddEventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventsViewController.swift; sourceTree = "<group>"; };
 		B5883CEB242D0FB0003ECBF0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B5D7E877241BB0490037862F /* DateFormatHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatHandler.swift; sourceTree = "<group>"; };
 		B5DE2BC9242D9F23001120E3 /* FirestoreHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreHandler.swift; sourceTree = "<group>"; };
@@ -115,6 +119,8 @@
 				B51B4C5723FD62150043CAD5 /* Info.plist */,
 				B51B4C4F23FD62140043CAD5 /* Organ_AI.xcdatamodeld */,
 				B5883CEB242D0FB0003ECBF0 /* GoogleService-Info.plist */,
+				B54CB245243113DD00E471DB /* String+FormerDemo.swift */,
+				B54CB244243113DC00E471DB /* UIColor+FormerDemo.swift */,
 			);
 			path = Organ.AI;
 			sourceTree = "<group>";
@@ -135,9 +141,9 @@
 				B51B4C4A23FD62140043CAD5 /* ViewController.swift */,
 				B537C77223FF01D9005D0C5E /* CalendarTableViewCell.swift */,
 				B537C77023FEFAA9005D0C5E /* CalendarViewController.swift */,
-				B584D05224015B98001715EC /* AddEventsViewController.swift */,
 				B5022344241679580064BEA0 /* eventDetailTableViewCell.swift */,
 				B56614B5242F43DB0035AECF /* OnboardingViewController.swift */,
+				B54CB2482431163C00E471DB /* AddEventViewController.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -268,11 +274,13 @@
 				B5DE2BCA242D9F23001120E3 /* FirestoreHandler.swift in Sources */,
 				B52F34AB24082A7C00042A75 /* EventModel.swift in Sources */,
 				B50B0AC32407F56B003A1E8D /* CalendarModel.swift in Sources */,
+				B54CB247243113DD00E471DB /* String+FormerDemo.swift in Sources */,
+				B54CB2492431163C00E471DB /* AddEventViewController.swift in Sources */,
 				B51B4C5123FD62140043CAD5 /* Organ_AI.xcdatamodeld in Sources */,
 				B5D7E878241BB0490037862F /* DateFormatHandler.swift in Sources */,
 				B537C77323FF01D9005D0C5E /* CalendarTableViewCell.swift in Sources */,
 				B51B4C4723FD62140043CAD5 /* AppDelegate.swift in Sources */,
-				B584D05324015B98001715EC /* AddEventsViewController.swift in Sources */,
+				B54CB246243113DD00E471DB /* UIColor+FormerDemo.swift in Sources */,
 				B5DE2BCC242DA1E8001120E3 /* EventsCalendarManager.swift in Sources */,
 				B56614B6242F43DB0035AECF /* OnboardingViewController.swift in Sources */,
 				B537C77123FEFAA9005D0C5E /* CalendarViewController.swift in Sources */,

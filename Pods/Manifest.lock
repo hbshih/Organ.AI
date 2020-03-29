@@ -216,6 +216,7 @@ PODS:
     - FirebaseCore (~> 6.6)
     - GoogleUtilities/UserDefaults (~> 6.5)
     - PromisesObjC (~> 1.2)
+  - Former (1.8.1)
   - FSCalendar (2.8.1)
   - GoogleAppMeasurement (6.4.0):
     - GoogleUtilities/AppDelegateSwizzler (~> 6.0)
@@ -275,6 +276,7 @@ DEPENDENCIES:
   - Firebase/Analytics
   - Firebase/Firestore
   - FirebaseFirestoreSwift
+  - Former
   - FSCalendar
   - SwiftCheckboxDialog
 
@@ -294,6 +296,7 @@ SPEC REPOS:
     - FirebaseFirestore
     - FirebaseFirestoreSwift
     - FirebaseInstallations
+    - Former
     - GoogleAppMeasurement
     - GoogleDataTransport
     - GoogleDataTransportCCTSupport
@@ -318,6 +321,7 @@ SPEC CHECKSUMS:
   FirebaseFirestore: 71925e62a5d1cbfaff46aa4d5107e525cc48356a
   FirebaseFirestoreSwift: 0437bb10d83f8161a9131da1739998254c78fdf5
   FirebaseInstallations: acb3216eb9784d3b1d2d2d635ff74fa892cc0c44
+  Former: f36edb5c1ac03755f8d6d03b26044b62de8c0b2d
   FSCalendar: 5245140456fcbcac5824c203b98bd8068bdfee1a
   GoogleAppMeasurement: 6e68a94d0eaeb1d73ef6b0ed4f7334e29d63ae29
   GoogleDataTransport: b29a21d813e906014ca16c00897827e40e4a24ab
@@ -330,6 +334,6 @@ SPEC CHECKSUMS:
   PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
   SwiftCheckboxDialog: edfabc33371022c5c6ab0527a04b4d0f84bbe034
 
-PODFILE CHECKSUM: 51d008ec7a1f26ad893ca213d7edcf04993fe0bd
+PODFILE CHECKSUM: 49f30656c92d43d910ebb7b0bb3fc1b4fe00a2fc
 
 COCOAPODS: 1.9.0
