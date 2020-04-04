@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B500985A243860DD0085607C /* HashTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5009857243860DB0085607C /* HashTagView.swift */; };
+		B500985B243860DD0085607C /* OutputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5009858243860DC0085607C /* OutputViewController.swift */; };
+		B500985C243860DD0085607C /* InputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5009859243860DD0085607C /* InputViewController.swift */; };
 		B5022345241679580064BEA0 /* eventDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5022344241679580064BEA0 /* eventDetailTableViewCell.swift */; };
 		B50B0AC32407F56B003A1E8D /* CalendarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50B0AC22407F56B003A1E8D /* CalendarModel.swift */; };
 		B51B4C4723FD62140043CAD5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51B4C4623FD62140043CAD5 /* AppDelegate.swift */; };
@@ -32,6 +35,9 @@
 
 /* Begin PBXFileReference section */
 		970B63AAB0F88E6D9BEC6718 /* Pods-Organ.AI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Organ.AI.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Organ.AI/Pods-Organ.AI.debug.xcconfig"; sourceTree = "<group>"; };
+		B5009857243860DB0085607C /* HashTagView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HashTagView.swift; sourceTree = "<group>"; };
+		B5009858243860DC0085607C /* OutputViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutputViewController.swift; sourceTree = "<group>"; };
+		B5009859243860DD0085607C /* InputViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputViewController.swift; sourceTree = "<group>"; };
 		B5022344241679580064BEA0 /* eventDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eventDetailTableViewCell.swift; sourceTree = "<group>"; };
 		B50B0AC22407F56B003A1E8D /* CalendarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarModel.swift; sourceTree = "<group>"; };
 		B51B4C4323FD62140043CAD5 /* Organ.AI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Organ.AI.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -153,6 +159,9 @@
 			children = (
 				B5D7E877241BB0490037862F /* DateFormatHandler.swift */,
 				B5DE2BCB242DA1E8001120E3 /* EventsCalendarManager.swift */,
+				B5009857243860DB0085607C /* HashTagView.swift */,
+				B5009859243860DD0085607C /* InputViewController.swift */,
+				B5009858243860DC0085607C /* OutputViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -270,14 +279,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				B51B4C4B23FD62140043CAD5 /* ViewController.swift in Sources */,
+				B500985A243860DD0085607C /* HashTagView.swift in Sources */,
 				B5022345241679580064BEA0 /* eventDetailTableViewCell.swift in Sources */,
 				B5DE2BCA242D9F23001120E3 /* FirestoreHandler.swift in Sources */,
+				B500985B243860DD0085607C /* OutputViewController.swift in Sources */,
 				B52F34AB24082A7C00042A75 /* EventModel.swift in Sources */,
 				B50B0AC32407F56B003A1E8D /* CalendarModel.swift in Sources */,
 				B54CB247243113DD00E471DB /* String+FormerDemo.swift in Sources */,
 				B54CB2492431163C00E471DB /* AddEventViewController.swift in Sources */,
 				B51B4C5123FD62140043CAD5 /* Organ_AI.xcdatamodeld in Sources */,
 				B5D7E878241BB0490037862F /* DateFormatHandler.swift in Sources */,
+				B500985C243860DD0085607C /* InputViewController.swift in Sources */,
 				B537C77323FF01D9005D0C5E /* CalendarTableViewCell.swift in Sources */,
 				B51B4C4723FD62140043CAD5 /* AppDelegate.swift in Sources */,
 				B54CB246243113DD00E471DB /* UIColor+FormerDemo.swift in Sources */,

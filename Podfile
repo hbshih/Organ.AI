@@ -23,7 +23,9 @@ target 'Organ.AI' do
   pod "SwiftCheckboxDialog"
   
   pod 'Former'
-
+  
+  pod 'MessageKit'
+  
   # Pods for Organ.AI
 
 end
