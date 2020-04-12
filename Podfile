@@ -26,6 +26,10 @@ target 'Organ.AI' do
   
   pod 'MessageKit'
   
+  pod 'OEMentions'
+  
+  pod 'UITextView+Placeholder'
+  
   # Pods for Organ.AI
 
 end

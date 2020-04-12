@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3qo-Dw-Adn">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
@@ -56,7 +56,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JUU-Eh-WPW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="828.98550724637687" y="130.58035714285714"/>
+            <point key="canvasLocation" x="1314" y="-753"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="cul-5V-EEt">
@@ -479,109 +479,51 @@
             </objects>
             <point key="canvasLocation" x="2542" y="136"/>
         </scene>
-        <!--Input View Controller-->
-        <scene sceneID="L7r-vQ-YYT">
+        <!--Message View Controller-->
+        <scene sceneID="4Mh-FV-5xe">
             <objects>
-                <viewController id="xLX-BE-lpk" customClass="InputViewController" customModule="HashTagTutorial" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="iOW-a6-VNR">
+                <viewController id="3qo-Dw-Adn" customClass="MessageViewController" customModule="Organ_AI" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="uAb-2v-zzL">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hPu-QB-M9Q" customClass="HashTagView" customModule="HashTagTutorial" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="88" width="414" height="448"/>
-                                <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="editable" value="YES"/>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="portion">
-                                        <real key="value" value="0.40000000000000002"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="textfontsize">
-                                        <real key="value" value="20"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qx0-f7-7OH">
+                                <rect key="frame" x="0.0" y="44" width="414" height="300"/>
+                                <subviews>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="8kL-tv-Pga">
+                                        <rect key="frame" x="5" y="5" width="404" height="290"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="send" smartInsertDeleteType="yes"/>
+                                    </textView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="8kL-tv-Pga" secondAttribute="trailing" constant="5" id="49b-Lh-Lnj"/>
+                                    <constraint firstItem="8kL-tv-Pga" firstAttribute="leading" secondItem="Qx0-f7-7OH" secondAttribute="leading" constant="5" id="AfA-eY-Nc7"/>
+                                    <constraint firstAttribute="bottom" secondItem="8kL-tv-Pga" secondAttribute="bottom" constant="5" id="RoG-sA-hGd"/>
+                                    <constraint firstAttribute="height" constant="300" id="W6O-Ki-qal"/>
+                                    <constraint firstItem="8kL-tv-Pga" firstAttribute="top" secondItem="Qx0-f7-7OH" secondAttribute="top" constant="5" id="jE9-Zy-c9U"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="hPu-QB-M9Q" firstAttribute="top" secondItem="I6b-WW-n6D" secondAttribute="top" id="1mL-n1-bx7"/>
-                            <constraint firstItem="hPu-QB-M9Q" firstAttribute="leading" secondItem="I6b-WW-n6D" secondAttribute="leading" id="aal-BF-iRN"/>
-                            <constraint firstItem="I6b-WW-n6D" firstAttribute="trailing" secondItem="hPu-QB-M9Q" secondAttribute="trailing" id="gYx-jc-5Iw"/>
-                            <constraint firstItem="hPu-QB-M9Q" firstAttribute="height" secondItem="iOW-a6-VNR" secondAttribute="height" multiplier="1/2" id="qP1-Zp-Zt0"/>
+                            <constraint firstItem="Qx0-f7-7OH" firstAttribute="top" secondItem="8JV-LL-LHo" secondAttribute="top" id="nhV-Ez-xKd"/>
+                            <constraint firstItem="8JV-LL-LHo" firstAttribute="trailing" secondItem="Qx0-f7-7OH" secondAttribute="trailing" id="o9u-ji-GVr"/>
+                            <constraint firstItem="Qx0-f7-7OH" firstAttribute="leading" secondItem="8JV-LL-LHo" secondAttribute="leading" id="oET-Wu-dss"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="I6b-WW-n6D"/>
+                        <viewLayoutGuide key="safeArea" id="8JV-LL-LHo"/>
                     </view>
-                    <navigationItem key="navigationItem" id="pfR-N2-Eee">
-                        <barButtonItem key="rightBarButtonItem" title="POST" id="1HQ-5a-KRW">
-                            <connections>
-                                <segue destination="3UO-OD-uRq" kind="show" identifier="showHashTag" id="YpL-tf-j1M"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
                     <connections>
-                        <outlet property="inputHashTagView" destination="hPu-QB-M9Q" id="QLn-bV-afi"/>
+                        <outlet property="myContainer" destination="Qx0-f7-7OH" id="3pz-6P-nH2"/>
+                        <outlet property="myTextView" destination="8kL-tv-Pga" id="eHH-4M-TfH"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="BI4-Tn-Avw" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OyF-IG-6L9" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="270" y="-1102"/>
-        </scene>
-        <!--Output View Controller-->
-        <scene sceneID="2Eq-1n-a1E">
-            <objects>
-                <viewController id="3UO-OD-uRq" customClass="OutputViewController" customModule="HashTagTutorial" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="m8p-5d-IXK">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="URo-jV-N1c" customClass="HashTagView" customModule="HashTagTutorial" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="88" width="414" height="448"/>
-                                <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="textfontsize">
-                                        <real key="value" value="25"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="portion">
-                                        <real key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="editable" value="NO"/>
-                                </userDefinedRuntimeAttributes>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="URo-jV-N1c" firstAttribute="top" secondItem="WFe-hN-znx" secondAttribute="top" id="76F-yv-2Bq"/>
-                            <constraint firstItem="URo-jV-N1c" firstAttribute="height" secondItem="m8p-5d-IXK" secondAttribute="height" multiplier="1/2" id="JLH-R3-kHY"/>
-                            <constraint firstItem="URo-jV-N1c" firstAttribute="leading" secondItem="WFe-hN-znx" secondAttribute="leading" id="q4v-80-4AR"/>
-                            <constraint firstItem="WFe-hN-znx" firstAttribute="trailing" secondItem="URo-jV-N1c" secondAttribute="trailing" id="qxb-Db-BX4"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="WFe-hN-znx"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="MLi-fV-5fT"/>
-                    <connections>
-                        <outlet property="outputHashTagView" destination="URo-jV-N1c" id="cNH-eW-4UJ"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="9o8-Ho-dQs" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1049" y="-802"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="dYh-iY-OEs">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="zhl-f6-Hyz" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="UcY-Qr-ZDs">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="xLX-BE-lpk" kind="relationship" relationship="rootViewController" id="uva-fH-mow"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Xhb-yl-UtB" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-468" y="-1102"/>
+            <point key="canvasLocation" x="236" y="-753"/>
         </scene>
     </scenes>
 </document>
