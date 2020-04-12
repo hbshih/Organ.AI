@@ -213,6 +213,8 @@ final class AddEventViewController: FormViewController {
         
         //former.
         
+
+        
         let newEvent = EKEvent(eventStore: EventsCalendarManager().eventStore)
         newEvent.title = eventData["Title"] as? String
         newEvent.startDate = eventData["Start"] as? Date
@@ -220,5 +222,6 @@ final class AddEventViewController: FormViewController {
         EventsCalendarManager().addEventToCalendar(event: newEvent) { (error) in
             print(error)
         }
+        
     }
 }

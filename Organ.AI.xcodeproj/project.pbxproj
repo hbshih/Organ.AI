@@ -17,9 +17,9 @@
 		B51B4C5623FD62150043CAD5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B51B4C5423FD62150043CAD5 /* LaunchScreen.storyboard */; };
 		B52F34AB24082A7C00042A75 /* EventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52F34AA24082A7C00042A75 /* EventModel.swift */; };
 		B5327A0F243A00E7003F2CF8 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5327A0E243A00E6003F2CF8 /* MessageViewController.swift */; };
-		B5327A11243A010F003F2CF8 /* OEMentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5327A10243A010F003F2CF8 /* OEMentions.swift */; };
 		B537C77123FEFAA9005D0C5E /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B537C77023FEFAA9005D0C5E /* CalendarViewController.swift */; };
 		B537C77323FF01D9005D0C5E /* CalendarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B537C77223FF01D9005D0C5E /* CalendarTableViewCell.swift */; };
+		B54732E72443466D00027D5D /* OEMentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54732E62443466D00027D5D /* OEMentions.swift */; };
 		B54CB246243113DD00E471DB /* UIColor+FormerDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54CB244243113DC00E471DB /* UIColor+FormerDemo.swift */; };
 		B54CB247243113DD00E471DB /* String+FormerDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54CB245243113DD00E471DB /* String+FormerDemo.swift */; };
 		B54CB2492431163C00E471DB /* AddEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54CB2482431163C00E471DB /* AddEventViewController.swift */; };
@@ -45,9 +45,9 @@
 		B51B4C5723FD62150043CAD5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B52F34AA24082A7C00042A75 /* EventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
 		B5327A0E243A00E6003F2CF8 /* MessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
-		B5327A10243A010F003F2CF8 /* OEMentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OEMentions.swift; path = ../Pods/OEMentions/OEMentions/OEMentions.swift; sourceTree = "<group>"; };
 		B537C77023FEFAA9005D0C5E /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		B537C77223FF01D9005D0C5E /* CalendarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTableViewCell.swift; sourceTree = "<group>"; };
+		B54732E62443466D00027D5D /* OEMentions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OEMentions.swift; sourceTree = "<group>"; };
 		B54CB244243113DC00E471DB /* UIColor+FormerDemo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+FormerDemo.swift"; sourceTree = "<group>"; };
 		B54CB245243113DD00E471DB /* String+FormerDemo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+FormerDemo.swift"; sourceTree = "<group>"; };
 		B54CB2482431163C00E471DB /* AddEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEventViewController.swift; sourceTree = "<group>"; };
@@ -155,7 +155,7 @@
 			children = (
 				B5D7E877241BB0490037862F /* DateFormatHandler.swift */,
 				B5DE2BCB242DA1E8001120E3 /* EventsCalendarManager.swift */,
-				B5327A10243A010F003F2CF8 /* OEMentions.swift */,
+				B54732E62443466D00027D5D /* OEMentions.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -274,7 +274,7 @@
 			files = (
 				B5022345241679580064BEA0 /* eventDetailTableViewCell.swift in Sources */,
 				B5DE2BCA242D9F23001120E3 /* FirestoreHandler.swift in Sources */,
-				B5327A11243A010F003F2CF8 /* OEMentions.swift in Sources */,
+				B54732E72443466D00027D5D /* OEMentions.swift in Sources */,
 				B52F34AB24082A7C00042A75 /* EventModel.swift in Sources */,
 				B50B0AC32407F56B003A1E8D /* CalendarModel.swift in Sources */,
 				B54CB247243113DD00E471DB /* String+FormerDemo.swift in Sources */,
