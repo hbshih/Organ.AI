@@ -462,7 +462,7 @@
             <objects>
                 <viewController id="qUp-Z2-zx6" customClass="AddEventViewController" customModule="Organ_AI" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2d8-bo-0fy">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="JhZ-pg-Cn8"/>
@@ -519,11 +519,66 @@
                     <connections>
                         <outlet property="myContainer" destination="Qx0-f7-7OH" id="3pz-6P-nH2"/>
                         <outlet property="myTextView" destination="8kL-tv-Pga" id="eHH-4M-TfH"/>
+                        <segue destination="qUp-Z2-zx6" kind="show" identifier="createEventSegue" id="P89-a5-rKe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OyF-IG-6L9" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="236" y="-753"/>
         </scene>
+        <!--Add Event-->
+        <scene sceneID="CXx-Mq-azv">
+            <objects>
+                <viewController id="Myb-sd-c8C" customClass="NativeEventFormViewController" customModule="Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="KS8-Da-qCY">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="gLt-D4-fYS">
+                                <rect key="frame" x="0.0" y="24" width="414" height="838"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemGroupedBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="dAN-no-gFt" firstAttribute="trailing" secondItem="gLt-D4-fYS" secondAttribute="trailing" id="8FA-Na-1Rq"/>
+                            <constraint firstItem="gLt-D4-fYS" firstAttribute="top" secondItem="dAN-no-gFt" secondAttribute="top" constant="-64" id="S82-la-YYd"/>
+                            <constraint firstItem="gLt-D4-fYS" firstAttribute="leading" secondItem="dAN-no-gFt" secondAttribute="leading" id="SVo-ep-dG5"/>
+                            <constraint firstItem="dAN-no-gFt" firstAttribute="bottom" secondItem="gLt-D4-fYS" secondAttribute="bottom" id="p7j-hr-FYT"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="dAN-no-gFt"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Add Event" id="eBE-GV-GSP">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="0it-LE-8PD"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="gLt-D4-fYS" id="9oq-e3-4Uh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2zQ-3H-yIi" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4870" y="-277"/>
+        </scene>
+        <!--Native Event Navigation Controller-->
+        <scene sceneID="Sv0-tv-SSH">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bg2-T4-5q6" customClass="NativeEventNavigationController" customModule="Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="4eY-2h-yGF">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Myb-sd-c8C" kind="relationship" relationship="rootViewController" id="ken-Kw-KRo"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Z8I-AG-Plv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4097" y="-277"/>
+        </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="P89-a5-rKe"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -57,6 +57,7 @@ final class AddEventViewController: FormViewController {
     
     var eventData : [String: Any] = [:]
     
+    
     func configure() {
         title = "Add Event"
         tableView.contentInset.top = 10
@@ -68,6 +69,9 @@ final class AddEventViewController: FormViewController {
             $0.textField.textColor = .formerColor()
             $0.textField.font = .systemFont(ofSize: 15)
             }.configure {
+                
+                $0.text = eventData["title"] as? String
+                
                 $0.placeholder = "Event title"
         }
         
@@ -77,7 +81,7 @@ final class AddEventViewController: FormViewController {
             }.configure {
                 $0.placeholder = "Location"
         }
-        let startRow = InlineDatePickerRowFormer<FormInlineDatePickerCell>() {
+/*        let startRow = InlineDatePickerRowFormer<FormInlineDatePickerCell>() {
             $0.titleLabel.text = "Start"
             $0.titleLabel.textColor = .formerColor()
             $0.titleLabel.font = .boldSystemFont(ofSize: 15)
@@ -85,7 +89,37 @@ final class AddEventViewController: FormViewController {
             $0.displayLabel.font = .systemFont(ofSize: 15)
             }.inlineCellSetup {
                 $0.datePicker.datePickerMode = .dateAndTime
-            }.displayTextFromDate(String.mediumDateShortTime)
+            }.displayTextFromDate(String.mediumDateShortTime)*/
+        
+        let startRow = InlineDatePickerRowFormer<FormInlineDatePickerCell>() {
+            $0.titleLabel.text = "Start"
+            $0.titleLabel.textColor = .formerColor()
+            $0.titleLabel.font = .boldSystemFont(ofSize: 15)
+            
+            $0.displayLabel.textColor = .formerSubColor()
+            $0.displayLabel.font = .systemFont(ofSize: 15)
+         //   $0.displayLabel.text = "2020-04-20T04:00:00.000-07:00"
+        //    $0.displayLabel.text =
+        }.inlineCellSetup { (datepicker) in
+            datepicker.datePicker.setDate(Date().addingTimeInterval(60*60*60*24), animated: true)
+        //    datepicker.datePicker.setDate(DateFormatHandler().stringToDate(string_date: "2020-04-20T04:00:00.000-07:00"), animated: true)
+            datepicker.datePicker.date = Date().addingTimeInterval(60*60*60*24)
+        }
+        /*
+         
+         .inlineCellSetup {
+                  
+             //     $0.datePicker.
+                  
+                //  $0.datePicker.setDate(<#T##date: Date##Date#>, animated: <#T##Bool#>)
+                 // $0.datePicker.minimumDate = DateFormatHandler().stringToDate(string_date: "2020-04-20T04:00:00.000-07:00")
+                  $0.datePicker.date = DateFormatHandler().stringToDate(string_date: "2020-04-20T04:00:00.000-07:00")
+                  $0.datePicker.setDate(DateFormatHandler().stringToDate(string_date: "2020-04-20T04:00:00.000-07:00"), animated: true)
+              }.displayTextFromDate(String.mediumDateShortTime)
+         // startRow.date = DateFormatHandler().stringToDate(string_date: "2020-04-20T04:00:00.000-07:00")
+         
+         */
+        
         let endRow = InlineDatePickerRowFormer<FormInlineDatePickerCell>() {
             $0.titleLabel.text = "End"
             $0.titleLabel.textColor = .formerColor()
@@ -94,7 +128,7 @@ final class AddEventViewController: FormViewController {
             $0.displayLabel.font = .systemFont(ofSize: 15)
             }.inlineCellSetup {
                 $0.datePicker.datePickerMode = .dateAndTime
-            }.displayTextFromDate(String.mediumDateShortTime)
+        }.displayTextFromDate(String.mediumDateShortTime)
         let allDayRow = SwitchRowFormer<FormSwitchCell>() {
             $0.titleLabel.text = "All-day"
             $0.titleLabel.textColor = .formerColor()
@@ -219,9 +253,12 @@ final class AddEventViewController: FormViewController {
         newEvent.title = eventData["Title"] as? String
         newEvent.startDate = eventData["Start"] as? Date
         newEvent.endDate = eventData["End"] as? Date
+        
+        EventsCalendarManager().presentEventCalendarDetailModal(event: newEvent)
+        /*
         EventsCalendarManager().addEventToCalendar(event: newEvent) { (error) in
             print(error)
         }
-        
+        */
     }
 }

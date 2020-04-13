@@ -1,5 +1,6 @@
 ${PODS_ROOT}/Target Support Files/Pods-Organ.AI/Pods-Organ.AI-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework
+${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework
 ${BUILT_PRODUCTS_DIR}/ExpandableCell/ExpandableCell.framework
 ${BUILT_PRODUCTS_DIR}/FSCalendar/FSCalendar.framework
 ${BUILT_PRODUCTS_DIR}/Former/Former.framework

@@ -24,6 +24,7 @@
 		B54CB247243113DD00E471DB /* String+FormerDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54CB245243113DD00E471DB /* String+FormerDemo.swift */; };
 		B54CB2492431163C00E471DB /* AddEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54CB2482431163C00E471DB /* AddEventViewController.swift */; };
 		B56614B6242F43DB0035AECF /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56614B5242F43DB0035AECF /* OnboardingViewController.swift */; };
+		B571E8E5244497EE005379BC /* NativeEventExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = B571E8E4244497EE005379BC /* NativeEventExample.swift */; };
 		B5883CEC242D0FB0003ECBF0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B5883CEB242D0FB0003ECBF0 /* GoogleService-Info.plist */; };
 		B5D7E878241BB0490037862F /* DateFormatHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D7E877241BB0490037862F /* DateFormatHandler.swift */; };
 		B5DE2BCA242D9F23001120E3 /* FirestoreHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DE2BC9242D9F23001120E3 /* FirestoreHandler.swift */; };
@@ -52,6 +53,7 @@
 		B54CB245243113DD00E471DB /* String+FormerDemo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+FormerDemo.swift"; sourceTree = "<group>"; };
 		B54CB2482431163C00E471DB /* AddEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEventViewController.swift; sourceTree = "<group>"; };
 		B56614B5242F43DB0035AECF /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		B571E8E4244497EE005379BC /* NativeEventExample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NativeEventExample.swift; sourceTree = "<group>"; };
 		B5883CEB242D0FB0003ECBF0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B5D7E877241BB0490037862F /* DateFormatHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatHandler.swift; sourceTree = "<group>"; };
 		B5DE2BC9242D9F23001120E3 /* FirestoreHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreHandler.swift; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 				B56614B5242F43DB0035AECF /* OnboardingViewController.swift */,
 				B54CB2482431163C00E471DB /* AddEventViewController.swift */,
 				B5327A0E243A00E6003F2CF8 /* MessageViewController.swift */,
+				B571E8E4244497EE005379BC /* NativeEventExample.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -278,6 +281,7 @@
 				B52F34AB24082A7C00042A75 /* EventModel.swift in Sources */,
 				B50B0AC32407F56B003A1E8D /* CalendarModel.swift in Sources */,
 				B54CB247243113DD00E471DB /* String+FormerDemo.swift in Sources */,
+				B571E8E5244497EE005379BC /* NativeEventExample.swift in Sources */,
 				B54CB2492431163C00E471DB /* AddEventViewController.swift in Sources */,
 				B51B4C5123FD62140043CAD5 /* Organ_AI.xcdatamodeld in Sources */,
 				B5D7E878241BB0490037862F /* DateFormatHandler.swift in Sources */,

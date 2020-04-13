@@ -28,6 +28,8 @@ target 'Organ.AI' do
   
   pod 'OEMentions'
   
+  pod 'Eureka'
+  
   pod 'UITextView+Placeholder'
   
   # Pods for Organ.AI

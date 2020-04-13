@@ -33,4 +33,18 @@ struct DateFormatHandler
         let dayString = formatter.string(from: date)
         return dayString
     }
+    
+    func stringToDate(string_date: String) -> Date
+    {
+        let dateFormatter = DateFormatter()
+        print(string_date)
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZZZZZ"
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        let formatted_date = dateFormatter.date(from: string_date)
+        
+     //   print("formatted \(formatted_date)")
+        
+        return formatted_date!
+    }
+    
 }

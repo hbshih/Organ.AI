@@ -102,6 +102,7 @@ class EventsCalendarManager: NSObject {
                     completion(.failure(error))
                 }
             })
+            
         case .notDetermined:
             //Auth is not determined
             //We should request access to the calendar
@@ -289,6 +290,7 @@ class EventsCalendarManager: NSObject {
                 
                 print("calendar color")
                 print(calendar.cgColor)
+                
                 
                 for event in events {
                     
