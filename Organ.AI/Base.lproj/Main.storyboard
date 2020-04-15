@@ -451,6 +451,7 @@
                         <outlet property="tableView" destination="GRl-P9-31F" id="gER-ya-xCo"/>
                         <outlet property="weekMonthToggleOutlet" destination="wSh-Fi-rsN" id="xgC-JF-ByQ"/>
                         <segue destination="qUp-Z2-zx6" kind="show" identifier="segue" id="c55-HR-rh1"/>
+                        <segue destination="3qo-Dw-Adn" kind="show" identifier="addEventWithAISegue" id="550-zi-ewb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zCI-Pv-WNQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -462,7 +463,7 @@
             <objects>
                 <viewController id="qUp-Z2-zx6" customClass="AddEventViewController" customModule="Organ_AI" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2d8-bo-0fy">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="JhZ-pg-Cn8"/>
@@ -488,7 +489,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qx0-f7-7OH">
-                                <rect key="frame" x="0.0" y="44" width="414" height="300"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="300"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="8kL-tv-Pga">
                                         <rect key="frame" x="5" y="5" width="404" height="290"/>
@@ -516,6 +517,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8JV-LL-LHo"/>
                     </view>
+                    <navigationItem key="navigationItem" id="qqn-FR-bDu"/>
                     <connections>
                         <outlet property="myContainer" destination="Qx0-f7-7OH" id="3pz-6P-nH2"/>
                         <outlet property="myTextView" destination="8kL-tv-Pga" id="eHH-4M-TfH"/>
@@ -529,7 +531,7 @@
         <!--Add Event-->
         <scene sceneID="CXx-Mq-azv">
             <objects>
-                <viewController id="Myb-sd-c8C" customClass="NativeEventFormViewController" customModule="Example" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Myb-sd-c8C" customClass="NativeEventFormViewController" customModule="Organ_AI" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KS8-Da-qCY">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -562,7 +564,7 @@
         <!--Native Event Navigation Controller-->
         <scene sceneID="Sv0-tv-SSH">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bg2-T4-5q6" customClass="NativeEventNavigationController" customModule="Example" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bg2-T4-5q6" customClass="NativeEventNavigationController" customModule="Organ_AI" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="4eY-2h-yGF">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -579,6 +581,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="P89-a5-rKe"/>
+        <segue reference="c55-HR-rh1"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -155,21 +155,7 @@ class OEMentions: NSObject, UITextViewDelegate, UITableViewDelegate, UITableView
                     self.activity = data["activity"] as! [String]
                     self.duration = data["duration"] as! Int
                     self.placeholder = data["placeholder"] as! [String]
-                    /*           EventsCalendarManager().addEventToCalendar(event: newEvent) { (error) in
-                     print(error)
-                     }*/
-                    
-
-               //     print(DateFormatHandler().stringToDate(string_date: self.time["time"]!))
-                    
                     DispatchQueue.main.async {
-                 //       let newEvent = EKEvent(eventStore: EventsCalendarManager().eventStore)
-                       // newEvent.title = self.activity[0]
-                       // newEvent.notes?.append("asdf")
-                    
-                        
-                   //     newEvent.location = "Wee"
-                    //     newEvent.location = self.placeholder[0]
                         
                         let keyWindow = UIApplication.shared.connectedScenes
                             .filter({$0.activationState == .foregroundActive})
@@ -181,18 +167,31 @@ class OEMentions: NSObject, UITextViewDelegate, UITableViewDelegate, UITableView
                         if let rootVC = keyWindow?.rootViewController {
                             
                             let vc = NativeEventFormViewController()
-                            vc.eventData["title"] = self.activity[0]
-                            vc.eventData["participant"] = self.person[0]
-                            vc.eventData["location"] = self.placeholder[0]
+                            
+                            if self.activity.count != 0
+                            {
+                                vc.eventData["title"] = self.activity[0]
+                            }
+                            
+                            if self.person.count != 0
+                            {
+                                vc.eventData["participant"] = self.person
+                            }
+                            
+                            if self.placeholder.count != 0
+                            {
+                                vc.eventData["location"] = self.placeholder[0]
+                            }
+                            
+                            
                             if self.time.count == 1
                             {
-                                var startTime = DateFormatHandler().stringToDate(string_date: self.time["time"]!)
+                                let startTime = DateFormatHandler().stringToDate(string_date: self.time["time"]!)
                                 print("start time \(startTime)")
                                 vc.eventData["start"] = startTime
                                 vc.eventData["end"] = startTime.addingTimeInterval(Double(self.duration)*60.0*60.0)
-                            }else
+                            }else if self.time.count == 2
                             {
-                          //      let t = self.time["time"]!
                                 vc.eventData["start"] = DateFormatHandler().stringToDate(string_date: self.time["from"]!)
                                 vc.eventData["end"] = DateFormatHandler().stringToDate(string_date: self.time["to"]!)
                             }
@@ -508,7 +507,7 @@ struct OrganAIHandler
         
         var _url = URLComponents()
         _url.scheme = "https"
-        _url.host = "b50bfdc4.ngrok.io"
+        _url.host = "organaise.ngrok.io"
         _url.path = "/api/projects/default/logs"
         _url.queryItems = [URLQueryItem(name: "q", value: query)]
         
@@ -659,8 +658,8 @@ struct OrganAIHandler
     
     func getToken (completion: @escaping (String) -> ())
     {
-        guard let url = URL(string: "http://b50bfdc4.ngrok.io/api/auth"),
-            let payload = "{\"username\": \"me\", \"password\": \"lRFqAib9zBAe\"}".data(using: .utf8) else
+        guard let url = URL(string: "http://organaise.ngrok.io/api/auth"),
+            let payload = "{\"username\": \"me\", \"password\": \"organaise2019\"}".data(using: .utf8) else
         {
             print("hey")
             return
