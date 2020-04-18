@@ -7,22 +7,66 @@
 //
 
 import Eureka
+import EventKit
 
 class NativeEventNavigationController: UINavigationController, RowControllerType {
     var onDismissCallback : ((UIViewController) -> ())?
 }
 
-class NativeEventFormViewController : FormViewController {
+class NativeEventFormViewController : FormViewController, RowControllerType {
+    var onDismissCallback: ((UIViewController) -> Void)?
+    
     
     var eventData : [String: Any] = [:]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         initializeForm()
         
         navigationItem.leftBarButtonItem?.target = self
         navigationItem.leftBarButtonItem?.action = #selector(NativeEventFormViewController.cancelTapped(_:))
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(NativeEventFormViewController.addTapped))
+    }
+    
+    var startDate = Date()
+    var endDate = Date().addingTimeInterval(60*60)
+    
+    @objc func addTapped()
+    {
+        print("tapped")
+        let newEvent = EKEvent(eventStore: EventsCalendarManager().eventStore)
+        newEvent.title = eventData["title"] as? String
+        
+        if let start = eventData["start"] as? Date
+        {
+            newEvent.startDate = start
+        }else
+        {
+            newEvent.startDate = startDate
+        }
+        
+        if let end = eventData["end"] as? Date
+        {
+            newEvent.endDate = end
+        }else
+        {
+            newEvent.endDate = endDate
+        }
+        
+        print(newEvent)
+        
+        
+        
+        EventsCalendarManager().addEventToCalendar(event: newEvent) { (error) in
+            DispatchQueue.main.async
+                {
+            self.navigationController?.popToRootViewController(animated: true)
+              //      print(newEvent.eventIdentifier.)
+            }
+        }
     }
     
     private func initializeForm() {
@@ -85,6 +129,7 @@ class NativeEventFormViewController : FormViewController {
                 if eventData["start"] != nil
                 {
                     $0.value = eventData["start"] as? Date
+                    self.startDate = (eventData["start"] as? Date)!
                 }else
                 {
                     $0.value = Date()

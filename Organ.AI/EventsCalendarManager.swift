@@ -131,6 +131,9 @@ class EventsCalendarManager: NSObject {
     private func generateEvent(event: EKEvent) -> EKEvent {
         let newEvent = EKEvent(eventStore: eventStore)
         newEvent.calendar = eventStore.defaultCalendarForNewEvents
+        
+        print("default calendar \(eventStore.defaultCalendarForNewEvents)")
+        
         newEvent.title = event.title
         newEvent.startDate = event.startDate
         newEvent.endDate = event.endDate
@@ -146,31 +149,59 @@ class EventsCalendarManager: NSObject {
     }
     
     // Try to save an event to the calendar
+   
     private func addEvent(event: EKEvent, completion : @escaping EventsCalendarManagerResponse) {
         let eventToAdd = generateEvent(event: event)
-        if !eventAlreadyExists(event: eventToAdd) {
+        
+        eventStore.requestAccess(to: .event) { (granted, error) in
+
+            if (granted) && (error == nil) {
+
+                    do {
+                        try self.eventStore.save(eventToAdd, span: .thisEvent)
+                        print("Saved \(eventToAdd.title) \(String(describing: eventToAdd.location)) in \(eventToAdd.calendar.title)")
+                        completion(.success(true))
+                    } catch {
+                        print("failed to save event with error : \(error as NSError)")
+                        completion(.failure(.eventNotAddedToCalendar))
+                    }
+            
+            }
+            else{
+
+                print("failed to save event with error : \(String(describing: error)) or access not granted")
+                completion(.failure(.eventNotAddedToCalendar))
+            }
+        }
+      /*  if !eventAlreadyExists(event: eventToAdd) {
             do {
                 try eventStore.save(eventToAdd, span: .thisEvent)
+                print("saved event to calendar \(eventToAdd)")
             } catch {
                 // Error while trying to create event in calendar
+                print("event not added")
                 completion(.failure(.eventNotAddedToCalendar))
             }
             completion(.success(true))
         } else {
+         //   print("event not added")
             completion(.failure(.eventAlreadyExistsInCalendar))
-        }
+        }*/
         
     }
     
     // Check if the event was already added to the calendar
     
     private func eventAlreadyExists(event eventToAdd: EKEvent) -> Bool {
-        let predicate = eventStore.predicateForEvents(withStart: eventToAdd.startDate, end: eventToAdd.endDate, calendars: nil)
+      /*  let predicate = eventStore.predicateForEvents(withStart: eventToAdd.startDate, end: eventToAdd.endDate, calendars: nil)
         let existingEvents = eventStore.events(matching: predicate)
         
-        let eventAlreadyExists = existingEvents.contains { (event) -> Bool in
+        var eventAlreadyExists = existingEvents.contains { (event) -> Bool in
             return eventToAdd.title == event.title && event.startDate == eventToAdd.startDate && event.endDate == eventToAdd.endDate
-        }
+        }*/
+        
+        let eventAlreadyExists = false
+        
         return eventAlreadyExists
     }
     

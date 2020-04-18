@@ -1,22 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3qo-Dw-Adn">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rK4-Tj-ND2">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Native Event Form View Controller-->
+        <scene sceneID="Oip-3c-LM4">
+            <objects>
+                <viewController storyboardIdentifier="testID" id="KaZ-Q0-xU4" customClass="NativeEventFormViewController" customModule="Organ_AI" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="XDr-TF-Rtm">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="BhY-dn-dld"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="EQA-oT-8Co"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5hG-LR-YTu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1104" y="-411"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Organ_AI" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="teststory" id="BYZ-38-t0r" customClass="ViewController" customModule="Organ_AI" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" id="6xz-za-oTU"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -522,6 +539,8 @@
                         <outlet property="myContainer" destination="Qx0-f7-7OH" id="3pz-6P-nH2"/>
                         <outlet property="myTextView" destination="8kL-tv-Pga" id="eHH-4M-TfH"/>
                         <segue destination="qUp-Z2-zx6" kind="show" identifier="createEventSegue" id="P89-a5-rKe"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="randomSegue" id="jLd-E8-VPm"/>
+                        <segue destination="KaZ-Q0-xU4" kind="show" identifier="formsegue" id="hN4-lG-ZzW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OyF-IG-6L9" sceneMemberID="firstResponder"/>
@@ -581,6 +600,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="c55-HR-rh1"/>
+        <segue reference="P89-a5-rKe"/>
     </inferredMetricsTieBreakers>
 </document>

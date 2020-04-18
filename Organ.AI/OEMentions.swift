@@ -16,6 +16,8 @@ public protocol OEMentionsDelegate
     // To respond to the selected name
     func mentionSelected(id:Int, name:String)
     
+    func messageSent(message: String)
+    
 }
 
 
@@ -72,11 +74,6 @@ class OEMentions: NSObject, UITextViewDelegate, UITableViewDelegate, UITableView
     
     // OEMention Delegate
     var delegate:OEMentionsDelegate?
-    
-    
-    
-    
-    
     var textViewWidth:CGFloat?
     var textViewHieght:CGFloat?
     var textViewYPosition:CGFloat?
@@ -126,21 +123,22 @@ class OEMentions: NSObject, UITextViewDelegate, UITableViewDelegate, UITableView
     
     
     //MARK: - UITextView delegate functions:
-    var time = [String: String]()
-    var person = [String]()
-    var duration = Int()
-    var activity = [String]()
-    var placeholder = [String]()
     
     func textViewDidEndEditing(_ textView: UITextView) {
-        self.mentionQuery = ""
+        
+     /*   self.mentionQuery = ""
         self.isMentioning = false
         UIView.animate(withDuration: 0.2, animations: {
             self.tableView.isHidden = true
         })
-        print(textView.text)
+        print(textView.text)*/
         
         
+        if delegate != nil {
+            self.delegate!.messageSent(message: textView.text)
+               }
+        
+        /*
         var organAI = OrganAIHandler()
         
         
@@ -164,9 +162,40 @@ class OEMentions: NSObject, UITextViewDelegate, UITableViewDelegate, UITableView
                             .first?.windows
                             .filter({$0.isKeyWindow}).first
                         
+           /*
+                        let story = UIStoryboard(name: "Main", bundle:nil)
+                           let vc = story.instantiateViewController(withIdentifier: "teststory") as! NativeEventFormViewController
+                           UIApplication.shared.windows.first?.rootViewController = vc
+                           UIApplication.shared.windows.first?.makeKeyAndVisible()
+                        */
+                        
+                 
                         if let rootVC = keyWindow?.rootViewController {
                             
-                            let vc = NativeEventFormViewController()
+                            
+
+                          //  navigationController.setViewControllers([yourRootViewController], animated: false)
+                            //  rootVC.
+                            
+                            /*        row.presentationMode = .segueName(segueName: "NativeEventsFormNavigationControllerSegue", onDismiss:{  vc in vc.dismiss(animated: true) })*/
+                            
+                            //      let vc = UINavigationController(rootViewController: NativeEventFormViewController())
+                              let vc = NativeEventFormViewController()
+                            
+                            
+                            
+                            
+                            
+                            //  rootVC.performSegue(withIdentifier: "randomSegue", sender: nil)
+                            /*                 vc.isModalInPresentation = false
+                             vc.navigationItem.setLeftBarButton(UIBarButtonItem(title: "back", style: .done, target: nil, action: nil), animated: true)
+                             rootVC.present(vc, animated: true) {
+                             print("complete")
+                             }*/
+                            //    UINavigationController(rootViewController: <#T##UIViewController#>)
+                            
+                   /*         let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                            let vc = storyboard.instantiateViewController(withIdentifier: "testID") as! NativeEventFormViewController*/
                             
                             if self.activity.count != 0
                             {
@@ -196,14 +225,35 @@ class OEMentions: NSObject, UITextViewDelegate, UITableViewDelegate, UITableView
                                 vc.eventData["end"] = DateFormatHandler().stringToDate(string_date: self.time["to"]!)
                             }
                             
-                            rootVC.present(vc, animated: true) { 
-                                print("complete")
-                            }
+                            
+                            
+                            //          let childNavigation = UINavigationController(rootViewController: rootVC)
+                      
+                            /*     childNavigation.willMove(toParent: self)
+                            addChild(vc)
+                            childNavigation.view.frame = view.frame
+                            view.addSubview(childNavigation.view)
+                            childNavigation.didMove(toParent: self)
+                            */
+                            
+                     /*       let navigationController = UINavigationController()
+                             navigationController.setViewControllers([vc], animated: true)
+                            navigationController.pushViewController(rootVC, animated: true)
+                       */
+                        //    rootVC.navigationController?.pushViewController(vc, animated: true)
+                            /*    navigationController?.pushViewController(vc,
+                             animated: true)*/
+                            
+                             rootVC.present(vc, animated: true) {
+                             print("complete")
+                             }
                         }
+                        /*
+                        */
                         
-                     /*   EventsCalendarManager().presentCalendarModalToAddEvent(event: newEvent) { (Error) in
-                            print(Error)
-                        }*/
+                        /*   EventsCalendarManager().presentCalendarModalToAddEvent(event: newEvent) { (Error) in
+                         print(Error)
+                         }*/
                     }
                     
                 }
@@ -226,7 +276,7 @@ class OEMentions: NSObject, UITextViewDelegate, UITableViewDelegate, UITableView
          }
          }*/
         
-        
+        */
         
     }
     
@@ -492,195 +542,4 @@ extension UITextView
     }
 }
 
-struct OrganAIHandler
-{
-    
-    var api_response_handler = ["activity": [""], "person": [""], "duration": 0, "time": ""] as [String : Any]
-    
-    var query = "Book a meeting with @John"
-    
-    mutating func queryProcessor(token: String, query: String, completion: @escaping ([String:Any]) -> ())
-    {
-        let sessionConfig = URLSessionConfiguration.default
-        let authValue: String? = "Bearer \(token)"
-        sessionConfig.httpAdditionalHeaders = ["Authorization": authValue ?? ""]
-        
-        var _url = URLComponents()
-        _url.scheme = "https"
-        _url.host = "organaise.ngrok.io"
-        _url.path = "/api/projects/default/logs"
-        _url.queryItems = [URLQueryItem(name: "q", value: query)]
-        
-        if let queryURL = _url.url
-        {
-            var request = URLRequest(url: queryURL)
-            request.httpMethod = "POST"
-            let session = URLSession(configuration: sessionConfig)
-            
-            let sessionTask = session.dataTask(with: request) { (data, response, error) in
-                let json = try? JSONSerialization.jsonObject(with: data!, options: [])
-                
-                //   print(json)
-                var activity = [String]()
-                var person = [String]()
-                var duration = Int()
-                var time = [String: String]()
-                var placeholder = [String]()
-                
-                
-                
-                if let dict_data = json as? [String: Any] {
-                    //  print(dict_data)
-                    
-                    if let user_input = dict_data["user_input"] as? [String: Any]
-                    {
-                        //     print(user_input)
-                        
-                        let seng_msg = user_input["text"] as! String
-                        print(seng_msg)
-                        
-                        //        print(user_input["entities"] as! NSArray)
-                        
-                        if let entities = user_input["entities"] as? NSArray
-                        {
-                            //  print(entities)
-                            for entity in entities
-                            {
-                                if let single_entity = entity as? [String: Any]
-                                {
-                                    //    print(single_entity)
-                                    if let entityName = single_entity["entity"] as? String
-                                    {
-                                        switch entityName {
-                                        case "time":
-                                            if single_entity["extractor"] as! String == "activityparser"
-                                            {
-                                                if let time_entity = single_entity["value"] as? [String: String]
-                                                {
-                                                    time["from"] = time_entity["from"]
-                                                    time["to"] = time_entity["to"]
-                                                }else
-                                                {
-                                                    time["time"] = (single_entity["value"] as? String)!
-                                                }
-                                            }else
-                                            {
-                                                time["time"] = (single_entity["value"] as? String)!
-                                            }
-                                        case "activity":
-                                            if single_entity["extractor"] as! String == "activityparser"
-                                            {
-                                                activity.append(single_entity["value"] as! String)
-                                            }else
-                                            {
-                                                if single_entity["extractor"] as! String == "CRFEntityExtractor"
-                                                {
-                                                    if single_entity["confidence"] as! Double > 0.8
-                                                    {
-                                                        activity.append(single_entity["value"] as! String)
-                                                    }
-                                                }
-                                            }
-                                            
-                                        case "PERSON":
-                                            if single_entity["extractor"] as! String == "activityparser"
-                                            {
-                                                person.append(single_entity["value"] as! String)
-                                            }else
-                                            {
-                                                if single_entity["confidence"] as! Double > 0.8
-                                                {
-                                                    person.append(single_entity["value"] as! String)
-                                                }
-                                            }
-                                        case "duration":
-                                            if single_entity["extractor"] as! String == "activityparser"
-                                            {
-                                                duration = single_entity["value"] as! Int
-                                            }else
-                                            {
-                                                if single_entity["confidence"] as! Double > 0.8
-                                                {
-                                                    duration = single_entity["value"] as! Int
-                                                }
-                                            }
-                                        case "placeholder":
-                                            if single_entity["extractor"] as! String == "RegexEntityExtractor"
-                                            {
-                                                placeholder.append(single_entity["value"] as! String)
-                                            }else
-                                            {
-                                                if single_entity["extractor"] as! String == "CRFEntityExtractor"
-                                                {
-                                                    if single_entity["confidence"] as! Double > 0.8
-                                                    {
-                                                        placeholder.append(single_entity["value"] as! String)
-                                                    }
-                                                }
-                                            }
-                                        default:
-                                            print("error")
-                                        }
-                                    }
-                                    
-                                }
-                            }
-                            print("\n ########## VALUE ######### \n")
-                            print(time)
-                            print(activity)
-                            print(person)
-                            print(duration)
-                            print(placeholder)
-                            if time.count == 0
-                            {
-                                print("Ask for Time")
-                            }
-                            if activity.count == 0
-                            {
-                                print("Ask for Title")
-                            }
-                            if person.count == 0
-                            {
-                                print("Ask for Person")
-                            }
-                            if duration == 0
-                            {
-                                print("Ask for Duration")
-                            }
-                            completion(["time":time, "activity": activity, "person": person, "duration": duration, "placeholder": placeholder])
-                        }
-                    }
-                }
-            }
-            sessionTask.resume()
-        }
-    }
-    
-    func getToken (completion: @escaping (String) -> ())
-    {
-        guard let url = URL(string: "http://organaise.ngrok.io/api/auth"),
-            let payload = "{\"username\": \"me\", \"password\": \"organaise2019\"}".data(using: .utf8) else
-        {
-            print("hey")
-            return
-        }
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        //  request.addValue("your_api_key", forHTTPHeaderField: "x-api-key")
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.httpBody = payload
-        URLSession.shared.dataTask(with: request) { (data, response, error) in
-            guard error == nil else { print(error!.localizedDescription); return }
-            guard let data = data else { print("Empty data"); return }
-            
-            let json = try? JSONSerialization.jsonObject(with: data, options: [])
-            
-            if let dict_token = json as? [String: String] {
-                let token = dict_token["access_token"]!
-                completion(token)
-            }
-        }.resume()
-    }
-    
-}
 
