@@ -16,51 +16,15 @@ class MessageViewController: UIViewController, OEMentionsDelegate, UITextViewDel
     var duration = Int()
     var activity = [String]()
     var placeholder = [String]()
+    var organAI = OrganAIHandler()
+    var messageSent = false
     
     func messageSent(message: String) {
-        print("new message \(message)")
-        
-        
-        
-        var organAI = OrganAIHandler()
-        
-        
-        organAI.getToken { (str) in
-            print(str)
-            DispatchQueue.main.async {
-                organAI.queryProcessor(token: str, query: message) { (data) in
-                    print(data)
-                    
-                    self.time = data["time"] as! [String: String]
-                    self.person = data["person"] as! [String]
-                    self.activity = data["activity"] as! [String]
-                    self.duration = data["duration"] as! Int
-                    self.placeholder = data["placeholder"] as! [String]
-                    DispatchQueue.main.async {
-                        
-                        self.performSegue(withIdentifier: "formsegue", sender: nil)
-                        
-                    }
-                    
-                }
-                
-                
-            }
-            
-            
-            
+        if !messageSent
+        {
+            print("new message \(message)")
+            sendRequest(message: message)
         }
-        
-        
-        
-        /*
-         DispatchQueue.main.async {
-         organAI.getToken { (token) in
-         organAI.queryProcessor(token: token, query: textView.text) { (data) in
-         print(data)
-         }
-         }
-         }*/
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -114,6 +78,12 @@ class MessageViewController: UIViewController, OEMentionsDelegate, UITextViewDel
         oeMentions = OEMentions(containerView: myContainer, textView: myTextView, mainView: self.view, oeObjects: oeObjects)
         oeMentions.delegate = self
         myTextView.delegate = oeMentions
+        myTextView.text = "Please write an event booking. Use @Contacts, #Title# and %Description%"
+        myTextView.textColor = UIColor.lightGray
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        messageSent = false
     }
     
     func mentionSelected(id: Int, name: String) {
@@ -121,7 +91,41 @@ class MessageViewController: UIViewController, OEMentionsDelegate, UITextViewDel
         print("name \(name)")
     }
     
+    @IBAction func sendMessageTapped(_ sender: Any) {
+        messageSent = true
+        sendRequest(message: myTextView.text)
+        
+    }
     
+    
+    func sendRequest(message: String)
+    {
+        organAI.getToken { (str) in
+            print(str)
+            DispatchQueue.main.async {
+                self.organAI.queryProcessor(token: str, query: message) { (data) in
+                    print(data)
+                    
+                    self.time = data["time"] as! [String: String]
+                    self.person = data["person"] as! [String]
+                    self.activity = data["activity"] as! [String]
+                    self.duration = data["duration"] as! Int
+                    self.placeholder = data["placeholder"] as! [String]
+                    DispatchQueue.main.async {
+                        
+                        self.performSegue(withIdentifier: "formsegue", sender: nil)
+                        
+                    }
+                    
+                }
+                
+                
+            }
+            
+            
+            
+        }
+    }
     
     
 }

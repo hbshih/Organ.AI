@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rK4-Tj-ND2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="l1i-wd-kYJ">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -12,7 +12,7 @@
             <objects>
                 <viewController storyboardIdentifier="testID" id="KaZ-Q0-xU4" customClass="NativeEventFormViewController" customModule="Organ_AI" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XDr-TF-Rtm">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="BhY-dn-dld"/>
@@ -28,7 +28,7 @@
             <objects>
                 <viewController storyboardIdentifier="teststory" id="BYZ-38-t0r" customClass="ViewController" customModule="Organ_AI" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -68,28 +68,29 @@
                     </view>
                     <navigationItem key="navigationItem" id="yAF-Ag-S18"/>
                     <connections>
-                        <segue destination="h4j-j6-ViB" kind="show" identifier="segueToHome" id="U4x-gD-0yB"/>
+                        <segue destination="rK4-Tj-ND2" kind="show" identifier="homeSegue" id="YZs-wi-KMo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JUU-Eh-WPW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1314" y="-753"/>
+            <point key="canvasLocation" x="1532" y="-811"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="cul-5V-EEt">
             <objects>
-                <navigationController id="rK4-Tj-ND2" sceneMemberID="viewController">
+                <navigationController modalTransitionStyle="flipHorizontal" modalPresentationStyle="fullScreen" id="rK4-Tj-ND2" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="MCN-mj-5Mw"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="AGI-0f-ddZ">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="l1i-wd-kYJ" kind="relationship" relationship="rootViewController" id="b4f-FK-zaf"/>
+                        <segue destination="h4j-j6-ViB" kind="relationship" relationship="rootViewController" id="zaI-2q-nTu"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aq7-kd-RY6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-245" y="844"/>
+            <point key="canvasLocation" x="2646" y="-811"/>
         </scene>
         <!--FSCalendarScopeExample-->
         <scene sceneID="fC0-fg-4Nx">
@@ -100,28 +101,11 @@
                         <viewControllerLayoutGuide type="bottom" id="r7U-78-xix"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="e41-B6-Lza">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jIt-R0-JGI">
-                                <rect key="frame" x="0.0" y="88" width="414" height="44"/>
-                                <items>
-                                    <navigationItem title="Organai" id="VUt-hA-yLd">
-                                        <barButtonItem key="leftBarButtonItem" title="Month" id="wSh-Fi-rsN">
-                                            <connections>
-                                                <action selector="ToggleCalendarPresent:" destination="h4j-j6-ViB" id="a5n-lM-XaI"/>
-                                            </connections>
-                                        </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="Calendar" id="8yF-TY-Op1">
-                                            <connections>
-                                                <action selector="selectCalendarDisplay:" destination="h4j-j6-ViB" id="Aru-YI-9dR"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="GRl-P9-31F">
-                                <rect key="frame" x="0.0" y="448" width="414" height="414"/>
+                                <rect key="frame" x="0.0" y="372" width="414" height="436"/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="Wrz-wz-ctl" userLabel="Footer">
                                     <rect key="frame" x="0.0" y="307.5" width="414" height="69"/>
@@ -391,7 +375,7 @@
                                 </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NQg-xA-aly" customClass="FSCalendar">
-                                <rect key="frame" x="0.0" y="132" width="414" height="300"/>
+                                <rect key="frame" x="0.0" y="56" width="414" height="300"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="300" id="NHG-fs-amc"/>
@@ -430,7 +414,7 @@
                                 </connections>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qAT-Kc-XlL">
-                                <rect key="frame" x="180.5" y="829" width="53" height="48"/>
+                                <rect key="frame" x="180.5" y="775" width="53" height="48"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" title="Add"/>
                                 <connections>
@@ -445,20 +429,22 @@
                             <constraint firstItem="GRl-P9-31F" firstAttribute="trailing" secondItem="NQg-xA-aly" secondAttribute="trailing" id="DfD-0m-vcj"/>
                             <constraint firstItem="qAT-Kc-XlL" firstAttribute="centerX" secondItem="SLg-hM-oA4" secondAttribute="centerX" id="GLt-J7-JJF"/>
                             <constraint firstAttribute="trailing" secondItem="NQg-xA-aly" secondAttribute="trailing" id="QC0-wn-aIn"/>
-                            <constraint firstItem="NQg-xA-aly" firstAttribute="top" secondItem="jIt-R0-JGI" secondAttribute="bottom" id="aVt-kK-L6k"/>
                             <constraint firstItem="qAT-Kc-XlL" firstAttribute="bottom" secondItem="SLg-hM-oA4" secondAttribute="bottom" constant="15" id="anw-4X-EZY"/>
-                            <constraint firstItem="SLg-hM-oA4" firstAttribute="trailing" secondItem="jIt-R0-JGI" secondAttribute="trailing" id="cg1-6S-o1J"/>
-                            <constraint firstItem="jIt-R0-JGI" firstAttribute="top" secondItem="SLg-hM-oA4" secondAttribute="top" id="hDe-Yw-YkC"/>
                             <constraint firstItem="GRl-P9-31F" firstAttribute="top" secondItem="NQg-xA-aly" secondAttribute="bottom" constant="16" id="kmA-Af-pni"/>
                             <constraint firstItem="GRl-P9-31F" firstAttribute="leading" secondItem="NQg-xA-aly" secondAttribute="leading" id="s9C-fC-0jq"/>
-                            <constraint firstItem="jIt-R0-JGI" firstAttribute="leading" secondItem="SLg-hM-oA4" secondAttribute="leading" id="sKA-VW-1Na"/>
+                            <constraint firstItem="NQg-xA-aly" firstAttribute="top" secondItem="SLg-hM-oA4" secondAttribute="top" id="vgi-en-1fK"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="SLg-hM-oA4"/>
                     </view>
-                    <navigationItem key="navigationItem" title="FSCalendar" id="KIU-9S-kag">
-                        <barButtonItem key="rightBarButtonItem" title="Toggle" id="n6y-H6-QXc">
+                    <navigationItem key="navigationItem" title="Home" id="KIU-9S-kag">
+                        <barButtonItem key="leftBarButtonItem" title="Week View" id="Hdr-ZQ-iRT">
                             <connections>
-                                <action selector="toggleClickedWithSender:" destination="h4j-j6-ViB" id="47r-cA-Kk3"/>
+                                <action selector="ToggleCalendarPresent:" destination="h4j-j6-ViB" id="T2n-gC-cqf"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Calendar" id="n6y-H6-QXc">
+                            <connections>
+                                <action selector="selectCalendarDisplay:" destination="h4j-j6-ViB" id="rkL-ZQ-GoJ"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -466,7 +452,7 @@
                         <outlet property="calendar" destination="NQg-xA-aly" id="rR8-Bu-WOg"/>
                         <outlet property="calendarHeightConstraint" destination="NHG-fs-amc" id="raX-q3-01P"/>
                         <outlet property="tableView" destination="GRl-P9-31F" id="gER-ya-xCo"/>
-                        <outlet property="weekMonthToggleOutlet" destination="wSh-Fi-rsN" id="xgC-JF-ByQ"/>
+                        <outlet property="weekMonthToggleOutlet" destination="Hdr-ZQ-iRT" id="spP-97-Xdq"/>
                         <segue destination="qUp-Z2-zx6" kind="show" identifier="segue" id="c55-HR-rh1"/>
                         <segue destination="3qo-Dw-Adn" kind="show" identifier="addEventWithAISegue" id="550-zi-ewb"/>
                     </connections>
@@ -480,7 +466,7 @@
             <objects>
                 <viewController id="qUp-Z2-zx6" customClass="AddEventViewController" customModule="Organ_AI" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2d8-bo-0fy">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="JhZ-pg-Cn8"/>
@@ -502,11 +488,11 @@
             <objects>
                 <viewController id="3qo-Dw-Adn" customClass="MessageViewController" customModule="Organ_AI" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uAb-2v-zzL">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qx0-f7-7OH">
-                                <rect key="frame" x="0.0" y="88" width="414" height="300"/>
+                                <rect key="frame" x="0.0" y="56" width="414" height="300"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="8kL-tv-Pga">
                                         <rect key="frame" x="5" y="5" width="404" height="290"/>
@@ -514,9 +500,15 @@
                                         <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="send" smartInsertDeleteType="yes"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Please write an event booking. Use @Contacts, #Title# and %Description%"/>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                                <color key="value" cocoaTouchSystemColor="lightTextColor"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </textView>
                                 </subviews>
-                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.25882352939999997" green="0.67843137249999996" blue="0.63529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="8kL-tv-Pga" secondAttribute="trailing" constant="5" id="49b-Lh-Lnj"/>
                                     <constraint firstItem="8kL-tv-Pga" firstAttribute="leading" secondItem="Qx0-f7-7OH" secondAttribute="leading" constant="5" id="AfA-eY-Nc7"/>
@@ -534,7 +526,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8JV-LL-LHo"/>
                     </view>
-                    <navigationItem key="navigationItem" id="qqn-FR-bDu"/>
+                    <navigationItem key="navigationItem" id="qqn-FR-bDu">
+                        <barButtonItem key="rightBarButtonItem" title="Send" id="cQj-9R-Maa">
+                            <connections>
+                                <action selector="sendMessageTapped:" destination="3qo-Dw-Adn" id="YVT-CC-xCQ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="myContainer" destination="Qx0-f7-7OH" id="3pz-6P-nH2"/>
                         <outlet property="myTextView" destination="8kL-tv-Pga" id="eHH-4M-TfH"/>
@@ -600,6 +598,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="P89-a5-rKe"/>
+        <segue reference="c55-HR-rh1"/>
     </inferredMetricsTieBreakers>
 </document>

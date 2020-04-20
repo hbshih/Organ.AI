@@ -58,7 +58,11 @@ class CalendarViewController: UIViewController, UITableViewDataSource, UITableVi
         self.tableView.panGestureRecognizer.require(toFail: self.scopeGesture)
         // Default selected date: Today
         self.calendar.select(Date())
-        self.calendar.scope = .week
+        self.calendar.scope = .month
+        
+        let logo = UIImage(named: "ORGANAI-horizontel.png")
+        let imageView = UIImageView(image:logo)
+        self.navigationItem.titleView = imageView
         
         // For UITest
         self.calendar.accessibilityIdentifier = "calendar"

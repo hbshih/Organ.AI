@@ -121,10 +121,22 @@ class OEMentions: NSObject, UITextViewDelegate, UITableViewDelegate, UITableView
         NotificationCenter.default.addObserver(self, selector: #selector(OEMentions.keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
     }
     
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.textColor == UIColor.lightGray {
+            textView.text = nil
+            textView.textColor = UIColor.black
+        }
+    }
+    
     
     //MARK: - UITextView delegate functions:
     
     func textViewDidEndEditing(_ textView: UITextView) {
+        
+        if textView.text.isEmpty {
+            textView.text = "Please write an event booking. Use @Contacts, #Title# and %Description%"
+            textView.textColor = UIColor.lightGray
+        }
         
      /*   self.mentionQuery = ""
         self.isMentioning = false

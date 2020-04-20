@@ -12,15 +12,19 @@ class OnboardingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        EventsCalendarManager().checkCalendarAuthorization {
-            self.performSegue(withIdentifier: "segueToHome", sender: nil)
-        }
         
         
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        EventsCalendarManager().checkCalendarAuthorization {
+            self.performSegue(withIdentifier: "homeSegue", sender: nil)
+        }
+    }
+    
     @IBAction func checkAccess(_ sender: Any) {
         EventsCalendarManager().checkCalendarAuthorization {
-            self.performSegue(withIdentifier: "segueToHome", sender: nil)
+            self.performSegue(withIdentifier: "homeSegue", sender: nil)
         }
     }
     

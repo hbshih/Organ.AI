@@ -39,7 +39,6 @@ class NativeEventFormViewController : FormViewController, RowControllerType {
         print("tapped")
         let newEvent = EKEvent(eventStore: EventsCalendarManager().eventStore)
         newEvent.title = eventData["title"] as? String
-        
         if let start = eventData["start"] as? Date
         {
             newEvent.startDate = start
@@ -55,8 +54,11 @@ class NativeEventFormViewController : FormViewController, RowControllerType {
         {
             newEvent.endDate = endDate
         }
+        newEvent.location = eventData["location"] as? String
+        newEvent.notes = (eventData["participant"] as? [String])?.joined(separator: ",")
         
         print(newEvent)
+        
         
         
         

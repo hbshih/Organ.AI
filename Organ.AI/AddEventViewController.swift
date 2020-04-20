@@ -79,6 +79,7 @@ final class AddEventViewController: FormViewController {
             $0.textField.textColor = .formerColor()
             $0.textField.font = .systemFont(ofSize: 15)
             }.configure {
+                $0.text = eventData["location"] as? String
                 $0.placeholder = "Location"
         }
 /*        let startRow = InlineDatePickerRowFormer<FormInlineDatePickerCell>() {
@@ -250,9 +251,10 @@ final class AddEventViewController: FormViewController {
 
         
         let newEvent = EKEvent(eventStore: EventsCalendarManager().eventStore)
-        newEvent.title = eventData["Title"] as? String
-        newEvent.startDate = eventData["Start"] as? Date
-        newEvent.endDate = eventData["End"] as? Date
+        newEvent.title = eventData["title"] as? String
+        newEvent.startDate = eventData["start"] as? Date
+        newEvent.endDate = eventData["end"] as? Date
+        newEvent.location = eventData["location"] as? String
         
         EventsCalendarManager().presentEventCalendarDetailModal(event: newEvent)
         /*
