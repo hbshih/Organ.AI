@@ -14,7 +14,9 @@ struct DateFormatHandler
     {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy/MM/dd"
+
         let dateString = formatter.string(from: date)
+        
         return dateString
     }
     
@@ -22,6 +24,7 @@ struct DateFormatHandler
     {
         let formatter = DateFormatter()
         formatter.dateFormat = "HH:mm"
+
         let dateString = formatter.string(from: date)
         return dateString
     }
@@ -30,6 +33,7 @@ struct DateFormatHandler
     {
         let formatter = DateFormatter()
         formatter.dateFormat = "dd"
+
         let dayString = formatter.string(from: date)
         return dayString
     }
@@ -38,11 +42,12 @@ struct DateFormatHandler
     {
         let dateFormatter = DateFormatter()
         print(string_date)
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZZZZZ"
-        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS-07:00"
+
+      //  dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         let formatted_date = dateFormatter.date(from: string_date)
         
-     //   print("formatted \(formatted_date)")
+        print("formatted \(formatted_date)")
         
         return formatted_date!
     }

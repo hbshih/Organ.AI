@@ -128,7 +128,7 @@ struct OrganAIHandler
                                             {
                                                 if single_entity["extractor"] as! String == "CRFEntityExtractor"
                                                 {
-                                                    if single_entity["confidence"] as! Double > 0.8
+                                                    if single_entity["confidence"] as! Double > 0.5
                                                     {
                                                         placeholder.append(single_entity["value"] as! String)
                                                     }

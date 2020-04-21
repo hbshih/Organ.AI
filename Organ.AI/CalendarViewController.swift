@@ -73,6 +73,7 @@ class CalendarViewController: UIViewController, UITableViewDataSource, UITableVi
         let fh = FirestoreHandler()
         fh.getData(collection: "User")
         
+        /*
         var calendarData = calendarManager.getCalendar()
         //  print("All Calendar Data: \(calendarData)")
         
@@ -97,7 +98,7 @@ class CalendarViewController: UIViewController, UITableViewDataSource, UITableVi
         
         UserDefaults.standard.array(forKey: "")
         
-        
+        */
         
         
         
@@ -108,6 +109,12 @@ class CalendarViewController: UIViewController, UITableViewDataSource, UITableVi
                          cellData(opened: false, title: "2020/03/14", sectionData: ["id2"]),
                          cellData(opened: false, title: "2020/03/18", sectionData: ["id3"])]*/
         
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+                tableViewData = EventsCalendarManager().loadEvents(selectedCalendars: ["Calendar"])
+        tableView.reloadData()
+        calendar.reloadData()
     }
     
     deinit {
@@ -129,7 +136,7 @@ class CalendarViewController: UIViewController, UITableViewDataSource, UITableVi
         }
         
         self.checkboxDialogViewController = CheckboxDialogViewController()
-        self.checkboxDialogViewController.titleDialog = "Countries"
+        self.checkboxDialogViewController.titleDialog = "Calendars"
         self.checkboxDialogViewController.tableData = tableData
         self.checkboxDialogViewController.componentName = DialogCheckboxViewEnum.countries
         self.checkboxDialogViewController.delegateDialogTableView = self
