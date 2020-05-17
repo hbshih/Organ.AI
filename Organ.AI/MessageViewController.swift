@@ -78,7 +78,7 @@ class MessageViewController: UIViewController, OEMentionsDelegate, UITextViewDel
         oeMentions = OEMentions(containerView: myContainer, textView: myTextView, mainView: self.view, oeObjects: oeObjects)
         oeMentions.delegate = self
         myTextView.delegate = oeMentions
-        myTextView.text = "Please write an event booking. Use @Contacts, #Title# and %Description%"
+        myTextView.text = "Hi, I am your virtual assistant. What would you like me to book?"
         myTextView.textColor = UIColor.lightGray
     }
     

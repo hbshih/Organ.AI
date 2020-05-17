@@ -29,6 +29,8 @@ class NativeEventFormViewController : FormViewController, RowControllerType {
         navigationItem.leftBarButtonItem?.action = #selector(NativeEventFormViewController.cancelTapped(_:))
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(NativeEventFormViewController.addTapped))
+     //   self.navigationController?.title = "New Event"
+        self.title = "New Event"
     }
     
     var startDate = Date()
@@ -54,12 +56,45 @@ class NativeEventFormViewController : FormViewController, RowControllerType {
         {
             newEvent.endDate = endDate
         }
-        newEvent.location = eventData["location"] as? String
+       // newEvent.location = eventData["location"] as? String
+        if let loc = eventData["location"] as? String
+        {
+            newEvent.location = loc
+            newEvent.structuredLocation = EKStructuredLocation(title: loc)
+        }
+     //   newEvent.structuredLocation = EKStructuredLocation(title: <#T##String#>)
         newEvent.notes = (eventData["participant"] as? [String])?.joined(separator: ",")
         
         print(newEvent)
         
+        /*
+         
+         For Testing
+        */
+        /*
+        print(eventData["participant"] as? [String])
+        print((eventData["participant"] as? [String])?.contains("zack"))
         
+        if ((eventData["participant"] as? [String])?.contains("zack"))!
+        {
+          //  print("set")
+            UserDefaults.standard.set(newEvent.title, forKey: "t1_title")
+            if let loc = eventData["location"] as? String
+            {
+                UserDefaults.standard.set(loc, forKey: "t1_location")
+            }
+            
+        }
+        else if ((eventData["participant"] as? [String])?.contains("erik"))!
+        {
+            UserDefaults.standard.set(eventData["title"] as? String, forKey: "t3_title")
+            UserDefaults.standard.set(eventData["location"], forKey: "t3_location")
+        }else
+        {
+            UserDefaults.standard.set(eventData["title"] as? String, forKey: "t2_title")
+            UserDefaults.standard.set(eventData["location"], forKey: "t2_location")
+        }
+        */
         
         
         EventsCalendarManager().addEventToCalendar(event: newEvent) { (error) in
@@ -87,7 +122,9 @@ class NativeEventFormViewController : FormViewController, RowControllerType {
                     cell.textField.placeholder = ""
                     row.value = self.eventData["title"] as? String
                 }
-            }
+            }.onChange({ (text) in
+                self.eventData["title"] = text.value
+            })
             
             <<< TextRow("Location").cellSetup {
                 $1.cell.textField.placeholder = $0.row.tag
@@ -98,7 +135,9 @@ class NativeEventFormViewController : FormViewController, RowControllerType {
                     $1.cell.textField.placeholder = ""
                     $1.cell.textField.text = self.eventData["location"] as? String
                 }
-            }
+            }.onChange({ (location) in
+                self.eventData["location"] = location.value
+            })
             
             +++
             

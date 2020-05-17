@@ -132,7 +132,7 @@ class EventsCalendarManager: NSObject {
         let newEvent = EKEvent(eventStore: eventStore)
         newEvent.calendar = eventStore.defaultCalendarForNewEvents
         
-        print("default calendar \(eventStore.defaultCalendarForNewEvents)")
+   //     print("default calendar \(eventStore.defaultCalendarForNewEvents)")/
         
         newEvent.title = event.title
         newEvent.startDate = event.startDate

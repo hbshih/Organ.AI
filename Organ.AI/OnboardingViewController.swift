@@ -18,7 +18,7 @@ class OnboardingViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         EventsCalendarManager().checkCalendarAuthorization {
-            self.performSegue(withIdentifier: "homeSegue", sender: nil)
+           self.performSegue(withIdentifier: "homeSegue", sender: nil)
         }
     }
     

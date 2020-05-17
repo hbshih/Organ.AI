@@ -112,7 +112,7 @@ class CalendarViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     override func viewDidAppear(_ animated: Bool) {
-                tableViewData = EventsCalendarManager().loadEvents(selectedCalendars: ["Calendar"])
+                tableViewData = EventsCalendarManager().loadEvents(selectedCalendars: ["Testing Calendar"])
         tableView.reloadData()
         calendar.reloadData()
     }
@@ -315,15 +315,44 @@ class CalendarViewController: UIViewController, UITableViewDataSource, UITableVi
         {
             // Event Detail
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "eventDetailCell") as? eventDetailTableViewCell else {return UITableViewCell()}
-            
-            
             cell.eventLocation.text = presentDataList[indexPath.section].sectionData["Location"] as? String
             cell.eventNote.text = presentDataList[indexPath.section].sectionData["Detail"] as? String
+            
+            if ((presentDataList[indexPath.section].sectionData["Title"] as? String)?.contains("seo"))!
+            {
+                cell.eventLocation.text = "Room A"
+                cell.eventNote.text = "Task 1 Completed"
+            }
+            
+     /*       print("_row test")
+            print(UserDefaults.standard.string(forKey: "t1_title")!)
+            
+            if UserDefaults.standard.string(forKey: "t1_title") != nil
+            {
+                print("cast")
+                cell.eventLocation.text = UserDefaults.standard.string(forKey: "t1_location")!
+            }
+            
+            if UserDefaults.standard.data(forKey: "t2_title") != nil
+            {
+                cell.eventLocation.text = UserDefaults.standard.data(forKey: "t2_location") as? String
+            }
+            
+            if UserDefaults.standard.data(forKey: "t3_title") != nil
+            {
+                cell.eventLocation.text = UserDefaults.standard.data(forKey: "t3_location") as? String
+            }*/
+            
             /*
             cell.eventLocation.text = eventDetail[datesWithEvent[selectedDate]![indexPath.section]]?["location"]
             cell.eventNote.text = eventDetail[datesWithEvent[selectedDate]![indexPath.section]]?["detail"]*/
             return cell
         }
+        
+        
+        
+        /*for testing*/
+        
     }
     
     // Expand and collapse height setting

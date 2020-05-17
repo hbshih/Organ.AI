@@ -17,6 +17,8 @@ final class AddEventViewController: FormViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
+        self.navigationController?.title = "Confirm Details"
+        self.title = "Confirm Details"
     }
     
     // MARK: Private
