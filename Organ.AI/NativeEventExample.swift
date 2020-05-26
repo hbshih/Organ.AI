@@ -22,6 +22,7 @@ class NativeEventFormViewController : FormViewController, RowControllerType {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //print()
         
         initializeForm()
         

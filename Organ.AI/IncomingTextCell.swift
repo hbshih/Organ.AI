@@ -8,6 +8,7 @@
 
 import UIKit
 import MessageKit
+import EventKit
 
 class IncomingTextCell: UICollectionViewCell {
     
@@ -43,6 +44,29 @@ class IncomingTextCell: UICollectionViewCell {
         
         confirmSelectorView.isUserInteractionEnabled = false
         
+        let newEvent = EKEvent(eventStore: EventsCalendarManager().eventStore)
+            
+        
+        if VC.time.count == 1
+            {
+                let startTime = DateFormatHandler().stringToDate(string_date: VC.time["time"]!)
+                print("start time \(startTime)")
+                newEvent.startDate = startTime
+                newEvent.endDate = startTime.addingTimeInterval(Double(VC.duration)*60.0*60.0)
+            }else if VC.time.count == 2
+            {
+                newEvent.startDate = DateFormatHandler().stringToDate(string_date: VC.time["from"]!)
+                newEvent.endDate = DateFormatHandler().stringToDate(string_date: VC.time["to"]!)
+            }
+        newEvent.title = VC.activity[0]
+        newEvent.location = VC.placeholder[0]
+        
+        print(VC.time)
+        print(VC.person)
+        print(VC.duration)
+        print(VC.activity)
+        print(VC.placeholder)
+        
         VC.time.removeAll()
         VC.person.removeAll()
         VC.duration = Int()
@@ -52,6 +76,17 @@ class IncomingTextCell: UICollectionViewCell {
         
         msg = "Do you need to arrange any other meeting?"
         VC.insertMessage(MockMessage(text: msg, user: MockUser(senderId: "ajdsklf", displayName: "Booking Assistant"), messageId: "asjdfkl", date: Date()))
+        
+     //  EventsCalendarManager().presentEventCalendarDetailModal(event: newEvent)
+        
+        EventsCalendarManager().addEventToCalendar(event: newEvent) { (error) in
+            DispatchQueue.main.async
+                {
+                    print("done add \(newEvent)")
+           // self.navigationController?.popToRootViewController(animated: true)
+              //      print(newEvent.eventIdentifier.)
+            }
+        }
         
     }
     @IBAction func cancelTapped(_ sender: Any) {

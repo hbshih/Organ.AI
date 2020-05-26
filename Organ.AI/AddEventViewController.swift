@@ -249,9 +249,6 @@ final class AddEventViewController: FormViewController {
     @IBAction func createEventTapped(_ sender: Any) {
         
         //former.
-        
-
-        
         let newEvent = EKEvent(eventStore: EventsCalendarManager().eventStore)
         newEvent.title = eventData["title"] as? String
         newEvent.startDate = eventData["start"] as? Date
