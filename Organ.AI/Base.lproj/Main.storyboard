@@ -104,9 +104,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="GRl-P9-31F">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="lYv-vo-hyG">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="858"/>
+                            </imageView>
+                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="GRl-P9-31F">
                                 <rect key="frame" x="0.0" y="372" width="414" height="436"/>
-                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="Wrz-wz-ctl" userLabel="Footer">
                                     <rect key="frame" x="0.0" y="307.5" width="414" height="69"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -376,7 +379,6 @@
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NQg-xA-aly" customClass="FSCalendar">
                                 <rect key="frame" x="0.0" y="56" width="414" height="300"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="300" id="NHG-fs-amc"/>
                                 </constraints>
@@ -390,7 +392,7 @@
                                         <integer key="value" value="2"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="eventDefaultColor">
-                                        <color key="value" red="0.25882352939999997" green="0.67843137249999996" blue="0.63529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="value" red="1" green="0.20000000000000001" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="weekdayTextColor">
                                         <color key="value" red="0.25882352939999997" green="0.67843137249999996" blue="0.63529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -407,50 +409,79 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="useVeryShortWeekdaySymbols" value="YES"/>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="fakeSubtitles" value="YES"/>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="fakeEventDots" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="titleDefaultColor">
+                                        <color key="value" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="titlePlaceholderColor">
+                                        <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="scrollEnabled" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="pagingEnabled" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="adjustsBoundingRectWhenChangingMonths" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <outlet property="dataSource" destination="h4j-j6-ViB" id="MWZ-rU-gNf"/>
                                     <outlet property="delegate" destination="h4j-j6-ViB" id="LYR-QE-mCE"/>
                                 </connections>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qAT-Kc-XlL">
-                                <rect key="frame" x="180.5" y="775" width="53" height="48"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <state key="normal" title="Add"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qAT-Kc-XlL">
+                                <rect key="frame" x="182" y="742" width="50" height="50"/>
+                                <state key="normal" image="Circle plus"/>
                                 <connections>
                                     <action selector="addNewEvent:" destination="h4j-j6-ViB" eventType="touchUpInside" id="j8u-yb-dei"/>
                                 </connections>
                             </button>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WgU-X3-9em">
+                                <rect key="frame" x="108" y="411" width="198" height="56"/>
+                                <string key="text">Hello! 
+You are free Today</string>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="WgU-X3-9em" firstAttribute="leading" secondItem="SLg-hM-oA4" secondAttribute="leading" constant="108" id="0EM-NB-UnC"/>
                             <constraint firstItem="NQg-xA-aly" firstAttribute="leading" secondItem="e41-B6-Lza" secondAttribute="leading" id="0rt-ea-0Il"/>
+                            <constraint firstItem="WgU-X3-9em" firstAttribute="top" secondItem="SLg-hM-oA4" secondAttribute="top" constant="355" id="4Z8-ds-8tl"/>
+                            <constraint firstItem="SLg-hM-oA4" firstAttribute="trailing" secondItem="lYv-vo-hyG" secondAttribute="trailing" id="8F2-fu-Xqf"/>
+                            <constraint firstItem="lYv-vo-hyG" firstAttribute="leading" secondItem="SLg-hM-oA4" secondAttribute="leading" id="9zy-ti-2H0"/>
                             <constraint firstItem="r7U-78-xix" firstAttribute="top" secondItem="GRl-P9-31F" secondAttribute="bottom" id="AyY-k8-rkw"/>
                             <constraint firstItem="GRl-P9-31F" firstAttribute="trailing" secondItem="NQg-xA-aly" secondAttribute="trailing" id="DfD-0m-vcj"/>
                             <constraint firstItem="qAT-Kc-XlL" firstAttribute="centerX" secondItem="SLg-hM-oA4" secondAttribute="centerX" id="GLt-J7-JJF"/>
                             <constraint firstAttribute="trailing" secondItem="NQg-xA-aly" secondAttribute="trailing" id="QC0-wn-aIn"/>
-                            <constraint firstItem="qAT-Kc-XlL" firstAttribute="bottom" secondItem="SLg-hM-oA4" secondAttribute="bottom" constant="15" id="anw-4X-EZY"/>
+                            <constraint firstItem="qAT-Kc-XlL" firstAttribute="bottom" secondItem="SLg-hM-oA4" secondAttribute="bottom" constant="-16" id="anw-4X-EZY"/>
+                            <constraint firstItem="WgU-X3-9em" firstAttribute="centerX" secondItem="SLg-hM-oA4" secondAttribute="centerX" id="cJe-cV-q0e"/>
+                            <constraint firstItem="SLg-hM-oA4" firstAttribute="top" secondItem="lYv-vo-hyG" secondAttribute="top" constant="56" id="f5b-9G-Mkc"/>
                             <constraint firstItem="GRl-P9-31F" firstAttribute="top" secondItem="NQg-xA-aly" secondAttribute="bottom" constant="16" id="kmA-Af-pni"/>
+                            <constraint firstItem="SLg-hM-oA4" firstAttribute="bottom" secondItem="lYv-vo-hyG" secondAttribute="bottom" constant="-50" id="lbm-1w-qTY"/>
+                            <constraint firstItem="SLg-hM-oA4" firstAttribute="bottom" secondItem="WgU-X3-9em" secondAttribute="bottom" constant="341" id="m0k-E9-MCG"/>
+                            <constraint firstItem="WgU-X3-9em" firstAttribute="top" secondItem="NQg-xA-aly" secondAttribute="bottom" constant="55" id="moB-sa-avU"/>
                             <constraint firstItem="GRl-P9-31F" firstAttribute="leading" secondItem="NQg-xA-aly" secondAttribute="leading" id="s9C-fC-0jq"/>
                             <constraint firstItem="NQg-xA-aly" firstAttribute="top" secondItem="SLg-hM-oA4" secondAttribute="top" id="vgi-en-1fK"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="SLg-hM-oA4"/>
                     </view>
                     <navigationItem key="navigationItem" title="Home" id="KIU-9S-kag">
-                        <barButtonItem key="leftBarButtonItem" title="Week View" id="Hdr-ZQ-iRT">
+                        <barButtonItem key="leftBarButtonItem" title="Calendar" image="calendar" catalog="system" style="plain" id="Hdr-ZQ-iRT">
+                            <color key="tintColor" red="0.44705882352941173" green="0.84313725490196079" blue="0.82352941176470584" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="ToggleCalendarPresent:" destination="h4j-j6-ViB" id="T2n-gC-cqf"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Calendar" id="n6y-H6-QXc">
+                        <barButtonItem key="rightBarButtonItem" title="Calendar" image="pencil.circle" catalog="system" id="n6y-H6-QXc">
+                            <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="selectCalendarDisplay:" destination="h4j-j6-ViB" id="rkL-ZQ-GoJ"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="NoEventLabel" destination="WgU-X3-9em" id="RVH-4w-wex"/>
                         <outlet property="calendar" destination="NQg-xA-aly" id="rR8-Bu-WOg"/>
                         <outlet property="calendarHeightConstraint" destination="NHG-fs-amc" id="raX-q3-01P"/>
+                        <outlet property="navBar" destination="KIU-9S-kag" id="n9V-Zr-72P"/>
                         <outlet property="tableView" destination="GRl-P9-31F" id="gER-ya-xCo"/>
                         <outlet property="weekMonthToggleOutlet" destination="Hdr-ZQ-iRT" id="spP-97-Xdq"/>
                         <segue destination="qUp-Z2-zx6" kind="show" identifier="segue" id="c55-HR-rh1"/>
@@ -460,7 +491,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zCI-Pv-WNQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1606" y="134"/>
+            <point key="canvasLocation" x="1605.7971014492755" y="133.92857142857142"/>
         </scene>
         <!--Add Event View Controller-->
         <scene sceneID="hC9-zZ-vfP">
@@ -617,4 +648,10 @@
     <inferredMetricsTieBreakers>
         <segue reference="c55-HR-rh1"/>
     </inferredMetricsTieBreakers>
+    <resources>
+        <image name="Background" width="363" height="743"/>
+        <image name="Circle plus" width="50" height="50"/>
+        <image name="calendar" catalog="system" width="128" height="106"/>
+        <image name="pencil.circle" catalog="system" width="128" height="121"/>
+    </resources>
 </document>

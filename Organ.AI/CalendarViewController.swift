@@ -24,6 +24,8 @@ class CalendarViewController: UIViewController, UITableViewDataSource, UITableVi
     @IBOutlet weak var calendar: FSCalendar!
     @IBOutlet weak var weekMonthToggleOutlet: UIBarButtonItem!
     @IBOutlet weak var calendarHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var NoEventLabel: UILabel!
+    @IBOutlet weak var navBar: UINavigationItem!
     
     
     
@@ -56,11 +58,12 @@ class CalendarViewController: UIViewController, UITableViewDataSource, UITableVi
         }
         self.view.addGestureRecognizer(self.scopeGesture)
         self.tableView.panGestureRecognizer.require(toFail: self.scopeGesture)
+        
         // Default selected date: Today
         self.calendar.select(Date())
         self.calendar.scope = .month
         
-        let logo = UIImage(named: "ORGANAI-horizontel.png")
+        let logo = UIImage(named: "WhiteLogo.png")
         let imageView = UIImageView(image:logo)
         self.navigationItem.titleView = imageView
         
@@ -113,8 +116,18 @@ class CalendarViewController: UIViewController, UITableViewDataSource, UITableVi
     
     override func viewDidAppear(_ animated: Bool) {
                 tableViewData = EventsCalendarManager().loadEvents(selectedCalendars: ["Testing Calendar"])
+        
         tableView.reloadData()
+        tableView.backgroundColor = .clear
+        
         calendar.reloadData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+         self.navigationController!.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+                       self.navigationController?.navigationBar.shadowImage = UIImage()
+                       self.navigationController?.navigationBar.isTranslucent = true
+                       self.navigationController!.navigationBar.backgroundColor = UIColor.clear
     }
     
     deinit {
@@ -242,6 +255,16 @@ class CalendarViewController: UIViewController, UITableViewDataSource, UITableVi
         selectedDate = dateString
         selectedDay = dayString
         tableView.reloadData()
+    
+        if counter == 0
+        {
+            tableView.isHidden = true
+            NoEventLabel.isHidden = false
+        }else
+        {
+            tableView.isHidden = false
+            NoEventLabel.isHidden = true
+        }
         
        /* return counter
         
@@ -315,6 +338,7 @@ class CalendarViewController: UIViewController, UITableViewDataSource, UITableVi
             return cell
         }else
         {
+            
             // Event Detail
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "eventDetailCell") as? eventDetailTableViewCell else {return UITableViewCell()}
             cell.eventLocation.text = presentDataList[indexPath.section].sectionData["Location"] as? String
@@ -325,29 +349,6 @@ class CalendarViewController: UIViewController, UITableViewDataSource, UITableVi
                 cell.eventLocation.text = "Room A"
                 cell.eventNote.text = "Task 1 Completed"
             }
-            
-     /*       print("_row test")
-            print(UserDefaults.standard.string(forKey: "t1_title")!)
-            
-            if UserDefaults.standard.string(forKey: "t1_title") != nil
-            {
-                print("cast")
-                cell.eventLocation.text = UserDefaults.standard.string(forKey: "t1_location")!
-            }
-            
-            if UserDefaults.standard.data(forKey: "t2_title") != nil
-            {
-                cell.eventLocation.text = UserDefaults.standard.data(forKey: "t2_location") as? String
-            }
-            
-            if UserDefaults.standard.data(forKey: "t3_title") != nil
-            {
-                cell.eventLocation.text = UserDefaults.standard.data(forKey: "t3_location") as? String
-            }*/
-            
-            /*
-            cell.eventLocation.text = eventDetail[datesWithEvent[selectedDate]![indexPath.section]]?["location"]
-            cell.eventNote.text = eventDetail[datesWithEvent[selectedDate]![indexPath.section]]?["detail"]*/
             return cell
         }
         
