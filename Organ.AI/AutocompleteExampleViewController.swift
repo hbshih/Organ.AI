@@ -16,7 +16,7 @@ final class AutocompleteExampleViewController: ChatViewController {
         let button = UIButton()
         button.layer.cornerRadius = 16
         button.backgroundColor = .primaryColor
-        button.setTitle("Schedule Meeting", for: .normal)
+        button.setTitle("Talk With Assistant", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.setTitleColor(UIColor(white: 1, alpha: 0.3), for: .highlighted)
         button.addTarget(self, action: #selector(joinChat), for: .touchUpInside)
