@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="incomingTextCellID" reuseIdentifier="incomingTextCellID" id="6Ck-SG-yR5" customClass="IncomingTextCell" customModule="ChatExample" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="371" height="204"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="371" height="204"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qw6-dR-pKD">
+                        <rect key="frame" x="0.0" y="0.0" width="364" height="204"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DTD-5B-jSx">
+                                <rect key="frame" x="32" y="27" width="300" height="150"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Fh9-IO-jui">
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="150"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4nO-pd-e1p">
+                                                <rect key="frame" x="0.0" y="0.0" width="300" height="43.5"/>
+                                                <color key="backgroundColor" red="0.0" green="0.76862745099999996" blue="0.47843137250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
+                                                <color key="tintColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" title="5/27 15:00">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="titleShadowColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <integer key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="tap:" destination="6Ck-SG-yR5" eventType="touchUpInside" id="01R-gL-k0g"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kvC-bS-VUU">
+                                                <rect key="frame" x="0.0" y="53.5" width="300" height="43"/>
+                                                <color key="backgroundColor" red="0.0" green="0.76862745099999996" blue="0.47843137250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
+                                                <state key="normal" title="Button">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <integer key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="button2:" destination="6Ck-SG-yR5" eventType="touchUpInside" id="0hg-jV-Rax"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bl4-NC-2CA">
+                                                <rect key="frame" x="0.0" y="106.5" width="300" height="43.5"/>
+                                                <color key="backgroundColor" red="0.0" green="0.76862745099999996" blue="0.47843137250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
+                                                <state key="normal" title="Button">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <integer key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="button3:" destination="6Ck-SG-yR5" eventType="touchUpInside" id="EwZ-wd-uLH"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="GV3-Dw-jxP">
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="150"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mhn-5z-QiM">
+                                                <rect key="frame" x="0.0" y="57.5" width="140" height="35"/>
+                                                <color key="backgroundColor" red="0.0" green="0.76862745099999996" blue="0.47843137250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
+                                                <state key="normal" title="Confirm">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <integer key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="confirmSchedule:" destination="6Ck-SG-yR5" eventType="touchUpInside" id="EM2-bn-mLh"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OzS-Rh-DGa">
+                                                <rect key="frame" x="160" y="57.5" width="140" height="35"/>
+                                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
+                                                <state key="normal" title="Cancel">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <integer key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="cancelTapped:" destination="6Ck-SG-yR5" eventType="touchUpInside" id="4BE-c3-QIn"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                                <constraints>
+                                    <constraint firstItem="GV3-Dw-jxP" firstAttribute="top" secondItem="DTD-5B-jSx" secondAttribute="top" id="6My-yf-c4T"/>
+                                    <constraint firstAttribute="bottom" secondItem="Fh9-IO-jui" secondAttribute="bottom" id="LiI-th-bQG"/>
+                                    <constraint firstAttribute="height" constant="150" id="M3l-CK-a4m"/>
+                                    <constraint firstItem="Fh9-IO-jui" firstAttribute="leading" secondItem="DTD-5B-jSx" secondAttribute="leading" id="NpL-r5-PlS"/>
+                                    <constraint firstAttribute="bottom" secondItem="GV3-Dw-jxP" secondAttribute="bottom" id="SOT-uA-gzQ"/>
+                                    <constraint firstAttribute="width" constant="300" id="VSy-qJ-w25"/>
+                                    <constraint firstItem="GV3-Dw-jxP" firstAttribute="leading" secondItem="DTD-5B-jSx" secondAttribute="leading" id="hK2-IU-Fn7"/>
+                                    <constraint firstItem="Fh9-IO-jui" firstAttribute="top" secondItem="DTD-5B-jSx" secondAttribute="top" id="kmZ-mR-4PS"/>
+                                    <constraint firstAttribute="trailing" secondItem="GV3-Dw-jxP" secondAttribute="trailing" id="pa5-6d-MFc"/>
+                                    <constraint firstAttribute="trailing" secondItem="Fh9-IO-jui" secondAttribute="trailing" id="vdE-9N-1qr"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <integer key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="DTD-5B-jSx" secondAttribute="trailing" constant="32" id="8cd-Qf-inp"/>
+                            <constraint firstItem="DTD-5B-jSx" firstAttribute="centerY" secondItem="Qw6-dR-pKD" secondAttribute="centerY" id="XuC-BE-vqj"/>
+                            <constraint firstItem="DTD-5B-jSx" firstAttribute="leading" secondItem="Qw6-dR-pKD" secondAttribute="leading" constant="32" id="bRQ-L0-2Tu"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="Qw6-dR-pKD" firstAttribute="top" secondItem="6Ck-SG-yR5" secondAttribute="top" id="Ig6-6A-4qm"/>
+                <constraint firstItem="Qw6-dR-pKD" firstAttribute="leading" secondItem="6Ck-SG-yR5" secondAttribute="leading" id="YvI-xm-uMq"/>
+                <constraint firstAttribute="bottom" secondItem="Qw6-dR-pKD" secondAttribute="bottom" id="sXq-l8-kqj"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="Suz-ob-TMP"/>
+            <size key="customSize" width="532" height="204"/>
+            <connections>
+                <outlet property="InsideView" destination="DTD-5B-jSx" id="0na-EU-jwY"/>
+                <outlet property="OutsideView" destination="Qw6-dR-pKD" id="VlH-2J-qNL"/>
+                <outlet property="confirmSelectorView" destination="GV3-Dw-jxP" id="Qu3-cJ-DGb"/>
+                <outlet property="date_1" destination="4nO-pd-e1p" id="a9t-pQ-oKU"/>
+                <outlet property="date_2" destination="kvC-bS-VUU" id="xqO-l7-ZR9"/>
+                <outlet property="date_3" destination="bl4-NC-2CA" id="6mA-aD-nZE"/>
+                <outlet property="timeSelector" destination="Fh9-IO-jui" id="9c5-MS-DYG"/>
+            </connections>
+            <point key="canvasLocation" x="392.80000000000001" y="189.80509745127438"/>
+        </collectionViewCell>
+    </objects>
+</document>

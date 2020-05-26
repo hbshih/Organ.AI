@@ -160,7 +160,9 @@ class CalendarViewController: UIViewController, UITableViewDataSource, UITableVi
     
     @IBAction func addNewEvent(_ sender: Any) {
         
-        performSegue(withIdentifier: "addEventWithAISegue", sender: nil)
+        performSegue(withIdentifier: "MessengeKitSegue", sender: nil)
+        
+       // performSegue(withIdentifier: "addEventWithAISegue", sender: nil)
 
         /*
         Bundle.main.loadNibNamed(String(describing: ManualAddEntryViewController.self), owner: self, options: nil)*/
