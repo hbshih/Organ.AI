@@ -260,6 +260,7 @@ class CalendarViewController: UIViewController, UITableViewDataSource, UITableVi
         {
             tableView.isHidden = true
             NoEventLabel.isHidden = false
+            print("nothing")
         }else
         {
             tableView.isHidden = false

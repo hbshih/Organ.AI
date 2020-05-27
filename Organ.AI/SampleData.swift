@@ -176,7 +176,7 @@ final internal class SampleData {
         case "000000":
             return Avatar(image: nil, initials: "SS")
         default:
-            return Avatar(image: nil, initials: initials)
+            return Avatar(image: UIImage(named: "secretary.png"), initials: initials)
         }
     }
 

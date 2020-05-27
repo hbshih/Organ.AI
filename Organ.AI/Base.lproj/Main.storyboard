@@ -105,7 +105,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="lYv-vo-hyG">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="858"/>
+                                <rect key="frame" x="0.0" y="-44" width="414" height="902"/>
                             </imageView>
                             <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="GRl-P9-31F">
                                 <rect key="frame" x="0.0" y="372" width="414" height="436"/>
@@ -425,41 +425,39 @@
                                 </connections>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qAT-Kc-XlL">
-                                <rect key="frame" x="182" y="742" width="50" height="50"/>
+                                <rect key="frame" x="332" y="726" width="50" height="50"/>
                                 <state key="normal" image="Circle plus"/>
                                 <connections>
                                     <action selector="addNewEvent:" destination="h4j-j6-ViB" eventType="touchUpInside" id="j8u-yb-dei"/>
                                 </connections>
                             </button>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WgU-X3-9em">
-                                <rect key="frame" x="108" y="411" width="198" height="56"/>
-                                <string key="text">Hello! 
-You are free Today</string>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
-                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tIZ-U3-GT1">
+                                <rect key="frame" x="32" y="456" width="350" height="61"/>
+                                <string key="text">Hello!
+You are free Today!</string>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="26"/>
+                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="highlightedColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="WgU-X3-9em" firstAttribute="leading" secondItem="SLg-hM-oA4" secondAttribute="leading" constant="108" id="0EM-NB-UnC"/>
                             <constraint firstItem="NQg-xA-aly" firstAttribute="leading" secondItem="e41-B6-Lza" secondAttribute="leading" id="0rt-ea-0Il"/>
-                            <constraint firstItem="WgU-X3-9em" firstAttribute="top" secondItem="SLg-hM-oA4" secondAttribute="top" constant="355" id="4Z8-ds-8tl"/>
                             <constraint firstItem="SLg-hM-oA4" firstAttribute="trailing" secondItem="lYv-vo-hyG" secondAttribute="trailing" id="8F2-fu-Xqf"/>
                             <constraint firstItem="lYv-vo-hyG" firstAttribute="leading" secondItem="SLg-hM-oA4" secondAttribute="leading" id="9zy-ti-2H0"/>
                             <constraint firstItem="r7U-78-xix" firstAttribute="top" secondItem="GRl-P9-31F" secondAttribute="bottom" id="AyY-k8-rkw"/>
                             <constraint firstItem="GRl-P9-31F" firstAttribute="trailing" secondItem="NQg-xA-aly" secondAttribute="trailing" id="DfD-0m-vcj"/>
-                            <constraint firstItem="qAT-Kc-XlL" firstAttribute="centerX" secondItem="SLg-hM-oA4" secondAttribute="centerX" id="GLt-J7-JJF"/>
+                            <constraint firstItem="SLg-hM-oA4" firstAttribute="trailing" secondItem="qAT-Kc-XlL" secondAttribute="trailing" constant="32" id="KAu-sQ-RTe"/>
                             <constraint firstAttribute="trailing" secondItem="NQg-xA-aly" secondAttribute="trailing" id="QC0-wn-aIn"/>
-                            <constraint firstItem="qAT-Kc-XlL" firstAttribute="bottom" secondItem="SLg-hM-oA4" secondAttribute="bottom" constant="-16" id="anw-4X-EZY"/>
-                            <constraint firstItem="WgU-X3-9em" firstAttribute="centerX" secondItem="SLg-hM-oA4" secondAttribute="centerX" id="cJe-cV-q0e"/>
-                            <constraint firstItem="SLg-hM-oA4" firstAttribute="top" secondItem="lYv-vo-hyG" secondAttribute="top" constant="56" id="f5b-9G-Mkc"/>
+                            <constraint firstItem="tIZ-U3-GT1" firstAttribute="leading" secondItem="SLg-hM-oA4" secondAttribute="leading" constant="32" id="SJI-RD-RD9"/>
+                            <constraint firstItem="qAT-Kc-XlL" firstAttribute="bottom" secondItem="SLg-hM-oA4" secondAttribute="bottom" constant="-32" id="anw-4X-EZY"/>
+                            <constraint firstItem="SLg-hM-oA4" firstAttribute="top" secondItem="lYv-vo-hyG" secondAttribute="top" constant="100" id="f5b-9G-Mkc"/>
                             <constraint firstItem="GRl-P9-31F" firstAttribute="top" secondItem="NQg-xA-aly" secondAttribute="bottom" constant="16" id="kmA-Af-pni"/>
+                            <constraint firstItem="SLg-hM-oA4" firstAttribute="trailing" secondItem="tIZ-U3-GT1" secondAttribute="trailing" constant="32" id="lZe-2r-lCN"/>
                             <constraint firstItem="SLg-hM-oA4" firstAttribute="bottom" secondItem="lYv-vo-hyG" secondAttribute="bottom" constant="-50" id="lbm-1w-qTY"/>
-                            <constraint firstItem="SLg-hM-oA4" firstAttribute="bottom" secondItem="WgU-X3-9em" secondAttribute="bottom" constant="341" id="m0k-E9-MCG"/>
-                            <constraint firstItem="WgU-X3-9em" firstAttribute="top" secondItem="NQg-xA-aly" secondAttribute="bottom" constant="55" id="moB-sa-avU"/>
                             <constraint firstItem="GRl-P9-31F" firstAttribute="leading" secondItem="NQg-xA-aly" secondAttribute="leading" id="s9C-fC-0jq"/>
                             <constraint firstItem="NQg-xA-aly" firstAttribute="top" secondItem="SLg-hM-oA4" secondAttribute="top" id="vgi-en-1fK"/>
+                            <constraint firstItem="tIZ-U3-GT1" firstAttribute="top" secondItem="NQg-xA-aly" secondAttribute="bottom" constant="100" id="xLR-Ir-tIX"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="SLg-hM-oA4"/>
                     </view>
@@ -478,7 +476,7 @@ You are free Today</string>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="NoEventLabel" destination="WgU-X3-9em" id="RVH-4w-wex"/>
+                        <outlet property="NoEventLabel" destination="tIZ-U3-GT1" id="ZtT-Fe-Xfw"/>
                         <outlet property="calendar" destination="NQg-xA-aly" id="rR8-Bu-WOg"/>
                         <outlet property="calendarHeightConstraint" destination="NHG-fs-amc" id="raX-q3-01P"/>
                         <outlet property="navBar" destination="KIU-9S-kag" id="n9V-Zr-72P"/>
