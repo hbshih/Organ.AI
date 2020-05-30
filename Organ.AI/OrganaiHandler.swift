@@ -15,7 +15,7 @@ struct OrganAIHandler
     
     var query = "Book a meeting with @John"
     
-    mutating func queryProcessor(token: String, query: String, completion: @escaping ([String:Any]) -> ())
+    mutating func queryProcessor(token: String, query: String, completion: @escaping (String, [String:Any]) -> ())
     {
         let sessionConfig = URLSessionConfiguration.default
         let authValue: String? = "Bearer \(token)"
@@ -43,10 +43,12 @@ struct OrganAIHandler
                 var time = [String: String]()
                 var placeholder = [String]()
                 
+                var user_intent = ""
+                
                 
                 
                 if let dict_data = json as? [String: Any] {
-                    //  print(dict_data)
+                      print(dict_data)
                     
                     if let user_input = dict_data["user_input"] as? [String: Any]
                     {
@@ -56,6 +58,11 @@ struct OrganAIHandler
                         print(seng_msg)
                         
                         //        print(user_input["entities"] as! NSArray)
+                        
+                        if let intent = user_input["intent"] as? NSDictionary
+                        {
+                            user_intent = intent["name"] as? String ?? ""
+                        }
                         
                         if let entities = user_input["entities"] as? NSArray
                         {
@@ -163,7 +170,7 @@ struct OrganAIHandler
                             {
                                 print("Ask for Duration")
                             }
-                            completion(["time":time, "activity": activity, "person": person, "duration": duration, "placeholder": placeholder])
+                            completion(user_intent, ["time":time, "activity": activity, "person": person, "duration": duration, "placeholder": placeholder])
                         }
                     }
                 }

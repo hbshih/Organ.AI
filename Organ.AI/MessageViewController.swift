@@ -23,7 +23,7 @@ class MessageViewController: UIViewController, OEMentionsDelegate, UITextViewDel
         if !messageSent
         {
             print("new message \(message)")
-            sendRequest(message: message)
+         //   sendRequest(message: message)
         }
     }
     
@@ -93,11 +93,11 @@ class MessageViewController: UIViewController, OEMentionsDelegate, UITextViewDel
     
     @IBAction func sendMessageTapped(_ sender: Any) {
         messageSent = true
-        sendRequest(message: myTextView.text)
+    //    sendRequest(message: myTextView.text)
         
     }
     
-    
+    /*
     func sendRequest(message: String)
     {
         organAI.getToken { (str) in
@@ -125,7 +125,7 @@ class MessageViewController: UIViewController, OEMentionsDelegate, UITextViewDel
             
             
         }
-    }
+    }*/
     
     
 }

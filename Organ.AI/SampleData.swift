@@ -46,7 +46,7 @@ final internal class SampleData {
         case ShareContact
     }
 
-    let system = MockUser(senderId: "000000", displayName: "System")
+    let system = MockUser(senderId: "000000", displayName: "Me")
     let nathan = MockUser(senderId: "000001", displayName: "Ben Shih")
     let steven = MockUser(senderId: "000002", displayName: "Ather Gattami")
     let wu = MockUser(senderId: "000003", displayName: "Zack Wilson")
@@ -64,7 +64,7 @@ final internal class SampleData {
     ]
 
     var currentSender: MockUser {
-        return steven
+        return system
     }
 
     var now = Date()

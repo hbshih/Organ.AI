@@ -47,6 +47,11 @@ class ChatViewController: MessagesViewController, MessagesDataSource {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+    //    self.navigationController!.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+      //  self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = false
+        self.navigationController?.navigationBar.backgroundColor = .white
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -69,7 +74,7 @@ class ChatViewController: MessagesViewController, MessagesDataSource {
             let count = UserDefaults.standard.mockMessagesCount()
                 DispatchQueue.main.async {
                     self.messageList = [
-                        MockMessage(text: "Hi, I am your virtual assistant. What would you like me to book?", user: MockUser(senderId: "asdf", displayName: "Booking Assistant"), messageId: "ajskflj", date: Date())]
+                        MockMessage(text: "Hi, I am your virtual assistant. You can ask me to book any meeting for you 😃", user: MockUser(senderId: "asdf", displayName: "Booking Assistant"), messageId: "ajskflj", date: Date())]
                     self.messagesCollectionView.reloadData()
                     self.messagesCollectionView.scrollToBottom()
                 }
@@ -279,8 +284,6 @@ extension ChatViewController: InputBarAccessoryViewDelegate {
         // Here we can parse for which substrings were autocompleted
         let attributedText = messageInputBar.inputTextView.attributedText!
         
-        first_message_sent = true
-        
         print("Message I sent \(attributedText.string)")
         
         let range = NSRange(location: 0, length: attributedText.length)
@@ -295,127 +298,137 @@ extension ChatViewController: InputBarAccessoryViewDelegate {
         
         if true
         {
-            organAI.queryProcessor(token: token, query: attributedText.string) { (data) in
-                print("\napi response\n")
-                print(data)
-                var msg = ""
+            
+            organAI.queryProcessor(token: token, query: attributedText.string) { (intention, data) in
                 
-                if self.api_response == false
-                {
-                    self.time = data["time"] as! [String: String]
-                    self.person = data["person"] as! [String]
-                    self.activity = data["activity"] as! [String]
-                    self.duration = data["duration"] as! Int
-                    self.placeholder = data["placeholder"] as! [String]
-                }
+                        print("\napi response\n")
+                    print(data)
+                    var msg = ""
                 
-                if (data["time"] as! [String: String]).count > 0
+                if intention == "greet"
                 {
-                    self.time = data["time"] as! [String: String]
-                    self.missingVariables["time"] = false
-                }
-                
-                if (data["person"] as! [String]).count > 0
+                 msg = "Hello! How can I help you?"
+                }else
                 {
-                    self.person = data["person"] as! [String]
-                    self.missingVariables["person"] = false
-                }
-                
-                if (data["activity"] as! [String]).count > 0
-                {
-                    self.activity = data["activity"] as! [String]
-                    self.missingVariables["activity"] = false
-                }
-
-                if (data["duration"] as! Int) != 0
-                {
-                    if (data["time"] as! [String: String]).count == 2
+                    self.first_message_sent = true
+                    if self.api_response == false
                     {
+                        self.time = data["time"] as! [String: String]
+                        self.person = data["person"] as! [String]
+                        self.activity = data["activity"] as! [String]
                         self.duration = data["duration"] as! Int
+                        self.placeholder = data["placeholder"] as! [String]
                     }
-                    self.duration = data["duration"] as! Int
-                    self.missingVariables["duration"] = false
-                }
-                
-                if (data["placeholder"] as! [String]).count > 0
-                {
-                    self.placeholder = data["placeholder"] as! [String]
-                    self.missingVariables["placeholder"] = false
-                }
-                
-                self.api_response = true
-                
-                if self.time.count <= 0
-                {
-                    // self.time = data["time"] as! [String: String]
-                    self.askForVariable = "time"
-                    msg = "When do you want the meeting to be?"
-                    self.missingVariables["time"] = true
-                }
                     
-                else if self.person.count <= 0
-                {
-                    //   self.person = data["person"] as! [String]
-                    self.askForVariable = "person"
-                    msg = "Who do you want to meet?"
-                    self.missingVariables["person"] = true
-                }
-                    
-                else if self.activity.count <= 0
-                {
-                    //        self.activity = data["activity"] as! [String]
-                    self.askForVariable = "activity"
-                    msg = "What's the topic about?"
-                    self.missingVariables["activity"] = true
-                }
-                    
-                else if self.duration == 0
-                {
-                    //       self.duration = data["duration"] as! Int
-                    self.askForVariable = "duration"
-                    msg = "What's the duration?"
-                    self.missingVariables["duration"] = true
-                }else if self.placeholder.count <= 0
-                {
-                    msg = "Where do you want to meet?"
-                    self.missingVariables["placeholder"] = true
-                }
-                    
-                else
-                {
-                    print(self.time)
-                    print(self.person)
-                    print(self.activity)
-                    print(self.duration)
-                    print(self.placeholder)
-                    self.done = true
-                }
-                
-                let formatter = DateFormatter()
-                formatter.dateFormat = "yyyy/MM/dd"
-                
-                DispatchQueue.main.async {
-                    if !self.done
+                    if (data["time"] as! [String: String]).count > 0
                     {
-                        self.setTypingIndicatorViewHidden(true, animated: true)
-                        self.insertMessage(MockMessage(text: msg, user: MockUser(senderId: "ajdsklf", displayName: "Booking Assistant"), messageId: "asjdfkl", date: Date()))
-                    }else
+                        self.time = data["time"] as! [String: String]
+                        self.missingVariables["time"] = false
+                    }
+                    
+                    if (data["person"] as! [String]).count > 0
                     {
-                        msg = "I am checking the time with \(self.person)... hold on for a second..."
-                        self.insertMessage(MockMessage(text: msg, user: MockUser(senderId: "ajdsklf", displayName: "Booking Assistant"), messageId: "asjdfkl", date: Date()))
-                        
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
-                            self.setTypingIndicatorViewHidden(true, animated: true)
-                            
-                            msg = "I have booked a meeting with \(self.person) on \(self.time) for \(self.duration) hours about \(self.activity) at \(self.placeholder). Pick a time from below:"
-                            self.insertMessage(MockMessage(text: msg, user: MockUser(senderId: "ajdsklf", displayName: "Booking Assistant"), messageId: "asjdfkl", date: Date()))
-                            self.insertMessage(MockMessage(custom: ["T", "Tuesday 6/2 10:00 - 12:00", "Tuesday 6/2 14:00 - 16:00", "Tuesday 6/2 15:30 - 17:30"], user: MockUser(senderId: "Time", displayName: "Booking Assistant"), messageId: "adsf", date: Date()))
+                        self.person = data["person"] as! [String]
+                        self.missingVariables["person"] = false
+                    }
+                    
+                    if (data["activity"] as! [String]).count > 0
+                    {
+                        self.activity = data["activity"] as! [String]
+                        self.missingVariables["activity"] = false
+                    }
+
+                    if (data["duration"] as! Int) != 0
+                    {
+                        if (data["time"] as! [String: String]).count == 2
+                        {
+                            self.duration = data["duration"] as! Int
                         }
+                        self.duration = data["duration"] as! Int
+                        self.missingVariables["duration"] = false
                     }
-                    self.messagesCollectionView.scrollToBottom()
+                    
+                    if (data["placeholder"] as! [String]).count > 0
+                    {
+                        self.placeholder = data["placeholder"] as! [String]
+                        self.missingVariables["placeholder"] = false
+                    }
+                    
+                    self.api_response = true
+                    
+                    if self.time.count <= 0
+                    {
+                        // self.time = data["time"] as! [String: String]
+                        self.askForVariable = "time"
+                        msg = "When do you want the meeting to be?"
+                        self.missingVariables["time"] = true
+                    }
+                        
+                    else if self.person.count <= 0
+                    {
+                        //   self.person = data["person"] as! [String]
+                        self.askForVariable = "person"
+                        msg = "Who do you want to meet?"
+                        self.missingVariables["person"] = true
+                    }
+                        
+                    else if self.activity.count <= 0
+                    {
+                        //        self.activity = data["activity"] as! [String]
+                        self.askForVariable = "activity"
+                        msg = "What's the topic about?"
+                        self.missingVariables["activity"] = true
+                    }
+                        
+                    else if self.duration == 0
+                    {
+                        //       self.duration = data["duration"] as! Int
+                        self.askForVariable = "duration"
+                        msg = "What's the duration?"
+                        self.missingVariables["duration"] = true
+                    }else if self.placeholder.count <= 0
+                    {
+                        msg = "Where do you want to meet?"
+                        self.missingVariables["placeholder"] = true
+                    }
+                        
+                    else
+                    {
+                        print(self.time)
+                        print(self.person)
+                        print(self.activity)
+                        print(self.duration)
+                        print(self.placeholder)
+                        self.done = true
+                    }
+                    
+                    let formatter = DateFormatter()
+                    formatter.dateFormat = "yyyy/MM/dd"
+                }
+                    
+                    DispatchQueue.main.async {
+                        if !self.done
+                        {
+                            self.setTypingIndicatorViewHidden(true, animated: true)
+                            self.insertMessage(MockMessage(text: msg, user: MockUser(senderId: "ajdsklf", displayName: "Booking Assistant"), messageId: "asjdfkl", date: Date()))
+                        }else
+                        {
+                            msg = "I am checking the time with \(self.person)... hold on for a second..."
+                            self.insertMessage(MockMessage(text: msg, user: MockUser(senderId: "ajdsklf", displayName: "Booking Assistant"), messageId: "asjdfkl", date: Date()))
+                            
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+                                self.setTypingIndicatorViewHidden(true, animated: true)
+                                
+                                msg = "I have booked a meeting with \(self.person) on \(self.time) for \(self.duration) hours about \(self.activity) at \(self.placeholder). Pick a time from below:"
+                                self.insertMessage(MockMessage(text: msg, user: MockUser(senderId: "ajdsklf", displayName: "Booking Assistant"), messageId: "asjdfkl", date: Date()))
+                                self.insertMessage(MockMessage(custom: ["T", "Tuesday 6/2 10:00 - 12:00", "Tuesday 6/2 14:00 - 16:00", "Tuesday 6/2 15:30 - 17:30"], user: MockUser(senderId: "Time", displayName: "Booking Assistant"), messageId: "adsf", date: Date()))
+                            }
+                        }
+                        self.messagesCollectionView.scrollToBottom()
+                    }
                 }
             }
-        }
+            
         let components = inputBar.inputTextView.components
         messageInputBar.inputTextView.text = String()
         messageInputBar.invalidatePlugins()

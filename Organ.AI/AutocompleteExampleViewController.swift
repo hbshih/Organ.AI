@@ -29,7 +29,6 @@ final class AutocompleteExampleViewController: ChatViewController {
         manager.delegate = self
         manager.dataSource = self
         manager.keepPrefixOnCompletion = false
-        manager.register(delimiterSet: CharacterSet(charactersIn: "Book"))
         return manager
         }()
     
@@ -95,6 +94,8 @@ final class AutocompleteExampleViewController: ChatViewController {
         autocompleteManager.register(prefix: "o")
         autocompleteManager.register(prefix: "R")
         autocompleteManager.register(prefix: "r")
+        autocompleteManager.register(prefix: "T")
+        autocompleteManager.register(prefix: "t")
         autocompleteManager.register(prefix: "#")
         autocompleteManager.maxSpaceCountDuringCompletion = 1 // Allow for autocompletes with a space
         
@@ -129,6 +130,7 @@ final class AutocompleteExampleViewController: ChatViewController {
         messageInputBar.layer.shadowOpacity = 0.3
         messageInputBar.layer.shadowOffset = CGSize(width: 0, height: 0)
         messageInputBar.separatorLine.isHidden = true
+        messageInputBar.becomeFirstResponder()
         messageInputBar.setRightStackViewWidthConstant(to: 0, animated: false)
         messageInputBar.setMiddleContentView(joinChatButton, animated: false)
     }
@@ -154,6 +156,8 @@ final class AutocompleteExampleViewController: ChatViewController {
     @objc
     func joinChat() {
         configureMessageInputBarForChat()
+        self.insertMessage(MockMessage(text: "Tip: Type '#' to look for suggestions, type '@' to look contacts.", user: MockUser(senderId: "asdf", displayName: "Booking Assistant"), messageId: "ajskflj", date: Date()))
+        messageInputBar.becomeFirstResponder()
     }
     
     // MARK: - Helpers
@@ -263,7 +267,7 @@ extension AutocompleteExampleViewController: AutocompleteManagerDelegate, Autoco
         
         if !first_message_sent
         {
-            s_suggestion = [AutocompleteCompletion(text: "Schedule a meeting with Frank"), AutocompleteCompletion(text: "Schedule a meeting with Ben")]
+            s_suggestion = [AutocompleteCompletion(text: "Schedule a meeting with "), AutocompleteCompletion(text: "Schedule a meeting with Ben"), AutocompleteCompletion(text: "Schedule a meeting with Erik and Ben")]
             
             if prefix == "s" || prefix == "S"
             {
@@ -272,12 +276,12 @@ extension AutocompleteExampleViewController: AutocompleteManagerDelegate, Autoco
             
             if prefix == "I" || prefix == "i"
             {
-                return [AutocompleteCompletion(text: "I want to book a meeting"), AutocompleteCompletion(text: "I want to book a meeting with Ben")]
+                return [AutocompleteCompletion(text: "I want to book a meeting with "), AutocompleteCompletion(text: "I want to book a meeting with Zack"), AutocompleteCompletion(text: "I want to book a meeting with Zack and Ben")]
             }
             
             if prefix == "B" || prefix == "b"
             {
-                return [AutocompleteCompletion(text: "Book a meeting with Ben"), AutocompleteCompletion(text: "Book an appointment with Ather")]
+                return [AutocompleteCompletion(text: "Book a meeting with Erik"), AutocompleteCompletion(text: "Book an appointment with Ather"), AutocompleteCompletion(text: "Book a meeting with ")]
             }
             
             if prefix == "a" || prefix == "A"
@@ -287,7 +291,7 @@ extension AutocompleteExampleViewController: AutocompleteManagerDelegate, Autoco
             
             if prefix == "#"
             {
-                return [AutocompleteCompletion(text: "Book a meeting with Ather at 4pm next week in Starbucks")]
+                return [AutocompleteCompletion(text: "Book a meeting with Ather at 4pm next week in Starbucks"), AutocompleteCompletion(text: "Book a meeting with Zack next week in Room A")]
             }
             
         }else
@@ -313,9 +317,19 @@ extension AutocompleteExampleViewController: AutocompleteManagerDelegate, Autoco
                     return [AutocompleteCompletion(text: "next week"), AutocompleteCompletion(text: "Next Week")]
                 }
                 
+                if prefix == "t" || prefix == "T"
+                {
+                    return [AutocompleteCompletion(text: "tuesday"), AutocompleteCompletion(text: "Tuesday")]
+                }
+                
                 if prefix == "o" || prefix == "O"
                 {
                     return [AutocompleteCompletion(text: "on Friday"), AutocompleteCompletion(text: "on Monday")]
+                }
+                
+                if prefix == "#"
+                {
+                    return [AutocompleteCompletion(text: "Monday"), AutocompleteCompletion(text: "Tuesday"), AutocompleteCompletion(text: "Wednesday"), AutocompleteCompletion(text: "Thursday"), AutocompleteCompletion(text: "Friday")]
                 }
             }
                 
@@ -427,10 +441,6 @@ extension AutocompleteExampleViewController: AutocompleteManagerDelegate, Autoco
     
     // Optional
     func autocompleteManager(_ manager: AutocompleteManager, shouldComplete prefix: String, with text: String) -> Bool {
-        
-        print(prefix)
-        print(text)
-        
         return true
     }
     
