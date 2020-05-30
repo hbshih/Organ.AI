@@ -4,6 +4,10 @@ import UIKit
 import MessageKit
 import InputBarAccessoryView
 
+    public var recent_requests = [AutocompleteCompletion(text: "Book a meeting with Ather at 4pm next week in Starbucks"), AutocompleteCompletion(text: "Book a meeting with Zack next week in Room A")]
+
+public var scenario = 1
+
 /// A base class for the example controllers
 class ChatViewController: MessagesViewController, MessagesDataSource {
     
@@ -74,7 +78,8 @@ class ChatViewController: MessagesViewController, MessagesDataSource {
             let count = UserDefaults.standard.mockMessagesCount()
                 DispatchQueue.main.async {
                     self.messageList = [
-                        MockMessage(text: "Hi, I am your virtual assistant. You can ask me to book any meeting for you 😃", user: MockUser(senderId: "asdf", displayName: "Booking Assistant"), messageId: "ajskflj", date: Date())]
+                        MockMessage(text: "Good Morning 😃", user: MockUser(senderId: "asdf", displayName: "Booking Assistant"), messageId: "ajskflj", date: Date()),
+                        MockMessage(text: "I am your virtual assistant. You can ask me to book any meeting for you 😃", user: MockUser(senderId: "asdf", displayName: "Booking Assistant"), messageId: "ajskflj", date: Date())]
                     self.messagesCollectionView.reloadData()
                     self.messagesCollectionView.scrollToBottom()
                 }
@@ -94,6 +99,9 @@ class ChatViewController: MessagesViewController, MessagesDataSource {
         let message = messagesDataSource.messageForItem(at: indexPath, in: messagesCollectionView)
         
         if case .custom(let dates) = message.kind {
+            
+            print(dates)
+            
             if let _date = dates as? [String]
             {
                 let cell = messagesCollectionView.dequeueReusableCell(withReuseIdentifier: "incomingTextCellID", for: indexPath) as? IncomingTextCell
@@ -310,6 +318,18 @@ extension ChatViewController: InputBarAccessoryViewDelegate {
                  msg = "Hello! How can I help you?"
                 }else
                 {
+              //      recent_requests.append(AutocompleteCompletion(text: attributedText.string))
+                    
+                    /*For Testing*/
+                    
+                    if attributedText.string.contains("SEO")
+                    {
+                        self.activity = ["SEO Campaign"]
+                    }
+                    
+                    /*------**/
+                    
+                    recent_requests.insert(AutocompleteCompletion(text: attributedText.string), at: 0)
                     self.first_message_sent = true
                     if self.api_response == false
                     {
@@ -411,17 +431,38 @@ extension ChatViewController: InputBarAccessoryViewDelegate {
                         {
                             self.setTypingIndicatorViewHidden(true, animated: true)
                             self.insertMessage(MockMessage(text: msg, user: MockUser(senderId: "ajdsklf", displayName: "Booking Assistant"), messageId: "asjdfkl", date: Date()))
+                            
+                            if msg == "Who do you want to meet?"
+                            {
+                                self.insertMessage(MockMessage(text: "Tip: Type '@' to look for contacts", user: MockUser(senderId: "asdf", displayName: "Booking Assistant"), messageId: "ajskflj", date: Date()))
+                            }
+                            
                         }else
                         {
-                            msg = "I am checking the time with \(self.person)... hold on for a second..."
+                            msg = "I am checking the time with \(self.person.joined(separator: ","))... hold on for a second..."
                             self.insertMessage(MockMessage(text: msg, user: MockUser(senderId: "ajdsklf", displayName: "Booking Assistant"), messageId: "asjdfkl", date: Date()))
+                            
                             
                             DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
                                 self.setTypingIndicatorViewHidden(true, animated: true)
                                 
-                                msg = "I have booked a meeting with \(self.person) on \(self.time) for \(self.duration) hours about \(self.activity) at \(self.placeholder). Pick a time from below:"
+                                msg = "This is all the available timeslots of \(self.person.joined(separator: ",")). Pick a time that you prefer and I will book it for you:"
                                 self.insertMessage(MockMessage(text: msg, user: MockUser(senderId: "ajdsklf", displayName: "Booking Assistant"), messageId: "asjdfkl", date: Date()))
-                                self.insertMessage(MockMessage(custom: ["T", "Tuesday 6/2 10:00 - 12:00", "Tuesday 6/2 14:00 - 16:00", "Tuesday 6/2 15:30 - 17:30"], user: MockUser(senderId: "Time", displayName: "Booking Assistant"), messageId: "adsf", date: Date()))
+                                
+                                var timesets = [String]()
+                                if scenario == 1
+                                {
+                                    timesets = ["Tuesday 6/2 12:00 - 14:00", "Tuesday 6/2 12:30 - 14:30", "Tuesday 6/2 15:30 - 17:30"]
+                                                                    self.insertMessage(MockMessage(custom: ["T", "Tuesday 6/2 12:00 - 14:00", "Tuesday 6/2 12:30 - 14:30", "Tuesday 6/2 15:30 - 17:30"], user: MockUser(senderId: "Time", displayName: "Booking Assistant"), messageId: "adsf", date: Date()))
+                                }else if scenario == 2
+                                {
+                                    timesets = ["Wednesday 6/3 10:00 - 11:00", "Thusday 6/4 12:30 - 13:30", "Friday 6/5 15:30 - 16:30"]
+                                                                    self.insertMessage(MockMessage(custom: ["T", "Wednesday 6/3 10:00 - 11:00", "Thusday 6/4 12:30 - 13:30", "Friday 6/5 15:30 - 16:30"], user: MockUser(senderId: "Time", displayName: "Booking Assistant"), messageId: "adsf", date: Date()))
+                                }else
+                                {
+                                     timesets = ["Thursday 6/4 10:00 - 11:00", "Thusday 6/4 14:30 - 15:30", "Friday 6/5 11:30 - 12:30"]
+                                                                    self.insertMessage(MockMessage(custom: ["T", "Thursday 6/4 10:00 - 11:00", "Thusday 6/4 14:30 - 15:30", "Friday 6/5 11:30 - 12:30"], user: MockUser(senderId: "Time", displayName: "Booking Assistant"), messageId: "adsf", date: Date()))
+                                }
                             }
                         }
                         self.messagesCollectionView.scrollToBottom()

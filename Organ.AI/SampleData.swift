@@ -47,10 +47,10 @@ final internal class SampleData {
     }
 
     let system = MockUser(senderId: "000000", displayName: "Me")
-    let nathan = MockUser(senderId: "000001", displayName: "Ben Shih")
-    let steven = MockUser(senderId: "000002", displayName: "Ather Gattami")
-    let wu = MockUser(senderId: "000003", displayName: "Zack Wilson")
-    let Erik = MockUser(senderId: "000004", displayName: "Erik Flores")
+    let nathan = MockUser(senderId: "000001", displayName: "Ben Shih,")
+    let steven = MockUser(senderId: "000002", displayName: "Ather Gattami,")
+    let wu = MockUser(senderId: "000003", displayName: "Zack Wilson,")
+    let Erik = MockUser(senderId: "000004", displayName: "Erik Flores,")
 
     lazy var senders = [nathan, steven, wu, Erik]
     

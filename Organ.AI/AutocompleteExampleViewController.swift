@@ -43,7 +43,7 @@ final class AutocompleteExampleViewController: ChatViewController {
     
     var i_suggestion: [AutocompleteCompletion] = [AutocompleteCompletion(text: "In the Office"), AutocompleteCompletion(text: "In Room A")]
     
-    var users: [AutocompleteCompletion] = [AutocompleteCompletion(text: "Ben Shih", context: ["id": "00001"]), AutocompleteCompletion(text: "Ather Gattami", context: ["id": "00002"]), AutocompleteCompletion(text: "Zack Wilson", context: ["id": "00003"]), AutocompleteCompletion(text: "Erik Flores", context: ["id": "00004"])]
+    var users: [AutocompleteCompletion] = [AutocompleteCompletion(text: "Ben Shih,", context: ["id": "00001"]), AutocompleteCompletion(text: "Ather Gattami,", context: ["id": "00002"]), AutocompleteCompletion(text: "Zack Wilson,", context: ["id": "00003"]), AutocompleteCompletion(text: "Erik Flores,", context: ["id": "00004"])]
     
     var r_suggestion: [AutocompleteCompletion] = []
     var hashtag_suggestion: [AutocompleteCompletion] = []
@@ -138,6 +138,8 @@ final class AutocompleteExampleViewController: ChatViewController {
     private func configureMessageInputBarForChat() {
         messageInputBar.setMiddleContentView(messageInputBar.inputTextView, animated: false)
         messageInputBar.setRightStackViewWidthConstant(to: 52, animated: false)
+        //    let bottomItems = [makeButton(named: "ic_at"), makeButton(named: "ic_hashtag"), .flexibleSpace]
+        //messageInputBar.setStackViewItems(bottomItems, forStack: .bottom, animated: false)
         
         messageInputBar.sendButton.activityViewColor = .white
         messageInputBar.sendButton.backgroundColor = .primaryColor
@@ -156,7 +158,7 @@ final class AutocompleteExampleViewController: ChatViewController {
     @objc
     func joinChat() {
         configureMessageInputBarForChat()
-        self.insertMessage(MockMessage(text: "Tip: Type '#' to look for suggestions, type '@' to look contacts.", user: MockUser(senderId: "asdf", displayName: "Booking Assistant"), messageId: "ajskflj", date: Date()))
+        self.insertMessage(MockMessage(text: "Tip: Type '#' to look for your recent requests.", user: MockUser(senderId: "asdf", displayName: "Booking Assistant"), messageId: "ajskflj", date: Date()))
         messageInputBar.becomeFirstResponder()
     }
     
@@ -196,7 +198,6 @@ final class AutocompleteExampleViewController: ChatViewController {
         }.onDeselected {
             $0.tintColor = UIColor(white: 0.8, alpha: 1)
         }.onTouchUpInside { _ in
-            print("Item Tapped")
         }
     }
     
@@ -255,7 +256,6 @@ extension AutocompleteExampleViewController: AutocompleteManagerDelegate, Autoco
         
         manager.keepPrefixOnCompletion = false
         
-        
         if prefix == "@" {
             return users
           /*  return SampleData.shared.senders
@@ -291,12 +291,12 @@ extension AutocompleteExampleViewController: AutocompleteManagerDelegate, Autoco
             
             if prefix == "#"
             {
-                return [AutocompleteCompletion(text: "Book a meeting with Ather at 4pm next week in Starbucks"), AutocompleteCompletion(text: "Book a meeting with Zack next week in Room A")]
+                
+                return recent_requests
             }
             
         }else
         {
-            
             if missingVariables["time"]!
             {
                 print("missing time")
@@ -319,7 +319,7 @@ extension AutocompleteExampleViewController: AutocompleteManagerDelegate, Autoco
                 
                 if prefix == "t" || prefix == "T"
                 {
-                    return [AutocompleteCompletion(text: "tuesday"), AutocompleteCompletion(text: "Tuesday")]
+                    return [AutocompleteCompletion(text: "Tuesday"), AutocompleteCompletion(text: "This week")]
                 }
                 
                 if prefix == "o" || prefix == "O"
