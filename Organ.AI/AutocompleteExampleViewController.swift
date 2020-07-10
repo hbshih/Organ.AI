@@ -43,7 +43,7 @@ final class AutocompleteExampleViewController: ChatViewController {
     
     var i_suggestion: [AutocompleteCompletion] = [AutocompleteCompletion(text: "In the Office"), AutocompleteCompletion(text: "In Room A")]
     
-    var users: [AutocompleteCompletion] = [AutocompleteCompletion(text: "Ben Shih,", context: ["id": "00001"]), AutocompleteCompletion(text: "Ather Gattami,", context: ["id": "00002"]), AutocompleteCompletion(text: "Zack Wilson,", context: ["id": "00003"]), AutocompleteCompletion(text: "Erik Flores,", context: ["id": "00004"])]
+    var users: [AutocompleteCompletion] = [AutocompleteCompletion(text: "Ben Shih,", context: ["id": "00001"]), AutocompleteCompletion(text: "Amanda", context: ["id": "00002"]), AutocompleteCompletion(text: "Mandy", context: ["id": "00003"]), AutocompleteCompletion(text: "Marketing Team", context: ["id": "00004"]),  AutocompleteCompletion(text: "Zack Wilson,", context: ["id": "00005"]), AutocompleteCompletion(text: "Erik Flores,", context: ["id": "00006"])]
     
     var r_suggestion: [AutocompleteCompletion] = []
     var hashtag_suggestion: [AutocompleteCompletion] = []
@@ -57,7 +57,27 @@ final class AutocompleteExampleViewController: ChatViewController {
         // ### 有Message傳回來的時候display在這裡
         
         //  self.setTypingIndicatorViewHidden(false)
+        let button1 = UIBarButtonItem(image: UIImage(named: "icons8-synchronize-24"), style: .plain, target: self, action: #selector(handleEditBtn)) // action:#selector(Class.MethodName) for swift 3
+        self.navigationItem.rightBarButtonItem  = button1
     }
+    
+    @objc private func handleEditBtn() {
+        print("clicked on Edit btn")
+        
+        time.removeAll()
+        person.removeAll()
+        duration = Int()
+        activity.removeAll()
+        placeholder.removeAll()
+        missingVariables = ["time": true, "duration": true, "activity": true, "person": true, "placeholder": true]
+        first_message_sent = false
+        done = false
+        
+        self.insertMessage(MockMessage(text: "I am your virtual assistant. You can ask me to book any meeting for you 😃", user: MockUser(senderId: "asdf", displayName: "Booking Assistant"), messageId: "ajskflj", date: Date()))
+        messageInputBar.becomeFirstResponder()
+        
+    }
+    
     override func viewDidLoad() {
         
         messagesCollectionView = MessagesCollectionView(frame: .zero, collectionViewLayout: CustomMessagesFlowLayout())
@@ -97,6 +117,8 @@ final class AutocompleteExampleViewController: ChatViewController {
         autocompleteManager.register(prefix: "T")
         autocompleteManager.register(prefix: "t")
         autocompleteManager.register(prefix: "#")
+        autocompleteManager.register(prefix: "1")
+        autocompleteManager.register(prefix: "2")
         autocompleteManager.maxSpaceCountDuringCompletion = 1 // Allow for autocompletes with a space
         
         // Set plugins
@@ -284,6 +306,11 @@ extension AutocompleteExampleViewController: AutocompleteManagerDelegate, Autoco
                 return [AutocompleteCompletion(text: "Book a meeting with Erik"), AutocompleteCompletion(text: "Book an appointment with Ather"), AutocompleteCompletion(text: "Book a meeting with ")]
             }
             
+            if prefix == "A" || prefix == "a"
+            {
+                return [AutocompleteCompletion(text: "Arrange a meeting with"), AutocompleteCompletion(text: "Arrange an appointment with Ather"), AutocompleteCompletion(text: "Arrange a meeting with ")]
+            }
+            
             if prefix == "a" || prefix == "A"
             {
                 return [AutocompleteCompletion(text: "at 10am"), AutocompleteCompletion(text: "at 2pm")]
@@ -315,6 +342,11 @@ extension AutocompleteExampleViewController: AutocompleteManagerDelegate, Autoco
                 if prefix == "n" || prefix == "N"
                 {
                     return [AutocompleteCompletion(text: "next week"), AutocompleteCompletion(text: "Next Week")]
+                }
+                
+                if prefix == "B" || prefix == "b"
+                {
+                    return [AutocompleteCompletion(text: "Between"), AutocompleteCompletion(text: "Between wednesday and thursday")]
                 }
                 
                 if prefix == "t" || prefix == "T"
@@ -358,6 +390,28 @@ extension AutocompleteExampleViewController: AutocompleteManagerDelegate, Autoco
                 
             else if missingVariables["duration"]!
             {
+                
+                                if prefix == "t" || prefix == "T"
+                {
+                    return [AutocompleteCompletion(text: "Two hours")]
+                }
+                
+                if prefix == "1"
+                {
+                    return [AutocompleteCompletion(text: "1 hour")]
+                }
+                
+                if prefix == "o" || prefix == "O"
+                {
+                    return [AutocompleteCompletion(text: "One hour")]
+                }
+                
+                if prefix == "2"
+                {
+                    return [AutocompleteCompletion(text: "2 hours")]
+                }
+                
+                
                 print("missing duration")
             }
                 
@@ -379,6 +433,16 @@ extension AutocompleteExampleViewController: AutocompleteManagerDelegate, Autoco
                 if prefix == "A" || prefix == "a"
                 {
                     return  a_suggestion
+                }
+                
+                if prefix == "R" || prefix == "r"
+                {
+                    return [AutocompleteCompletion(text: "Room A"), AutocompleteCompletion(text: "Room B"), AutocompleteCompletion(text: "Room C")]
+                }
+                
+                if prefix == "S" || prefix == "s"
+                {
+                    return [AutocompleteCompletion(text: "Skype"), AutocompleteCompletion(text: "Starbucks")]
                 }
                 
                 if prefix == "#"

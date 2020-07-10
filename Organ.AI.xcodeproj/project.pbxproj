@@ -29,6 +29,7 @@
 		B571E8E5244497EE005379BC /* NativeEventExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = B571E8E4244497EE005379BC /* NativeEventExample.swift */; };
 		B5883CEC242D0FB0003ECBF0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B5883CEB242D0FB0003ECBF0 /* GoogleService-Info.plist */; };
 		B5A151C924718D5A007B9704 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A151C824718D5A007B9704 /* Message.swift */; };
+		B5A4DB712482BE94008B97F8 /* icons8-synchronize-24.png in Resources */ = {isa = PBXBuildFile; fileRef = B5A4DB702482BE94008B97F8 /* icons8-synchronize-24.png */; };
 		B5D7E878241BB0490037862F /* DateFormatHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D7E877241BB0490037862F /* DateFormatHandler.swift */; };
 		B5DE2BCA242D9F23001120E3 /* FirestoreHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DE2BC9242D9F23001120E3 /* FirestoreHandler.swift */; };
 		B5DE2BCC242DA1E8001120E3 /* EventsCalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DE2BCB242DA1E8001120E3 /* EventsCalendarManager.swift */; };
@@ -75,6 +76,7 @@
 		B571E8E4244497EE005379BC /* NativeEventExample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NativeEventExample.swift; sourceTree = "<group>"; };
 		B5883CEB242D0FB0003ECBF0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B5A151C824718D5A007B9704 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		B5A4DB702482BE94008B97F8 /* icons8-synchronize-24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-synchronize-24.png"; sourceTree = "<group>"; };
 		B5D7E877241BB0490037862F /* DateFormatHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatHandler.swift; sourceTree = "<group>"; };
 		B5DE2BC9242D9F23001120E3 /* FirestoreHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreHandler.swift; sourceTree = "<group>"; };
 		B5DE2BCB242DA1E8001120E3 /* EventsCalendarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsCalendarManager.swift; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 				B51B4C4823FD62140043CAD5 /* SceneDelegate.swift */,
 				B51B4C4C23FD62140043CAD5 /* Main.storyboard */,
 				B51B4C5223FD62150043CAD5 /* Assets.xcassets */,
+				B5A4DB702482BE94008B97F8 /* icons8-synchronize-24.png */,
 				B52452F8247D7BB400539A69 /* 9e6fa009-d057-40fc-9e1f-b5f2715013ae.png */,
 				B51B4C5423FD62150043CAD5 /* LaunchScreen.storyboard */,
 				B51B4C5723FD62150043CAD5 /* Info.plist */,
@@ -274,6 +277,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5A4DB712482BE94008B97F8 /* icons8-synchronize-24.png in Resources */,
 				B51B4C5623FD62150043CAD5 /* LaunchScreen.storyboard in Resources */,
 				B5883CEC242D0FB0003ECBF0 /* GoogleService-Info.plist in Resources */,
 				B5F75FC3247CE6F400A89238 /* IncomingTextCell.xib in Resources */,

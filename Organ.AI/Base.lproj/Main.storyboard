@@ -83,6 +83,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="AGI-0f-ddZ">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.25882352939999997" green="0.67843137249999996" blue="0.63529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <connections>
                         <segue destination="h4j-j6-ViB" kind="relationship" relationship="rootViewController" id="zaI-2q-nTu"/>
@@ -513,17 +514,18 @@ You are free Today!</string>
             </objects>
             <point key="canvasLocation" x="2542" y="136"/>
         </scene>
-        <!--Autocomplete Example View Controller-->
+        <!--OrganAI-->
         <scene sceneID="IaI-U0-Phy">
             <objects>
                 <viewController id="Hdh-b1-ibt" customClass="AutocompleteExampleViewController" customModule="Organ_AI" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ozO-YL-adO">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="VWp-om-WFX"/>
                     </view>
-                    <navigationItem key="navigationItem" id="yNf-bl-Oc5"/>
+                    <navigationItem key="navigationItem" title="OrganAI" id="yNf-bl-Oc5"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QCw-Gs-kiZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -644,7 +646,7 @@ You are free Today!</string>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="c55-HR-rh1"/>
+        <segue reference="P89-a5-rKe"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Background" width="363" height="743"/>

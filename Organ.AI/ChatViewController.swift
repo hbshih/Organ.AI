@@ -329,7 +329,10 @@ extension ChatViewController: InputBarAccessoryViewDelegate {
                     
                     /*------**/
                     
+                    if !self.first_message_sent
+                    {
                     recent_requests.insert(AutocompleteCompletion(text: attributedText.string), at: 0)
+                    }
                     self.first_message_sent = true
                     if self.api_response == false
                     {

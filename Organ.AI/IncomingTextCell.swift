@@ -54,12 +54,12 @@ class IncomingTextCell: UICollectionViewCell {
         
         scenario += 1
         
-        if scenario == 3
+        if scenario > 3
         {
             scenario = 1
         }
         
-        confirmSelectorView.isUserInteractionEnabled = false
+       // confirmSelectorView.isUserInteractionEnabled = false
         
         let newEvent = EKEvent(eventStore: EventsCalendarManager().eventStore)
         
@@ -90,6 +90,7 @@ class IncomingTextCell: UICollectionViewCell {
         VC.placeholder.removeAll()
         VC.missingVariables = ["time": true, "duration": true, "activity": true, "person": true, "placeholder": true]
         VC.first_message_sent = false
+        VC.done = false
         
         //  EventsCalendarManager().presentEventCalendarDetailModal(event: newEvent)
         
@@ -106,23 +107,26 @@ class IncomingTextCell: UICollectionViewCell {
     @IBAction func cancelTapped(_ sender: Any) {
         //VC.insertMessage(MockMessage(custom: ["T", "Tuesday 6/2 10:00 - 12:00", "Tuesday 6/2 14:00 - 16:00", "Tuesday 6/2 15:30 - 17:30"], user: MockUser(senderId: "Time", displayName: "Booking Assistant"), messageId: "adsf", date: Date()))
         
+        var msg = "Which timeslot do you prefer?"
+        VC.insertMessage(MockMessage(text: msg, user: MockUser(senderId: "C", displayName: "Booking Assistant"), messageId: "asjdfkl", date: Date()))
+        
         var timesets = [String]()
         if scenario == 1
                                        {
                                            timesets = ["Tuesday 6/2 12:00 - 14:00", "Tuesday 6/2 12:30 - 14:30", "Tuesday 6/2 15:30 - 17:30"]
-                                                                           VC.insertMessage(MockMessage(custom: ["C", "Tuesday 6/2 12:00 - 14:00", "Tuesday 6/2 12:30 - 14:30", "Tuesday 6/2 15:30 - 17:30"], user: MockUser(senderId: "Time", displayName: "Booking Assistant"), messageId: "adsf", date: Date()))
+                                                                           VC.insertMessage(MockMessage(custom: ["T", "Tuesday 6/2 12:00 - 14:00", "Tuesday 6/2 12:30 - 14:30", "Tuesday 6/2 15:30 - 17:30"], user: MockUser(senderId: "Time", displayName: "Booking Assistant"), messageId: "adsf", date: Date()))
                                        }else if scenario == 2
                                        {
                                            timesets = ["Wednesday 6/3 10:00 - 11:00", "Thusday 6/4 12:30 - 13:30", "Friday 6/5 15:30 - 16:30"]
-                                                                           VC.insertMessage(MockMessage(custom: ["C", "Wednesday 6/3 10:00 - 11:00", "Thusday 6/4 12:30 - 13:30", "Friday 6/5 15:30 - 16:30"], user: MockUser(senderId: "Time", displayName: "Booking Assistant"), messageId: "adsf", date: Date()))
+                                                                           VC.insertMessage(MockMessage(custom: ["T", "Wednesday 6/3 10:00 - 11:00", "Thusday 6/4 12:30 - 13:30", "Friday 6/5 15:30 - 16:30"], user: MockUser(senderId: "Time", displayName: "Booking Assistant"), messageId: "adsf", date: Date()))
                                        }else
                                        {
                                             timesets = ["Thursday 6/4 10:00 - 11:00", "Thusday 6/4 14:30 - 15:30", "Friday 6/5 11:30 - 12:30"]
-                                                                           VC.insertMessage(MockMessage(custom: ["C", "Thursday 6/4 10:00 - 11:00", "Thusday 6/4 14:30 - 15:30", "Friday 6/5 11:30 - 12:30"], user: MockUser(senderId: "Time", displayName: "Booking Assistant"), messageId: "adsf", date: Date()))
+                                                                           VC.insertMessage(MockMessage(custom: ["T", "Thursday 6/4 10:00 - 11:00", "Thusday 6/4 14:30 - 15:30", "Friday 6/5 11:30 - 12:30"], user: MockUser(senderId: "Time", displayName: "Booking Assistant"), messageId: "adsf", date: Date()))
                                        }
         
         
-        confirmSelectorView.isUserInteractionEnabled = false
+      //  confirmSelectorView.isUserInteractionEnabled = false
     }
     override func draw(_ rect: CGRect) {
         super.draw(rect)
@@ -162,28 +166,32 @@ class IncomingTextCell: UICollectionViewCell {
         
         
         var msg = "So you want to book your meeting with \(VC.person.joined(separator: ",")) at \(selectedTime)?"
-        VC.insertMessage(MockMessage(text: msg, user: MockUser(senderId: "ajdsklf", displayName: "Booking Assistant"), messageId: "asjdfkl", date: Date()))
+        VC.insertMessage(MockMessage(text: msg, user: MockUser(senderId: "C", displayName: "Booking Assistant"), messageId: "asjdfkl", date: Date()))
         
+        VC.insertMessage(MockMessage(custom: ["C", "Tuesday 6/2 12:00 - 14:00", "Tuesday 6/2 12:30 - 14:30", "Tuesday 6/2 15:30 - 17:30"], user: MockUser(senderId: "C", displayName: "Booking Assistant"), messageId: "adsf", date: Date()))
+        
+        /*
         var timesets = [String]()
         if scenario == 1
                                        {
                                            timesets = ["Tuesday 6/2 12:00 - 14:00", "Tuesday 6/2 12:30 - 14:30", "Tuesday 6/2 15:30 - 17:30"]
-                                                                           VC.insertMessage(MockMessage(custom: ["C", "Tuesday 6/2 12:00 - 14:00", "Tuesday 6/2 12:30 - 14:30", "Tuesday 6/2 15:30 - 17:30"], user: MockUser(senderId: "Time", displayName: "Booking Assistant"), messageId: "adsf", date: Date()))
+                                        VC.insertMessage(MockMessage(custom: ["T", "Tuesday 6/2 12:00 - 14:00", "Tuesday 6/2 12:30 - 14:30", "Tuesday 6/2 15:30 - 17:30"], user: MockUser(senderId: "Time", displayName: "Booking Assistant"), messageId: "adsf", date: Date()))
                                        }else if scenario == 2
                                        {
                                            timesets = ["Wednesday 6/3 10:00 - 11:00", "Thusday 6/4 12:30 - 13:30", "Friday 6/5 15:30 - 16:30"]
-                                                                           VC.insertMessage(MockMessage(custom: ["C", "Wednesday 6/3 10:00 - 11:00", "Thusday 6/4 12:30 - 13:30", "Friday 6/5 15:30 - 16:30"], user: MockUser(senderId: "Time", displayName: "Booking Assistant"), messageId: "adsf", date: Date()))
+                                                                           VC.insertMessage(MockMessage(custom: ["T", "Wednesday 6/3 10:00 - 11:00", "Thusday 6/4 12:30 - 13:30", "Friday 6/5 15:30 - 16:30"], user: MockUser(senderId: "Time", displayName: "Booking Assistant"), messageId: "adsf", date: Date()))
                                        }else
                                        {
                                             timesets = ["Thursday 6/4 10:00 - 11:00", "Thusday 6/4 14:30 - 15:30", "Friday 6/5 11:30 - 12:30"]
-                                                                           VC.insertMessage(MockMessage(custom: ["C", "Thursday 6/4 10:00 - 11:00", "Thusday 6/4 14:30 - 15:30", "Friday 6/5 11:30 - 12:30"], user: MockUser(senderId: "Time", displayName: "Booking Assistant"), messageId: "adsf", date: Date()))
+                                                                           VC.insertMessage(MockMessage(custom: ["T", "Thursday 6/4 10:00 - 11:00", "Thusday 6/4 14:30 - 15:30", "Friday 6/5 11:30 - 12:30"], user: MockUser(senderId: "Time", displayName: "Booking Assistant"), messageId: "adsf", date: Date()))
                                        }
         
         
+ */
         //VC.insertMessage(MockMessage(custom: ["C", timesets.joined(separator: ",")], user: MockUser(senderId: "C", displayName: "Booking Assistant"), messageId: "adsf", date: Date()))
-        date_1.isUserInteractionEnabled = false
-        date_2.isUserInteractionEnabled = false
-        date_3.isUserInteractionEnabled = false
+        //date_1.isUserInteractionEnabled = false
+        //date_2.isUserInteractionEnabled = false
+        //date_3.isUserInteractionEnabled = false
     }
     
 }
