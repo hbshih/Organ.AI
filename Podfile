@@ -32,6 +32,8 @@ target 'Organ.AI' do
   
   pod 'UITextView+Placeholder'
   
+  pod 'SpreadsheetView'
+  
   # Pods for Organ.AI
 
 end

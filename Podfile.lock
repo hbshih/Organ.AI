@@ -276,6 +276,7 @@ PODS:
   - nanopb/encode (0.3.9011)
   - OEMentions (0.1.4)
   - PromisesObjC (1.2.8)
+  - SpreadsheetView (0.8.4)
   - SwiftCheckboxDialog (1.0.1)
   - "UITextView+Placeholder (1.4.0)"
 
@@ -289,6 +290,7 @@ DEPENDENCIES:
   - FSCalendar
   - MessageKit
   - OEMentions
+  - SpreadsheetView
   - SwiftCheckboxDialog
   - "UITextView+Placeholder"
 
@@ -322,6 +324,7 @@ SPEC REPOS:
     - nanopb
     - OEMentions
     - PromisesObjC
+    - SpreadsheetView
     - SwiftCheckboxDialog
     - "UITextView+Placeholder"
 
@@ -353,9 +356,10 @@ SPEC CHECKSUMS:
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
   OEMentions: 183dbec4be18bcbf5e7ececea8a1a4ab44fd0bb9
   PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
+  SpreadsheetView: 17c55b6dc82099993cc2ceb818248d19f3220998
   SwiftCheckboxDialog: edfabc33371022c5c6ab0527a04b4d0f84bbe034
   "UITextView+Placeholder": d7b0c400921f66523f3a85d74f774512e14f6502
 
-PODFILE CHECKSUM: 5c0350fa1fc6a4e326f81380695c632d844a3171
+PODFILE CHECKSUM: 02cf5931710c3272691d819834ed4d0a25479c4d
 
 COCOAPODS: 1.9.0

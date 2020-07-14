@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		B5022345241679580064BEA0 /* eventDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5022344241679580064BEA0 /* eventDetailTableViewCell.swift */; };
 		B50B0AC32407F56B003A1E8D /* CalendarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50B0AC22407F56B003A1E8D /* CalendarModel.swift */; };
+		B50D6CDB24BD43ED00FF4635 /* ColumnFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50D6CDA24BD43ED00FF4635 /* ColumnFlowLayout.swift */; };
+		B50D6CDD24BD47AD00FF4635 /* PickAvailabilityDateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50D6CDC24BD47AD00FF4635 /* PickAvailabilityDateCollectionViewCell.swift */; };
+		B50D6CDF24BD47BF00FF4635 /* PickAvailabilityTimeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50D6CDE24BD47BF00FF4635 /* PickAvailabilityTimeCollectionViewCell.swift */; };
+		B50D6CE124BD495800FF4635 /* emptyCellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50D6CE024BD495800FF4635 /* emptyCellCollectionViewCell.swift */; };
 		B51B4C4723FD62140043CAD5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51B4C4623FD62140043CAD5 /* AppDelegate.swift */; };
 		B51B4C4923FD62140043CAD5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51B4C4823FD62140043CAD5 /* SceneDelegate.swift */; };
 		B51B4C4E23FD62140043CAD5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B51B4C4C23FD62140043CAD5 /* Main.storyboard */; };
@@ -25,6 +29,7 @@
 		B54CB247243113DD00E471DB /* String+FormerDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54CB245243113DD00E471DB /* String+FormerDemo.swift */; };
 		B54CB2492431163C00E471DB /* AddEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54CB2482431163C00E471DB /* AddEventViewController.swift */; };
 		B55D8BE92446CA38006E7908 /* OrganaiHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55D8BE82446CA38006E7908 /* OrganaiHandler.swift */; };
+		B560F90524B87DE000F63E07 /* PickAvailabilityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B560F90424B87DE000F63E07 /* PickAvailabilityViewController.swift */; };
 		B56614B6242F43DB0035AECF /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56614B5242F43DB0035AECF /* OnboardingViewController.swift */; };
 		B571E8E5244497EE005379BC /* NativeEventExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = B571E8E4244497EE005379BC /* NativeEventExample.swift */; };
 		B5883CEC242D0FB0003ECBF0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B5883CEB242D0FB0003ECBF0 /* GoogleService-Info.plist */; };
@@ -33,6 +38,9 @@
 		B5D7E878241BB0490037862F /* DateFormatHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D7E877241BB0490037862F /* DateFormatHandler.swift */; };
 		B5DE2BCA242D9F23001120E3 /* FirestoreHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DE2BC9242D9F23001120E3 /* FirestoreHandler.swift */; };
 		B5DE2BCC242DA1E8001120E3 /* EventsCalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DE2BCB242DA1E8001120E3 /* EventsCalendarManager.swift */; };
+		B5F1CC6224BC866600139D57 /* PickAvailabilityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F1CC6124BC866600139D57 /* PickAvailabilityViewController.swift */; };
+		B5F1CC6424BC86CA00139D57 /* PickAvailabilityCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F1CC6324BC86CA00139D57 /* PickAvailabilityCollectionViewCell.swift */; };
+		B5F1CC6624BC8F8800139D57 /* PickAvailabilityGrayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F1CC6524BC8F8800139D57 /* PickAvailabilityGrayCollectionViewCell.swift */; };
 		B5F75FBA247CE6F400A89238 /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F75FAC247CE6ED00A89238 /* SampleData.swift */; };
 		B5F75FBB247CE6F400A89238 /* Settings+UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F75FAD247CE6ED00A89238 /* Settings+UserDefaults.swift */; };
 		B5F75FBC247CE6F400A89238 /* AutocompleteExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F75FAE247CE6EE00A89238 /* AutocompleteExampleViewController.swift */; };
@@ -54,6 +62,10 @@
 		970B63AAB0F88E6D9BEC6718 /* Pods-Organ.AI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Organ.AI.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Organ.AI/Pods-Organ.AI.debug.xcconfig"; sourceTree = "<group>"; };
 		B5022344241679580064BEA0 /* eventDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eventDetailTableViewCell.swift; sourceTree = "<group>"; };
 		B50B0AC22407F56B003A1E8D /* CalendarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarModel.swift; sourceTree = "<group>"; };
+		B50D6CDA24BD43ED00FF4635 /* ColumnFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColumnFlowLayout.swift; sourceTree = "<group>"; };
+		B50D6CDC24BD47AD00FF4635 /* PickAvailabilityDateCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickAvailabilityDateCollectionViewCell.swift; sourceTree = "<group>"; };
+		B50D6CDE24BD47BF00FF4635 /* PickAvailabilityTimeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickAvailabilityTimeCollectionViewCell.swift; sourceTree = "<group>"; };
+		B50D6CE024BD495800FF4635 /* emptyCellCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = emptyCellCollectionViewCell.swift; sourceTree = "<group>"; };
 		B51B4C4323FD62140043CAD5 /* Organ.AI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Organ.AI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B51B4C4623FD62140043CAD5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B51B4C4823FD62140043CAD5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -72,6 +84,7 @@
 		B54CB245243113DD00E471DB /* String+FormerDemo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+FormerDemo.swift"; sourceTree = "<group>"; };
 		B54CB2482431163C00E471DB /* AddEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEventViewController.swift; sourceTree = "<group>"; };
 		B55D8BE82446CA38006E7908 /* OrganaiHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganaiHandler.swift; sourceTree = "<group>"; };
+		B560F90424B87DE000F63E07 /* PickAvailabilityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickAvailabilityViewController.swift; sourceTree = "<group>"; };
 		B56614B5242F43DB0035AECF /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		B571E8E4244497EE005379BC /* NativeEventExample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NativeEventExample.swift; sourceTree = "<group>"; };
 		B5883CEB242D0FB0003ECBF0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -80,6 +93,9 @@
 		B5D7E877241BB0490037862F /* DateFormatHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatHandler.swift; sourceTree = "<group>"; };
 		B5DE2BC9242D9F23001120E3 /* FirestoreHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreHandler.swift; sourceTree = "<group>"; };
 		B5DE2BCB242DA1E8001120E3 /* EventsCalendarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsCalendarManager.swift; sourceTree = "<group>"; };
+		B5F1CC6124BC866600139D57 /* PickAvailabilityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickAvailabilityViewController.swift; sourceTree = "<group>"; };
+		B5F1CC6324BC86CA00139D57 /* PickAvailabilityCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickAvailabilityCollectionViewCell.swift; sourceTree = "<group>"; };
+		B5F1CC6524BC8F8800139D57 /* PickAvailabilityGrayCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickAvailabilityGrayCollectionViewCell.swift; sourceTree = "<group>"; };
 		B5F75FAC247CE6ED00A89238 /* SampleData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
 		B5F75FAD247CE6ED00A89238 /* Settings+UserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Settings+UserDefaults.swift"; sourceTree = "<group>"; };
 		B5F75FAE247CE6EE00A89238 /* AutocompleteExampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutocompleteExampleViewController.swift; sourceTree = "<group>"; };
@@ -177,6 +193,7 @@
 				B5883CEB242D0FB0003ECBF0 /* GoogleService-Info.plist */,
 				B54CB245243113DD00E471DB /* String+FormerDemo.swift */,
 				B54CB244243113DC00E471DB /* UIColor+FormerDemo.swift */,
+				B560F90424B87DE000F63E07 /* PickAvailabilityViewController.swift */,
 			);
 			path = Organ.AI;
 			sourceTree = "<group>";
@@ -202,6 +219,12 @@
 				B54CB2482431163C00E471DB /* AddEventViewController.swift */,
 				B5327A0E243A00E6003F2CF8 /* MessageViewController.swift */,
 				B571E8E4244497EE005379BC /* NativeEventExample.swift */,
+				B5F1CC6324BC86CA00139D57 /* PickAvailabilityCollectionViewCell.swift */,
+				B5F1CC6524BC8F8800139D57 /* PickAvailabilityGrayCollectionViewCell.swift */,
+				B50D6CDA24BD43ED00FF4635 /* ColumnFlowLayout.swift */,
+				B50D6CDC24BD47AD00FF4635 /* PickAvailabilityDateCollectionViewCell.swift */,
+				B50D6CDE24BD47BF00FF4635 /* PickAvailabilityTimeCollectionViewCell.swift */,
+				B50D6CE024BD495800FF4635 /* emptyCellCollectionViewCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -213,6 +236,7 @@
 				B5DE2BCB242DA1E8001120E3 /* EventsCalendarManager.swift */,
 				B54732E62443466D00027D5D /* OEMentions.swift */,
 				B55D8BE82446CA38006E7908 /* OrganaiHandler.swift */,
+				B5F1CC6124BC866600139D57 /* PickAvailabilityViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -332,6 +356,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5F1CC6424BC86CA00139D57 /* PickAvailabilityCollectionViewCell.swift in Sources */,
 				B5022345241679580064BEA0 /* eventDetailTableViewCell.swift in Sources */,
 				B5F75FBA247CE6F400A89238 /* SampleData.swift in Sources */,
 				B5F75FBC247CE6F400A89238 /* AutocompleteExampleViewController.swift in Sources */,
@@ -344,6 +369,7 @@
 				B50B0AC32407F56B003A1E8D /* CalendarModel.swift in Sources */,
 				B55D8BE92446CA38006E7908 /* OrganaiHandler.swift in Sources */,
 				B5A151C924718D5A007B9704 /* Message.swift in Sources */,
+				B560F90524B87DE000F63E07 /* PickAvailabilityViewController.swift in Sources */,
 				B5F75FC1247CE6F400A89238 /* UIColor+Extensions.swift in Sources */,
 				B54CB247243113DD00E471DB /* String+FormerDemo.swift in Sources */,
 				B5F75FBE247CE6F400A89238 /* MockMessage.swift in Sources */,
@@ -351,10 +377,13 @@
 				B571E8E5244497EE005379BC /* NativeEventExample.swift in Sources */,
 				B54CB2492431163C00E471DB /* AddEventViewController.swift in Sources */,
 				B5F75FC6247CE6F400A89238 /* ChatViewController.swift in Sources */,
+				B5F1CC6624BC8F8800139D57 /* PickAvailabilityGrayCollectionViewCell.swift in Sources */,
 				B51B4C5123FD62140043CAD5 /* Organ_AI.xcdatamodeld in Sources */,
+				B50D6CDF24BD47BF00FF4635 /* PickAvailabilityTimeCollectionViewCell.swift in Sources */,
 				B5D7E878241BB0490037862F /* DateFormatHandler.swift in Sources */,
 				B5F75FBB247CE6F400A89238 /* Settings+UserDefaults.swift in Sources */,
 				B537C77323FF01D9005D0C5E /* CalendarTableViewCell.swift in Sources */,
+				B50D6CE124BD495800FF4635 /* emptyCellCollectionViewCell.swift in Sources */,
 				B5F75FC2247CE6F400A89238 /* IncomingTextCell.swift in Sources */,
 				B51B4C4723FD62140043CAD5 /* AppDelegate.swift in Sources */,
 				B5327A0F243A00E7003F2CF8 /* MessageViewController.swift in Sources */,
@@ -362,9 +391,12 @@
 				B5DE2BCC242DA1E8001120E3 /* EventsCalendarManager.swift in Sources */,
 				B56614B6242F43DB0035AECF /* OnboardingViewController.swift in Sources */,
 				B537C77123FEFAA9005D0C5E /* CalendarViewController.swift in Sources */,
+				B50D6CDD24BD47AD00FF4635 /* PickAvailabilityDateCollectionViewCell.swift in Sources */,
+				B50D6CDB24BD43ED00FF4635 /* ColumnFlowLayout.swift in Sources */,
 				B5F75FC7247CE6F400A89238 /* CustomMessageSizeCalculator.swift in Sources */,
 				B5F75FC4247CE6F400A89238 /* String+Extension.swift in Sources */,
 				B51B4C4923FD62140043CAD5 /* SceneDelegate.swift in Sources */,
+				B5F1CC6224BC866600139D57 /* PickAvailabilityViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

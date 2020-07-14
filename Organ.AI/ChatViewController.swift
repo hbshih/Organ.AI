@@ -46,6 +46,8 @@ class ChatViewController: MessagesViewController, MessagesDataSource {
             self.token = str
             self.loadFirstMessages()
         })
+        
+        
         messagesCollectionView.isUserInteractionEnabled = true
     }
     
@@ -450,7 +452,14 @@ extension ChatViewController: InputBarAccessoryViewDelegate {
                                 self.setTypingIndicatorViewHidden(true, animated: true)
                                 
                                 msg = "This is all the available timeslots of \(self.person.joined(separator: ",")). Pick a time that you prefer and I will book it for you:"
-                                self.insertMessage(MockMessage(text: msg, user: MockUser(senderId: "ajdsklf", displayName: "Booking Assistant"), messageId: "asjdfkl", date: Date()))
+                                
+                                if let controller = self.storyboard?.instantiateViewController(identifier: "PickAvailabilityViewController") {
+                                   controller.isModalInPresentation = true
+                                    self.present(controller, animated: true, completion: nil)
+                                }
+                                
+                                
+                                /*self.insertMessage(MockMessage(text: msg, user: MockUser(senderId: "ajdsklf", displayName: "Booking Assistant"), messageId: "asjdfkl", date: Date()))
                                 
                                 var timesets = [String]()
                                 if scenario == 1
@@ -465,7 +474,7 @@ extension ChatViewController: InputBarAccessoryViewDelegate {
                                 {
                                      timesets = ["Thursday 6/4 10:00 - 11:00", "Thusday 6/4 14:30 - 15:30", "Friday 6/5 11:30 - 12:30"]
                                                                     self.insertMessage(MockMessage(custom: ["T", "Thursday 6/4 10:00 - 11:00", "Thusday 6/4 14:30 - 15:30", "Friday 6/5 11:30 - 12:30"], user: MockUser(senderId: "Time", displayName: "Booking Assistant"), messageId: "adsf", date: Date()))
-                                }
+                                }*/
                             }
                         }
                         self.messagesCollectionView.scrollToBottom()

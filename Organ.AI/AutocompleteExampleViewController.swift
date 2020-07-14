@@ -123,8 +123,6 @@ final class AutocompleteExampleViewController: ChatViewController {
         
         // Set plugins
         messageInputBar.inputPlugins = [autocompleteManager]
-        
-        
     }
     
     
