@@ -9,6 +9,7 @@
 import UIKit
 import FSCalendar
 import SwiftCheckboxDialog
+import JFContactsPicker
 
 struct cellData
 {
@@ -17,7 +18,7 @@ struct cellData
     var sectionData = [String: Any]()
 }
 
-class CalendarViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, FSCalendarDataSource, FSCalendarDelegate, UIGestureRecognizerDelegate, CheckboxDialogViewDelegate
+class CalendarViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, FSCalendarDataSource, FSCalendarDelegate, UIGestureRecognizerDelegate, CheckboxDialogViewDelegate, ContactsPickerDelegate
 {
     
     @IBOutlet weak var tableView: UITableView!
@@ -227,7 +228,37 @@ class CalendarViewController: UIViewController, UITableViewDataSource, UITableVi
         print(DateFormatHandler().dateToFormattedString(date: calendar.currentPage))
     }
     
-
+    @IBAction func contactTapped(_ sender: Any) {
+     
+        let contactPicker = ContactsPicker(delegate: self, multiSelection:false, subtitleCellType: .email)
+        let navigationController = UINavigationController(rootViewController: contactPicker)
+        self.present(navigationController, animated: true, completion: nil)
+    }
+    
+    //MARK: EPContactsPicker delegates
+    func contactPicker(_: ContactsPicker, didContactFetchFailed error: NSError) {
+        print("Failed with error \(error.description)")
+    }
+    
+    func contactPicker(_: ContactsPicker, didSelectContact contact: Contact) {
+        print("Contact \(contact.displayName) has been selected")
+    }
+    
+    func contactPickerDidCancel(_ picker: ContactsPicker) {
+        picker.dismiss(animated: true, completion: nil)
+        print("User canceled the selection");
+    }
+    
+    func contactPicker(_ picker: ContactsPicker, didSelectMultipleContacts contacts: [Contact]) {
+        defer { picker.dismiss(animated: true, completion: nil) }
+        guard !contacts.isEmpty else { return }
+        print("The following contacts are selected")
+        for contact in contacts {
+            print("\(contact.displayName)")
+        }
+    
+    }
+    
     var selectedDate = ""
     var selectedDay = ""
     

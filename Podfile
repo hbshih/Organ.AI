@@ -33,6 +33,7 @@ target 'Organ.AI' do
   pod 'UITextView+Placeholder'
   
   pod 'SpreadsheetView'
+  pod 'JFContactsPicker', '~> 2.0'
   
   # Pods for Organ.AI
 

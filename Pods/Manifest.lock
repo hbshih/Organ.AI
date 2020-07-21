@@ -266,6 +266,7 @@ PODS:
   - InputBarAccessoryView (4.3.2):
     - InputBarAccessoryView/Core (= 4.3.2)
   - InputBarAccessoryView/Core (4.3.2)
+  - JFContactsPicker (2.0.0)
   - leveldb-library (1.22)
   - MessageKit (3.1.0):
     - InputBarAccessoryView (~> 4.3.0)
@@ -288,6 +289,7 @@ DEPENDENCIES:
   - FirebaseFirestoreSwift
   - Former
   - FSCalendar
+  - JFContactsPicker (~> 2.0)
   - MessageKit
   - OEMentions
   - SpreadsheetView
@@ -319,6 +321,7 @@ SPEC REPOS:
     - "gRPC-C++"
     - gRPC-Core
     - InputBarAccessoryView
+    - JFContactsPicker
     - leveldb-library
     - MessageKit
     - nanopb
@@ -351,6 +354,7 @@ SPEC CHECKSUMS:
   "gRPC-C++": 9dfe7b44821e7b3e44aacad2af29d2c21f7cde83
   gRPC-Core: c9aef9a261a1247e881b18059b84d597293c9947
   InputBarAccessoryView: 7985d418040a05fe894bd4b8328dd43ab35517c3
+  JFContactsPicker: 2d2a8aeaf15932bd81a384d4f847c8d13200dfd9
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   MessageKit: 3beb578737a5aa2bba25cc27c7b6d6faa09af5a7
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
@@ -360,6 +364,6 @@ SPEC CHECKSUMS:
   SwiftCheckboxDialog: edfabc33371022c5c6ab0527a04b4d0f84bbe034
   "UITextView+Placeholder": d7b0c400921f66523f3a85d74f774512e14f6502
 
-PODFILE CHECKSUM: 02cf5931710c3272691d819834ed4d0a25479c4d
+PODFILE CHECKSUM: 27dd10540e47702c8a166ba584e392f2746a9f27
 
 COCOAPODS: 1.9.0
