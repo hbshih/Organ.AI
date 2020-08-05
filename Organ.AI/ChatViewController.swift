@@ -444,7 +444,7 @@ extension ChatViewController: InputBarAccessoryViewDelegate {
                             
                         }else
                         {
-                            msg = "I am checking the time with \(self.person.joined(separator: ","))... hold on for a second..."
+                            msg = "I am checking the availabilities of \(self.person.joined(separator: ","))... hold on for a second..."
                             self.insertMessage(MockMessage(text: msg, user: MockUser(senderId: "ajdsklf", displayName: "Booking Assistant"), messageId: "asjdfkl", date: Date()))
                             
                             
@@ -453,9 +453,14 @@ extension ChatViewController: InputBarAccessoryViewDelegate {
                                 
                                 msg = "This is all the available timeslots of \(self.person.joined(separator: ",")). Pick a time that you prefer and I will book it for you:"
                                 
-                                if let controller = self.storyboard?.instantiateViewController(identifier: "PickAvailabilityViewController") {
+                                if let controller = self.storyboard?.instantiateViewController(identifier: "PickAvailabilityViewController") as? PickAvailabilityViewController
+                                {
                                    controller.isModalInPresentation = true
-                                    self.present(controller, animated: true, completion: nil)
+                                    print(self.activity[0])
+                                    self.present(controller, animated: true) {
+                                        controller.eventTitle.text = self.activity[0]
+                                        controller.eventAddress.text = self.placeholder[0]
+                                    }
                                 }
                                 
                                 

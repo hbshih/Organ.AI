@@ -8,17 +8,23 @@
 
 import UIKit
 import MapKit
+import JFContactsPicker
 
-class PickAvailabilityViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class PickAvailabilityViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, ContactsPickerDelegate
+{
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var mapkit: MKMapView!
+    @IBOutlet weak var eventTitle: UILabel!
+    @IBOutlet weak var eventDescription: UILabel!
+    @IBOutlet weak var eventAddress: UILabel!
+    var timeCount = 0
     
     let columnLayout = ColumnFlowLayout(
         cellsPerRow: 6,
         minimumInteritemSpacing: 5,
-        minimumLineSpacing: 5
-       // sectionInset: UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        minimumLineSpacing: 5,
+        sectionInset: UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     )
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -59,6 +65,23 @@ class PickAvailabilityViewController: UIViewController, UICollectionViewDelegate
         if indexPath.item % 6 == 0
         {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TimeCell", for: indexPath) as! PickAvailabilityTimeCollectionViewCell
+            
+            switch timeCount {
+            case 1:
+                cell.timeCell.text = "10:00 - 11:00"
+            case 2:
+                cell.timeCell.text = "13:00 - 14:00"
+            case 3:
+                cell.timeCell.text = "15:20 - 16:20"
+            case 4:
+                cell.timeCell.text = "19:00 - 20:00"
+            default:
+                cell.timeCell.text = "10:00 - 11:00"
+            }
+            
+            timeCount += 1
+            
+            
             return cell
         }
         
@@ -75,12 +98,69 @@ class PickAvailabilityViewController: UIViewController, UICollectionViewDelegate
         return cell
     }
     
+    var SelectedCell = IndexPath()
+    var timeSelected = false
+
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(indexPath.item)
-        performSegue(withIdentifier: "homeSegue", sender: nil)
+        
+        if timeSelected == false
+        {
+            let cell = collectionView.cellForItem(at: indexPath) as! PickAvailabilityCollectionViewCell
+            cell.cell.backgroundColor = UIColor(red: 66/255, green: 173/255, blue: 162/255, alpha: 1.0)
+            cell.timeText.text = "Selected"
+            SelectedCell = indexPath
+            timeSelected = true
+        }else
+        {
+            var cell = collectionView.cellForItem(at: SelectedCell) as! PickAvailabilityCollectionViewCell
+            cell.cell.backgroundColor = UIColor(red: 114/255, green: 215/255, blue: 210/255, alpha: 1.0)
+            cell.timeText.text = "Available"
+            
+            cell = collectionView.cellForItem(at: indexPath) as! PickAvailabilityCollectionViewCell
+            cell.cell.backgroundColor = UIColor(red: 66/255, green: 173/255, blue: 162/255, alpha: 1.0)
+            cell.timeText.text = "Selected"
+            SelectedCell = indexPath
+        }
+
+
+
+
     }
     
-
+    @IBAction func addInvitees(_ sender: Any) {
+        
+        let contactPicker = ContactsPicker(delegate: self, multiSelection: true, subtitleCellType: .email)
+        let navigationController = UINavigationController(rootViewController: contactPicker)
+        self.present(navigationController, animated: true, completion: nil)
+        
+    }
+    
+    //MARK: EPContactsPicker delegates
+      func contactPicker(_: ContactsPicker, didContactFetchFailed error: NSError) {
+          print("Failed with error \(error.description)")
+        
+      }
+      
+      func contactPicker(_: ContactsPicker, didSelectContact contact: Contact) {
+     //   contact.
+          print("Contact \(contact.displayName) has been selected")
+      }
+      
+      func contactPickerDidCancel(_ picker: ContactsPicker) {
+          picker.dismiss(animated: true, completion: nil)
+          print("User canceled the selection");
+      }
+      
+      func contactPicker(_ picker: ContactsPicker, didSelectMultipleContacts contacts: [Contact]) {
+          defer { picker.dismiss(animated: true, completion: nil) }
+          guard !contacts.isEmpty else { return }
+          print("The following contacts are selected")
+          for contact in contacts {
+              print("\(contact.displayName)")
+          }
+      
+      }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -123,5 +203,8 @@ class PickAvailabilityViewController: UIViewController, UICollectionViewDelegate
         }
     }
     
+    @IBAction func confirmMeeting(_ sender: Any) {
+        performSegue(withIdentifier: "homeSegue", sender: nil)
+    }
     
 }

@@ -116,7 +116,7 @@ final class AutocompleteExampleViewController: ChatViewController {
         autocompleteManager.register(prefix: "r")
         autocompleteManager.register(prefix: "T")
         autocompleteManager.register(prefix: "t")
-        autocompleteManager.register(prefix: "#")
+        autocompleteManager.register(prefix: "/")
         autocompleteManager.register(prefix: "1")
         autocompleteManager.register(prefix: "2")
         autocompleteManager.maxSpaceCountDuringCompletion = 1 // Allow for autocompletes with a space
@@ -178,7 +178,7 @@ final class AutocompleteExampleViewController: ChatViewController {
     @objc
     func joinChat() {
         configureMessageInputBarForChat()
-        self.insertMessage(MockMessage(text: "Tip: Type '#' to look for your recent requests.", user: MockUser(senderId: "asdf", displayName: "Booking Assistant"), messageId: "ajskflj", date: Date()))
+        self.insertMessage(MockMessage(text: "Tip: Type '/' to look for your recent requests.", user: MockUser(senderId: "asdf", displayName: "Booking Assistant"), messageId: "ajskflj", date: Date()))
         messageInputBar.becomeFirstResponder()
     }
     
@@ -251,7 +251,7 @@ final class AutocompleteExampleViewController: ChatViewController {
         
         
         
-        guard autocompleteManager.currentSession != nil, autocompleteManager.currentSession?.prefix == "#" else { return }
+        guard autocompleteManager.currentSession != nil, autocompleteManager.currentSession?.prefix == "/" else { return }
         // Load some data asyncronously for the given session.prefix
         /*DispatchQueue.global(qos: .default).async {
             // fake background loading task
@@ -314,7 +314,7 @@ extension AutocompleteExampleViewController: AutocompleteManagerDelegate, Autoco
                 return [AutocompleteCompletion(text: "at 10am"), AutocompleteCompletion(text: "at 2pm")]
             }
             
-            if prefix == "#"
+            if prefix == "/"
             {
                 
                 return recent_requests
@@ -357,7 +357,7 @@ extension AutocompleteExampleViewController: AutocompleteManagerDelegate, Autoco
                     return [AutocompleteCompletion(text: "on Friday"), AutocompleteCompletion(text: "on Monday")]
                 }
                 
-                if prefix == "#"
+                if prefix == "/"
                 {
                     return [AutocompleteCompletion(text: "Monday"), AutocompleteCompletion(text: "Tuesday"), AutocompleteCompletion(text: "Wednesday"), AutocompleteCompletion(text: "Thursday"), AutocompleteCompletion(text: "Friday")]
                 }
@@ -380,7 +380,7 @@ extension AutocompleteExampleViewController: AutocompleteManagerDelegate, Autoco
                     return  r_suggestion
                 }
                 
-                if prefix == "#"
+                if prefix == "/"
                 {
                     return hashtag_suggestion
                 }
@@ -443,7 +443,7 @@ extension AutocompleteExampleViewController: AutocompleteManagerDelegate, Autoco
                     return [AutocompleteCompletion(text: "Skype"), AutocompleteCompletion(text: "Starbucks")]
                 }
                 
-                if prefix == "#"
+                if prefix == "/"
                 {
                     return hashtag_suggestion
                 }

@@ -9,5 +9,6 @@
 import UIKit
 
 class PickAvailabilityTimeCollectionViewCell: UICollectionViewCell {
+    @IBOutlet weak var timeCell: UILabel!
     
 }

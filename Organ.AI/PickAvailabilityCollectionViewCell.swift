@@ -11,6 +11,7 @@ import UIKit
 class PickAvailabilityCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var cell: UIView!
+    @IBOutlet weak var timeText: UILabel!
     
     
 }
