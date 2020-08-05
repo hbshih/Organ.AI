@@ -373,12 +373,24 @@ class CalendarViewController: UIViewController, UITableViewDataSource, UITableVi
             
             // Event Detail
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "eventDetailCell") as? eventDetailTableViewCell else {return UITableViewCell()}
-            cell.eventLocation.text = presentDataList[indexPath.section].sectionData["Location"] as? String
-            cell.eventNote.text = presentDataList[indexPath.section].sectionData["Detail"] as? String
+          //  cell.eventLocation.text = presentDataList[indexPath.section].sectionData["Location"] as? String
+            
+            cell.eventLocation.setTitle((presentDataList[indexPath.section].sectionData["Location"] as? String)!, for: .normal)
+    //        cell.eventLocation.titleLabel = (presentDataList[indexPath.section].sectionData["Location"] as? String)!
+
+            
+            if ((presentDataList[indexPath.section].sectionData["Detail"] as? String) != nil)
+            {
+                cell.eventNote.text = presentDataList[indexPath.section].sectionData["Detail"] as? String
+            }else
+            {
+                cell.eventNote.text = "Notes..."
+                cell.eventNote.textColor = .gray
+            }
             
             if ((presentDataList[indexPath.section].sectionData["Title"] as? String)?.contains("seo"))!
             {
-                cell.eventLocation.text = "Room A"
+                //cell.eventLocation.text = "Room A"
                 cell.eventNote.text = "Task 1 Completed"
             }
             return cell

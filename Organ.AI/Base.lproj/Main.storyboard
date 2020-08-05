@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="l1i-wd-kYJ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="l1i-wd-kYJ">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -231,6 +231,9 @@
                                                     </constraints>
                                                 </collectionViewCellContentView>
                                                 <size key="customSize" width="65" height="80"/>
+                                                <connections>
+                                                    <outlet property="date" destination="oaD-1F-LX5" id="Obg-FP-nuG"/>
+                                                </connections>
                                             </collectionViewCell>
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="emptyCell" id="eaZ-wF-W7z" customClass="emptyCellCollectionViewCell" customModule="Organ_AI" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="90" width="128" height="128"/>
@@ -614,18 +617,16 @@
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Org-LC-Hz5">
-                                                                    <rect key="frame" x="247.5" y="0.0" width="134.5" height="55"/>
-                                                                    <string key="text">Scandic ContinentalKlarabergsviadukten 100
-111 23 Stockholm</string>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                                    <nil key="textColor"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CGx-V6-Cvm">
+                                                                    <rect key="frame" x="249" y="0.0" width="133" height="55"/>
+                                                                    <state key="normal" title="Button"/>
+                                                                    <connections>
+                                                                        <action selector="openMap:" destination="pZs-8w-tql" eventType="touchUpInside" id="8uL-9R-zhj"/>
+                                                                    </connections>
+                                                                </button>
                                                             </subviews>
                                                             <constraints>
                                                                 <constraint firstItem="C6c-jC-p6g" firstAttribute="width" secondItem="XAK-DH-yxa" secondAttribute="width" multiplier="0.6" id="HXG-aH-ckT"/>
-                                                                <constraint firstItem="Org-LC-Hz5" firstAttribute="width" secondItem="XAK-DH-yxa" secondAttribute="width" multiplier="0.351449" id="hDm-X9-IfD"/>
                                                             </constraints>
                                                         </stackView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="MT4-Jk-S4C">
@@ -729,7 +730,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="eventLocation" destination="Org-LC-Hz5" id="faZ-Bp-iHw"/>
+                                            <outlet property="eventLocation" destination="CGx-V6-Cvm" id="MeF-F8-xRO"/>
                                             <outlet property="eventNote" destination="C6c-jC-p6g" id="7CK-KB-nNH"/>
                                         </connections>
                                     </tableViewCell>

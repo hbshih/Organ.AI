@@ -10,4 +10,7 @@ import UIKit
 
 class PickAvailabilityDateCollectionViewCell: UICollectionViewCell {
     
+    @IBOutlet weak var date: UILabel!
+    
+    
 }

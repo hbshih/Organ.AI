@@ -37,6 +37,22 @@ class PickAvailabilityViewController: UIViewController, UICollectionViewDelegate
         if indexPath.item < 6
         {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DateCell", for: indexPath) as! PickAvailabilityDateCollectionViewCell
+            
+            switch indexPath.item {
+            case 1:
+                cell.date.text = "July\n8\nMon"
+            case 2:
+                cell.date.text = "July\n9\nTue"
+            case 3:
+                cell.date.text = "July\n10\nWed"
+            case 4:
+                cell.date.text = "July\n11\nThu"
+            case 5:
+                cell.date.text = "July\n12\nFri"
+            default:
+                cell.date.text = ""
+            }
+
             return cell
         }
         
@@ -46,7 +62,7 @@ class PickAvailabilityViewController: UIViewController, UICollectionViewDelegate
             return cell
         }
         
-        if indexPath.item == 17
+        if indexPath.item == 17 || indexPath.item == 14
         {
             
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GreenCell", for: indexPath) as! PickAvailabilityCollectionViewCell

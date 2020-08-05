@@ -11,7 +11,8 @@ import UIKit
 class eventDetailTableViewCell: UITableViewCell {
 
     @IBOutlet weak var eventNote: UILabel!
-    @IBOutlet weak var eventLocation: UILabel!
+    @IBOutlet weak var eventLocation: UIButton!
+   // @IBOutlet weak var eventLocation: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -22,5 +23,19 @@ class eventDetailTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    @IBAction func openMap(_ sender: Any) {
+        
+        if let location = eventLocation.titleLabel?.text
+        {
+            UIApplication.shared.open(NSURL(string:
+                "http://maps.apple.com/?daddr=\(location)")! as URL)
+        }
+        
+    //    print(location)
+        
+
+    }
+    
 
 }
