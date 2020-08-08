@@ -9,15 +9,24 @@
 import UIKit
 import MapKit
 import JFContactsPicker
+import ContactsUI
+
 
 class PickAvailabilityViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, ContactsPickerDelegate
 {
     
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var participantCollectionView: UICollectionView!
     @IBOutlet weak var mapkit: MKMapView!
     @IBOutlet weak var eventTitle: UILabel!
     @IBOutlet weak var eventDescription: UILabel!
     @IBOutlet weak var eventAddress: UILabel!
+    
+    var contactName = [String]()
+    var contactImage = [UIImage]()
+    
+    var participants = [String]()
+    
     var timeCount = 0
     
     let columnLayout = ColumnFlowLayout(
@@ -28,10 +37,34 @@ class PickAvailabilityViewController: UIViewController, UICollectionViewDelegate
     )
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        30
+        
+        if collectionView == participantCollectionView
+        {
+            return self.contactName.count
+        }
+        
+        return 30
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        
+        if collectionView == participantCollectionView
+        {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "participantCell", for: indexPath) as! ParticipantCollectionViewCell
+            
+                cell.label.text = contactName[indexPath.item]
+            cell.iamge.image = contactImage[indexPath.item]
+            
+            
+            
+            
+            
+            return cell
+            
+        }
+        
+        
         
         if indexPath.item == 0
         {
@@ -58,7 +91,7 @@ class PickAvailabilityViewController: UIViewController, UICollectionViewDelegate
             default:
                 cell.date.text = ""
             }
-
+            
             return cell
         }
         
@@ -100,7 +133,7 @@ class PickAvailabilityViewController: UIViewController, UICollectionViewDelegate
     
     var SelectedCell = IndexPath()
     var timeSelected = false
-
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         if timeSelected == false
@@ -121,10 +154,6 @@ class PickAvailabilityViewController: UIViewController, UICollectionViewDelegate
             cell.timeText.text = "Selected"
             SelectedCell = indexPath
         }
-
-
-
-
     }
     
     @IBAction func addInvitees(_ sender: Any) {
@@ -136,34 +165,44 @@ class PickAvailabilityViewController: UIViewController, UICollectionViewDelegate
     }
     
     //MARK: EPContactsPicker delegates
-      func contactPicker(_: ContactsPicker, didContactFetchFailed error: NSError) {
-          print("Failed with error \(error.description)")
+    func contactPicker(_: ContactsPicker, didContactFetchFailed error: NSError) {
+        print("Failed with error \(error.description)")
         
-      }
-      
-      func contactPicker(_: ContactsPicker, didSelectContact contact: Contact) {
-     //   contact.
-          print("Contact \(contact.displayName) has been selected")
-      }
-      
-      func contactPickerDidCancel(_ picker: ContactsPicker) {
-          picker.dismiss(animated: true, completion: nil)
-          print("User canceled the selection");
-      }
-      
-      func contactPicker(_ picker: ContactsPicker, didSelectMultipleContacts contacts: [Contact]) {
-          defer { picker.dismiss(animated: true, completion: nil) }
-          guard !contacts.isEmpty else { return }
-          print("The following contacts are selected")
-          for contact in contacts {
-              print("\(contact.displayName)")
-          }
-      
-      }
+    }
+    
+    func contactPicker(_: ContactsPicker, didSelectContact contact: Contact) {
+        //   contact.
+        print("Contact \(contact.displayName) has been selected")
+    }
+    
+    func contactPickerDidCancel(_ picker: ContactsPicker) {
+        picker.dismiss(animated: true, completion: nil)
+        print("User canceled the selection");
+    }
+    
+    func contactPicker(_ picker: ContactsPicker, didSelectMultipleContacts contacts: [Contact]) {
+        defer { picker.dismiss(animated: true, completion: nil) }
+        guard !contacts.isEmpty else { return }
+        print("The following contacts are selected")
+        for contact in contacts {
+            print("\(contact.displayName)")
+            let name = "\(contact.firstName) \(contact.lastName)"
+            contactName.append(name)
+            if let image = contact.profileImage as? UIImage
+            {
+                contactImage.append(image)
+            }else
+            {
+                contactImage.append(UIImage(named: "user")!)
+            }
+          //  contactImage.append(contact.profileImage ?? UIImage(named: "user"))
+        }
+        participantCollectionView.reloadData()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         collectionView?.collectionViewLayout = columnLayout
         collectionView?.contentInsetAdjustmentBehavior = .always
         collectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
@@ -184,12 +223,20 @@ class PickAvailabilityViewController: UIViewController, UICollectionViewDelegate
             let pLat = location.latitude
             let pLong = location.longitude
             let center = CLLocationCoordinate2D(latitude: pLat, longitude: pLong)
-
+            
             let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
             self.mapkit.setRegion(region, animated: true)
         }
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        print("Participants \(participants)")
+        
 
+        
+        
+    }
+    
     func coordinates(forAddress address: String, completion: @escaping (CLLocationCoordinate2D?) -> Void) {
         let geocoder = CLGeocoder()
         geocoder.geocodeAddressString(address) {

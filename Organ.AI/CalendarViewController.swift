@@ -28,8 +28,6 @@ class CalendarViewController: UIViewController, UITableViewDataSource, UITableVi
     @IBOutlet weak var NoEventLabel: UILabel!
     @IBOutlet weak var navBar: UINavigationItem!
     
-    
-    
     // Data Accesible
     var tableViewData = [cellData]()
     var datesWithEvent: [String: [String]] = ["2020/03/14": ["id_1", "id_2"] , "2020/03/18": ["id_3"]]

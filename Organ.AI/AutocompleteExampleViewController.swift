@@ -9,6 +9,7 @@
 import UIKit
 import MessageKit
 import InputBarAccessoryView
+import ContactsUI
 
 final class AutocompleteExampleViewController: ChatViewController {
     
@@ -43,7 +44,7 @@ final class AutocompleteExampleViewController: ChatViewController {
     
     var i_suggestion: [AutocompleteCompletion] = [AutocompleteCompletion(text: "In the Office"), AutocompleteCompletion(text: "In Room A")]
     
-    var users: [AutocompleteCompletion] = [AutocompleteCompletion(text: "Ben Shih,", context: ["id": "00001"]), AutocompleteCompletion(text: "Amanda", context: ["id": "00002"]), AutocompleteCompletion(text: "Mandy", context: ["id": "00003"]), AutocompleteCompletion(text: "Marketing Team", context: ["id": "00004"]),  AutocompleteCompletion(text: "Zack Wilson,", context: ["id": "00005"]), AutocompleteCompletion(text: "Erik Flores,", context: ["id": "00006"])]
+    var users: [AutocompleteCompletion] = [AutocompleteCompletion(text: "Erik Flores", context: ["id": "00001"]), AutocompleteCompletion(text: "Ben Shih", context: ["id": "00002"]), AutocompleteCompletion(text: "Ather Gattami", context: ["id": "00003"])]
     
     var r_suggestion: [AutocompleteCompletion] = []
     var hashtag_suggestion: [AutocompleteCompletion] = []
@@ -92,33 +93,35 @@ final class AutocompleteExampleViewController: ChatViewController {
         } else {
             // Fallback on earlier versions
         }
-
+        
         messageInputBar.inputTextView.keyboardType = .twitter
         
         autocompleteManager.register(prefix: "@", with: [.font: UIFont.preferredFont(forTextStyle: .body), .foregroundColor: UIColor.primaryColor, .backgroundColor: UIColor.primaryColor.withAlphaComponent(0.3)])
-        
-        // autocompleteManager.register(prefix: "#")
-        autocompleteManager.register(prefix: "A")
-        autocompleteManager.register(prefix: "a")
-        autocompleteManager.register(prefix: "B")
-        autocompleteManager.register(prefix: "b")
-        autocompleteManager.register(prefix: "S")
-        autocompleteManager.register(prefix: "s")
-        autocompleteManager.register(prefix: "F")
-        autocompleteManager.register(prefix: "f")
-        autocompleteManager.register(prefix: "I")
-        autocompleteManager.register(prefix: "i")
-        autocompleteManager.register(prefix: "N")
-        autocompleteManager.register(prefix: "n")
-        autocompleteManager.register(prefix: "O")
-        autocompleteManager.register(prefix: "o")
-        autocompleteManager.register(prefix: "R")
-        autocompleteManager.register(prefix: "r")
-        autocompleteManager.register(prefix: "T")
-        autocompleteManager.register(prefix: "t")
         autocompleteManager.register(prefix: "/")
-        autocompleteManager.register(prefix: "1")
-        autocompleteManager.register(prefix: "2")
+       // autocompleteManager.register
+        /*
+         // autocompleteManager.register(prefix: "#")
+         autocompleteManager.register(prefix: "A")
+         autocompleteManager.register(prefix: "a")
+         autocompleteManager.register(prefix: "B")
+         autocompleteManager.register(prefix: "b")
+         autocompleteManager.register(prefix: "S")
+         autocompleteManager.register(prefix: "s")
+         autocompleteManager.register(prefix: "F")
+         autocompleteManager.register(prefix: "f")
+         autocompleteManager.register(prefix: "I")
+         autocompleteManager.register(prefix: "i")
+         autocompleteManager.register(prefix: "N")
+         autocompleteManager.register(prefix: "n")
+         autocompleteManager.register(prefix: "O")
+         autocompleteManager.register(prefix: "o")
+         autocompleteManager.register(prefix: "R")
+         autocompleteManager.register(prefix: "r")
+         autocompleteManager.register(prefix: "T")
+         autocompleteManager.register(prefix: "t")
+         autocompleteManager.register(prefix: "/")
+         autocompleteManager.register(prefix: "1")
+         autocompleteManager.register(prefix: "2")*/
         autocompleteManager.maxSpaceCountDuringCompletion = 1 // Allow for autocompletes with a space
         
         // Set plugins
@@ -254,17 +257,17 @@ final class AutocompleteExampleViewController: ChatViewController {
         guard autocompleteManager.currentSession != nil, autocompleteManager.currentSession?.prefix == "/" else { return }
         // Load some data asyncronously for the given session.prefix
         /*DispatchQueue.global(qos: .default).async {
-            // fake background loading task
-            var array: [AutocompleteCompletion] = []
-            for _ in 1...10 {
-                array.append(AutocompleteCompletion(text: Lorem.word()))
-            }
-            sleep(1)
-            DispatchQueue.main.async { [weak self] in
-                self?.asyncCompletions = array
-                self?.autocompleteManager.reloadData()
-            }
-        }*/
+         // fake background loading task
+         var array: [AutocompleteCompletion] = []
+         for _ in 1...10 {
+         array.append(AutocompleteCompletion(text: Lorem.word()))
+         }
+         sleep(1)
+         DispatchQueue.main.async { [weak self] in
+         self?.asyncCompletions = array
+         self?.autocompleteManager.reloadData()
+         }
+         }*/
     }
 }
 
@@ -274,185 +277,195 @@ extension AutocompleteExampleViewController: AutocompleteManagerDelegate, Autoco
     
     func autocompleteManager(_ manager: AutocompleteManager, autocompleteSourceFor prefix: String) -> [AutocompleteCompletion] {
         
+        print("trigger")
+        print(prefix)
+        
         manager.keepPrefixOnCompletion = false
         
         if prefix == "@" {
-            return users
-          /*  return SampleData.shared.senders
+            // return users
+            
+          //  autocompleteManager.keepPrefixOnCompletion = true
+            
+            return SampleData.shared.senders
                 .map { user in
                     return AutocompleteCompletion(text: user.displayName,
                                                   context: ["id": user.senderId])
-            }*/
+            }
         }
-        
-        if !first_message_sent
+            
+        else
         {
-            s_suggestion = [AutocompleteCompletion(text: "Schedule a meeting with "), AutocompleteCompletion(text: "Schedule a meeting with Ben"), AutocompleteCompletion(text: "Schedule a meeting with Erik and Ben")]
             
-            if prefix == "s" || prefix == "S"
+            if !first_message_sent
             {
-                return s_suggestion
-            }
-            
-            if prefix == "I" || prefix == "i"
-            {
-                return [AutocompleteCompletion(text: "I want to book a meeting with "), AutocompleteCompletion(text: "I want to book a meeting with Zack"), AutocompleteCompletion(text: "I want to book a meeting with Zack and Ben")]
-            }
-            
-            if prefix == "B" || prefix == "b"
-            {
-                return [AutocompleteCompletion(text: "Book a meeting with Erik"), AutocompleteCompletion(text: "Book an appointment with Ather"), AutocompleteCompletion(text: "Book a meeting with ")]
-            }
-            
-            if prefix == "A" || prefix == "a"
-            {
-                return [AutocompleteCompletion(text: "Arrange a meeting with"), AutocompleteCompletion(text: "Arrange an appointment with Ather"), AutocompleteCompletion(text: "Arrange a meeting with ")]
-            }
-            
-            if prefix == "a" || prefix == "A"
-            {
-                return [AutocompleteCompletion(text: "at 10am"), AutocompleteCompletion(text: "at 2pm")]
-            }
-            
-            if prefix == "/"
-            {
+                s_suggestion = [AutocompleteCompletion(text: "Schedule a meeting with "), AutocompleteCompletion(text: "Schedule a meeting with Ben"), AutocompleteCompletion(text: "Schedule a meeting with Erik and Ben")]
                 
-                return recent_requests
-            }
-            
-        }else
-        {
-            if missingVariables["time"]!
-            {
-                print("missing time")
-                f_suggestion = [AutocompleteCompletion(text: "From 4 pm to 6pm"), AutocompleteCompletion(text: "From 1pm to 3pm")]
-                a_suggestion = [AutocompleteCompletion(text: "at 4pm"), AutocompleteCompletion(text: "at 1pm")]
-                if prefix == "A" || prefix == "a"
+                if prefix == "s" || prefix == "S"
                 {
-                    return a_suggestion
+                    return s_suggestion
                 }
                 
-                if prefix == "F" || prefix == "f"
+                if prefix == "I" || prefix == "i"
                 {
-                    return f_suggestion
-                }
-                
-                if prefix == "n" || prefix == "N"
-                {
-                    return [AutocompleteCompletion(text: "next week"), AutocompleteCompletion(text: "Next Week")]
+                    return [AutocompleteCompletion(text: "I want to book a meeting with "), AutocompleteCompletion(text: "I want to book a meeting with Zack"), AutocompleteCompletion(text: "I want to book a meeting with Zack and Ben")]
                 }
                 
                 if prefix == "B" || prefix == "b"
                 {
-                    return [AutocompleteCompletion(text: "Between"), AutocompleteCompletion(text: "Between wednesday and thursday")]
-                }
-                
-                if prefix == "t" || prefix == "T"
-                {
-                    return [AutocompleteCompletion(text: "Tuesday"), AutocompleteCompletion(text: "This week")]
-                }
-                
-                if prefix == "o" || prefix == "O"
-                {
-                    return [AutocompleteCompletion(text: "on Friday"), AutocompleteCompletion(text: "on Monday")]
-                }
-                
-                if prefix == "/"
-                {
-                    return [AutocompleteCompletion(text: "Monday"), AutocompleteCompletion(text: "Tuesday"), AutocompleteCompletion(text: "Wednesday"), AutocompleteCompletion(text: "Thursday"), AutocompleteCompletion(text: "Friday")]
-                }
-            }
-                
-            else if missingVariables["person"]!
-            {
-                print("missing person")
-                
-            }
-                
-            else if missingVariables["activity"]!
-            {
-                print("missing activity")
-                r_suggestion = [AutocompleteCompletion(text: "routine meeting")]
-                hashtag_suggestion = [AutocompleteCompletion(text: "Routine Meeting"), AutocompleteCompletion(text: "Web Dev"), AutocompleteCompletion(text: "Internal Meeting")]
-                
-                if prefix == "R" || prefix == "r"
-                {
-                    return  r_suggestion
-                }
-                
-                if prefix == "/"
-                {
-                    return hashtag_suggestion
-                }
-            }
-                
-            else if missingVariables["duration"]!
-            {
-                
-                                if prefix == "t" || prefix == "T"
-                {
-                    return [AutocompleteCompletion(text: "Two hours")]
-                }
-                
-                if prefix == "1"
-                {
-                    return [AutocompleteCompletion(text: "1 hour")]
-                }
-                
-                if prefix == "o" || prefix == "O"
-                {
-                    return [AutocompleteCompletion(text: "One hour")]
-                }
-                
-                if prefix == "2"
-                {
-                    return [AutocompleteCompletion(text: "2 hours")]
-                }
-                
-                
-                print("missing duration")
-            }
-                
-            else if missingVariables["placeholder"]!
-            {
-                
-                print("missing place")
-                
-                i_suggestion = [AutocompleteCompletion(text: "in the office"), AutocompleteCompletion(text: "in Room A"), AutocompleteCompletion(text: "in WeWork")]
-                a_suggestion = [AutocompleteCompletion(text: "at the office"), AutocompleteCompletion(text: "at Room A"), AutocompleteCompletion(text: "at WeWork")]
-                
-                hashtag_suggestion = [AutocompleteCompletion(text: "Office"), AutocompleteCompletion(text: "Room A"), AutocompleteCompletion(text: "WeWork")]
-                
-                if prefix == "I" || prefix == "i"
-                {
-                    return  i_suggestion
+                    return [AutocompleteCompletion(text: "Book a meeting with Erik"), AutocompleteCompletion(text: "Book an appointment with Ather"), AutocompleteCompletion(text: "Book a meeting with ")]
                 }
                 
                 if prefix == "A" || prefix == "a"
                 {
-                    return  a_suggestion
+                    return [AutocompleteCompletion(text: "Arrange a meeting with"), AutocompleteCompletion(text: "Arrange an appointment with Ather"), AutocompleteCompletion(text: "Arrange a meeting with ")]
                 }
                 
-                if prefix == "R" || prefix == "r"
+                if prefix == "a" || prefix == "A"
                 {
-                    return [AutocompleteCompletion(text: "Room A"), AutocompleteCompletion(text: "Room B"), AutocompleteCompletion(text: "Room C")]
-                }
-                
-                if prefix == "S" || prefix == "s"
-                {
-                    return [AutocompleteCompletion(text: "Skype"), AutocompleteCompletion(text: "Starbucks")]
+                    return [AutocompleteCompletion(text: "at 10am"), AutocompleteCompletion(text: "at 2pm")]
                 }
                 
                 if prefix == "/"
                 {
-                    return hashtag_suggestion
+                    
+                    return recent_requests
+                }
+                
+            }else
+            {
+                if missingVariables["time"]!
+                {
+                    print("missing time")
+                    f_suggestion = [AutocompleteCompletion(text: "From 4 pm to 6pm"), AutocompleteCompletion(text: "From 1pm to 3pm")]
+                    a_suggestion = [AutocompleteCompletion(text: "at 4pm"), AutocompleteCompletion(text: "at 1pm")]
+                    if prefix == "A" || prefix == "a"
+                    {
+                        return a_suggestion
+                    }
+                    
+                    if prefix == "F" || prefix == "f"
+                    {
+                        return f_suggestion
+                    }
+                    
+                    if prefix == "n" || prefix == "N"
+                    {
+                        return [AutocompleteCompletion(text: "next week"), AutocompleteCompletion(text: "Next Week")]
+                    }
+                    
+                    if prefix == "B" || prefix == "b"
+                    {
+                        return [AutocompleteCompletion(text: "Between"), AutocompleteCompletion(text: "Between wednesday and thursday")]
+                    }
+                    
+                    if prefix == "t" || prefix == "T"
+                    {
+                        return [AutocompleteCompletion(text: "Tuesday"), AutocompleteCompletion(text: "This week")]
+                    }
+                    
+                    if prefix == "o" || prefix == "O"
+                    {
+                        return [AutocompleteCompletion(text: "on Friday"), AutocompleteCompletion(text: "on Monday")]
+                    }
+                    
+                    if prefix == "/"
+                    {
+                        return [AutocompleteCompletion(text: "Monday"), AutocompleteCompletion(text: "Tuesday"), AutocompleteCompletion(text: "Wednesday"), AutocompleteCompletion(text: "Thursday"), AutocompleteCompletion(text: "Friday")]
+                    }
+                }
+                    
+                else if missingVariables["person"]!
+                {
+                    print("missing person")
+                    
+                }
+                    
+                else if missingVariables["activity"]!
+                {
+                    print("missing activity")
+                    r_suggestion = [AutocompleteCompletion(text: "routine meeting")]
+                    hashtag_suggestion = [AutocompleteCompletion(text: "Routine Meeting"), AutocompleteCompletion(text: "Web Dev"), AutocompleteCompletion(text: "Internal Meeting")]
+                    
+                    if prefix == "R" || prefix == "r"
+                    {
+                        return  r_suggestion
+                    }
+                    
+                    if prefix == "/"
+                    {
+                        return hashtag_suggestion
+                    }
+                }
+                    
+                else if missingVariables["duration"]!
+                {
+                    
+                    if prefix == "t" || prefix == "T"
+                    {
+                        return [AutocompleteCompletion(text: "Two hours")]
+                    }
+                    
+                    if prefix == "1"
+                    {
+                        return [AutocompleteCompletion(text: "1 hour")]
+                    }
+                    
+                    if prefix == "o" || prefix == "O"
+                    {
+                        return [AutocompleteCompletion(text: "One hour")]
+                    }
+                    
+                    if prefix == "2"
+                    {
+                        return [AutocompleteCompletion(text: "2 hours")]
+                    }
+                    
+                    
+                    print("missing duration")
+                }
+                    
+                else if missingVariables["placeholder"]!
+                {
+                    
+                    print("missing place")
+                    
+                    i_suggestion = [AutocompleteCompletion(text: "in the office"), AutocompleteCompletion(text: "in Room A"), AutocompleteCompletion(text: "in WeWork")]
+                    a_suggestion = [AutocompleteCompletion(text: "at the office"), AutocompleteCompletion(text: "at Room A"), AutocompleteCompletion(text: "at WeWork")]
+                    
+                    hashtag_suggestion = [AutocompleteCompletion(text: "Office"), AutocompleteCompletion(text: "Room A"), AutocompleteCompletion(text: "WeWork")]
+                    
+                    if prefix == "I" || prefix == "i"
+                    {
+                        return  i_suggestion
+                    }
+                    
+                    if prefix == "A" || prefix == "a"
+                    {
+                        return  a_suggestion
+                    }
+                    
+                    if prefix == "R" || prefix == "r"
+                    {
+                        return [AutocompleteCompletion(text: "Room A"), AutocompleteCompletion(text: "Room B"), AutocompleteCompletion(text: "Room C")]
+                    }
+                    
+                    if prefix == "S" || prefix == "s"
+                    {
+                        return [AutocompleteCompletion(text: "Skype"), AutocompleteCompletion(text: "Starbucks")]
+                    }
+                    
+                    if prefix == "/"
+                    {
+                        return hashtag_suggestion
+                    }
                 }
             }
         }
         /*
-        else if prefix == "#" {
-            return asyncCompletions
-        }*/
+         else if prefix == "#" {
+         return asyncCompletions
+         }*/
         return []
     }
     

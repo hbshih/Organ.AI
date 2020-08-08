@@ -3,8 +3,9 @@
 import UIKit
 import MessageKit
 import InputBarAccessoryView
+import ContactsUI
 
-    public var recent_requests = [AutocompleteCompletion(text: "Book a meeting with Ather at 4pm next week in Starbucks"), AutocompleteCompletion(text: "Book a meeting with Zack next week in Room A")]
+public var recent_requests = [AutocompleteCompletion(text: "Book a meeting with Ather at 4pm next week in Starbucks"), AutocompleteCompletion(text: "Book a meeting with Zack next week in Room A")]
 
 public var scenario = 1
 
@@ -25,7 +26,7 @@ class ChatViewController: MessagesViewController, MessagesDataSource {
     var askForVariable = ""
     var messageList: [MockMessage] = []
     var first_message_sent = false
-
+    
     let formatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateStyle = .medium
@@ -54,8 +55,8 @@ class ChatViewController: MessagesViewController, MessagesDataSource {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-    //    self.navigationController!.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-      //  self.navigationController?.navigationBar.shadowImage = UIImage()
+        //    self.navigationController!.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        //  self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = false
         self.navigationController?.navigationBar.backgroundColor = .white
     }
@@ -78,13 +79,13 @@ class ChatViewController: MessagesViewController, MessagesDataSource {
     func loadFirstMessages() {
         DispatchQueue.global(qos: .userInitiated).async {
             let count = UserDefaults.standard.mockMessagesCount()
-                DispatchQueue.main.async {
-                    self.messageList = [
-                        MockMessage(text: "Good Morning 😃", user: MockUser(senderId: "asdf", displayName: "Booking Assistant"), messageId: "ajskflj", date: Date()),
-                        MockMessage(text: "I am your virtual assistant. You can ask me to book any meeting for you 😃", user: MockUser(senderId: "asdf", displayName: "Booking Assistant"), messageId: "ajskflj", date: Date())]
-                    self.messagesCollectionView.reloadData()
-                    self.messagesCollectionView.scrollToBottom()
-                }
+            DispatchQueue.main.async {
+                self.messageList = [
+                    MockMessage(text: "Good Morning 😃", user: MockUser(senderId: "asdf", displayName: "Booking Assistant"), messageId: "ajskflj", date: Date()),
+                    MockMessage(text: "I am your virtual assistant. You can ask me to book any meeting for you 😃", user: MockUser(senderId: "asdf", displayName: "Booking Assistant"), messageId: "ajskflj", date: Date())]
+                self.messagesCollectionView.reloadData()
+                self.messagesCollectionView.scrollToBottom()
+            }
             
         }
     }
@@ -311,16 +312,16 @@ extension ChatViewController: InputBarAccessoryViewDelegate {
             
             organAI.queryProcessor(token: token, query: attributedText.string) { (intention, data) in
                 
-                        print("\napi response\n")
-                    print(data)
-                    var msg = ""
+                print("\napi response\n")
+                print(data)
+                var msg = ""
                 
                 if intention == "greet"
                 {
-                 msg = "Hello! How can I help you?"
+                    msg = "Hello! How can I help you?"
                 }else
                 {
-              //      recent_requests.append(AutocompleteCompletion(text: attributedText.string))
+                    //      recent_requests.append(AutocompleteCompletion(text: attributedText.string))
                     
                     /*For Testing*/
                     
@@ -333,7 +334,7 @@ extension ChatViewController: InputBarAccessoryViewDelegate {
                     
                     if !self.first_message_sent
                     {
-                    recent_requests.insert(AutocompleteCompletion(text: attributedText.string), at: 0)
+                        recent_requests.insert(AutocompleteCompletion(text: attributedText.string), at: 0)
                     }
                     self.first_message_sent = true
                     if self.api_response == false
@@ -362,7 +363,7 @@ extension ChatViewController: InputBarAccessoryViewDelegate {
                         self.activity = data["activity"] as! [String]
                         self.missingVariables["activity"] = false
                     }
-
+                    
                     if (data["duration"] as! Int) != 0
                     {
                         if (data["time"] as! [String: String]).count == 2
@@ -430,63 +431,106 @@ extension ChatViewController: InputBarAccessoryViewDelegate {
                     let formatter = DateFormatter()
                     formatter.dateFormat = "yyyy/MM/dd"
                 }
-                    
-                    DispatchQueue.main.async {
-                        if !self.done
+                
+                DispatchQueue.main.async {
+                    if !self.done
+                    {
+                        self.setTypingIndicatorViewHidden(true, animated: true)
+                        self.insertMessage(MockMessage(text: msg, user: MockUser(senderId: "ajdsklf", displayName: "Booking Assistant"), messageId: "asjdfkl", date: Date()))
+                        
+                        if msg == "Who do you want to meet?"
                         {
+                            self.insertMessage(MockMessage(text: "Tip: Type '@' to look for contacts", user: MockUser(senderId: "asdf", displayName: "Booking Assistant"), messageId: "ajskflj", date: Date()))
+                        }
+                        
+                    }else
+                    {
+                        msg = "I am checking the availabilities of \(self.person.joined(separator: ","))... hold on for a second..."
+                        self.insertMessage(MockMessage(text: msg, user: MockUser(senderId: "ajdsklf", displayName: "Booking Assistant"), messageId: "asjdfkl", date: Date()))
+                        
+                        
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
                             self.setTypingIndicatorViewHidden(true, animated: true)
-                            self.insertMessage(MockMessage(text: msg, user: MockUser(senderId: "ajdsklf", displayName: "Booking Assistant"), messageId: "asjdfkl", date: Date()))
                             
-                            if msg == "Who do you want to meet?"
+                            msg = "This is all the available timeslots of \(self.person.joined(separator: ",")). Pick a time that you prefer and I will book it for you:"
+                            
+                            if let controller = self.storyboard?.instantiateViewController(identifier: "PickAvailabilityViewController") as? PickAvailabilityViewController
                             {
-                                self.insertMessage(MockMessage(text: "Tip: Type '@' to look for contacts", user: MockUser(senderId: "asdf", displayName: "Booking Assistant"), messageId: "ajskflj", date: Date()))
-                            }
-                            
-                        }else
-                        {
-                            msg = "I am checking the availabilities of \(self.person.joined(separator: ","))... hold on for a second..."
-                            self.insertMessage(MockMessage(text: msg, user: MockUser(senderId: "ajdsklf", displayName: "Booking Assistant"), messageId: "asjdfkl", date: Date()))
-                            
-                            
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
-                                self.setTypingIndicatorViewHidden(true, animated: true)
+                                controller.isModalInPresentation = true
                                 
-                                msg = "This is all the available timeslots of \(self.person.joined(separator: ",")). Pick a time that you prefer and I will book it for you:"
                                 
-                                if let controller = self.storyboard?.instantiateViewController(identifier: "PickAvailabilityViewController") as? PickAvailabilityViewController
-                                {
-                                   controller.isModalInPresentation = true
-                                    print(self.activity[0])
-                                    self.present(controller, animated: true) {
-                                        controller.eventTitle.text = self.activity[0]
-                                        controller.eventAddress.text = self.placeholder[0]
+                                print(self.activity[0])
+                                self.present(controller, animated: true) {
+                                    controller.eventTitle.text = self.activity[0]
+                                    controller.eventAddress.text = self.placeholder[0]
+                                    
+                                    let contactStore = CNContactStore()
+                                    
+                                    for contacts in self.person{
+                                        
+                                        let predicate = CNContact.predicateForContacts(matchingName: contacts)
+                                        let keys = [CNContactGivenNameKey, CNContactFamilyNameKey, CNContactImageDataKey, CNContactImageDataAvailableKey, CNContactThumbnailImageDataKey]
+                                        do {
+                                            let fetched = try contactStore.unifiedContacts(matching: predicate, keysToFetch: keys as [CNKeyDescriptor])
+                                            
+                                            print(fetched)
+                                            
+                                            for fetch in fetched
+                                            {
+                                                let name = "\(fetch.givenName) \(fetch.familyName)"
+                                                controller.contactName.append(name)
+                                                if fetch.imageDataAvailable
+                                                {
+                                                    controller.contactImage.append(UIImage(data: fetch.imageData!)!)
+                                                }else
+                                                {
+                                                    controller.contactImage.append(UIImage(named: "user")!)
+                                                }
+                                            }
+                                            
+                                            controller.participantCollectionView.reloadData()
+                                            
+                                            
+                                            
+                                            //     controller.contact.append(contentsOf: fetched)
+                                            
+                                        // controller.contact = fetched
+                                        //    controller.participantCollectionView.reloadData()
+                                            
+                                            
+                                        } catch let error as NSError {
+                                            
+                                            print("Did not catch anything")
+                                            //...
+                                        }
                                     }
                                 }
-                                
-                                
-                                /*self.insertMessage(MockMessage(text: msg, user: MockUser(senderId: "ajdsklf", displayName: "Booking Assistant"), messageId: "asjdfkl", date: Date()))
-                                
-                                var timesets = [String]()
-                                if scenario == 1
-                                {
-                                    timesets = ["Tuesday 6/2 12:00 - 14:00", "Tuesday 6/2 12:30 - 14:30", "Tuesday 6/2 15:30 - 17:30"]
-                                                                    self.insertMessage(MockMessage(custom: ["T", "Tuesday 6/2 12:00 - 14:00", "Tuesday 6/2 12:30 - 14:30", "Tuesday 6/2 15:30 - 17:30"], user: MockUser(senderId: "Time", displayName: "Booking Assistant"), messageId: "adsf", date: Date()))
-                                }else if scenario == 2
-                                {
-                                    timesets = ["Wednesday 6/3 10:00 - 11:00", "Thusday 6/4 12:30 - 13:30", "Friday 6/5 15:30 - 16:30"]
-                                                                    self.insertMessage(MockMessage(custom: ["T", "Wednesday 6/3 10:00 - 11:00", "Thusday 6/4 12:30 - 13:30", "Friday 6/5 15:30 - 16:30"], user: MockUser(senderId: "Time", displayName: "Booking Assistant"), messageId: "adsf", date: Date()))
-                                }else
-                                {
-                                     timesets = ["Thursday 6/4 10:00 - 11:00", "Thusday 6/4 14:30 - 15:30", "Friday 6/5 11:30 - 12:30"]
-                                                                    self.insertMessage(MockMessage(custom: ["T", "Thursday 6/4 10:00 - 11:00", "Thusday 6/4 14:30 - 15:30", "Friday 6/5 11:30 - 12:30"], user: MockUser(senderId: "Time", displayName: "Booking Assistant"), messageId: "adsf", date: Date()))
-                                }*/
                             }
+                            
+                            
+                            /*self.insertMessage(MockMessage(text: msg, user: MockUser(senderId: "ajdsklf", displayName: "Booking Assistant"), messageId: "asjdfkl", date: Date()))
+                             
+                             var timesets = [String]()
+                             if scenario == 1
+                             {
+                             timesets = ["Tuesday 6/2 12:00 - 14:00", "Tuesday 6/2 12:30 - 14:30", "Tuesday 6/2 15:30 - 17:30"]
+                             self.insertMessage(MockMessage(custom: ["T", "Tuesday 6/2 12:00 - 14:00", "Tuesday 6/2 12:30 - 14:30", "Tuesday 6/2 15:30 - 17:30"], user: MockUser(senderId: "Time", displayName: "Booking Assistant"), messageId: "adsf", date: Date()))
+                             }else if scenario == 2
+                             {
+                             timesets = ["Wednesday 6/3 10:00 - 11:00", "Thusday 6/4 12:30 - 13:30", "Friday 6/5 15:30 - 16:30"]
+                             self.insertMessage(MockMessage(custom: ["T", "Wednesday 6/3 10:00 - 11:00", "Thusday 6/4 12:30 - 13:30", "Friday 6/5 15:30 - 16:30"], user: MockUser(senderId: "Time", displayName: "Booking Assistant"), messageId: "adsf", date: Date()))
+                             }else
+                             {
+                             timesets = ["Thursday 6/4 10:00 - 11:00", "Thusday 6/4 14:30 - 15:30", "Friday 6/5 11:30 - 12:30"]
+                             self.insertMessage(MockMessage(custom: ["T", "Thursday 6/4 10:00 - 11:00", "Thusday 6/4 14:30 - 15:30", "Friday 6/5 11:30 - 12:30"], user: MockUser(senderId: "Time", displayName: "Booking Assistant"), messageId: "adsf", date: Date()))
+                             }*/
                         }
-                        self.messagesCollectionView.scrollToBottom()
                     }
+                    self.messagesCollectionView.scrollToBottom()
                 }
             }
-            
+        }
+        
         let components = inputBar.inputTextView.components
         messageInputBar.inputTextView.text = String()
         messageInputBar.invalidatePlugins()
