@@ -33,7 +33,14 @@
 		B560F90524B87DE000F63E07 /* PickAvailabilityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B560F90424B87DE000F63E07 /* PickAvailabilityViewController.swift */; };
 		B56614B6242F43DB0035AECF /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56614B5242F43DB0035AECF /* OnboardingViewController.swift */; };
 		B571E8E5244497EE005379BC /* NativeEventExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = B571E8E4244497EE005379BC /* NativeEventExample.swift */; };
-		B5883CEC242D0FB0003ECBF0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B5883CEB242D0FB0003ECBF0 /* GoogleService-Info.plist */; };
+		B57EBEF624DFF0F500672F0F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57EBEF224DFF0F300672F0F /* LoginViewController.swift */; };
+		B57EBEF724DFF0F500672F0F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57EBEF324DFF0F300672F0F /* ViewController.swift */; };
+		B57EBEF824DFF0F500672F0F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57EBEF424DFF0F400672F0F /* HomeViewController.swift */; };
+		B57EBEF924DFF0F500672F0F /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57EBEF524DFF0F500672F0F /* SignUpViewController.swift */; };
+		B57EBEFC24DFF1FA00672F0F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57EBEFA24DFF1F900672F0F /* Constants.swift */; };
+		B57EBEFD24DFF1FA00672F0F /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57EBEFB24DFF1F900672F0F /* Utilities.swift */; };
+		B57EBEFF24DFF27B00672F0F /* organai-se.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = B57EBEFE24DFF21B00672F0F /* organai-se.mp4 */; };
+		B57EBF0124E0250800672F0F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B57EBF0024E0250800672F0F /* GoogleService-Info.plist */; };
 		B5A151C924718D5A007B9704 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A151C824718D5A007B9704 /* Message.swift */; };
 		B5A4DB712482BE94008B97F8 /* icons8-synchronize-24.png in Resources */ = {isa = PBXBuildFile; fileRef = B5A4DB702482BE94008B97F8 /* icons8-synchronize-24.png */; };
 		B5D7E878241BB0490037862F /* DateFormatHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D7E877241BB0490037862F /* DateFormatHandler.swift */; };
@@ -89,7 +96,14 @@
 		B560F90424B87DE000F63E07 /* PickAvailabilityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickAvailabilityViewController.swift; sourceTree = "<group>"; };
 		B56614B5242F43DB0035AECF /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		B571E8E4244497EE005379BC /* NativeEventExample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NativeEventExample.swift; sourceTree = "<group>"; };
-		B5883CEB242D0FB0003ECBF0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B57EBEF224DFF0F300672F0F /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		B57EBEF324DFF0F300672F0F /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B57EBEF424DFF0F400672F0F /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		B57EBEF524DFF0F500672F0F /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		B57EBEFA24DFF1F900672F0F /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		B57EBEFB24DFF1F900672F0F /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		B57EBEFE24DFF21B00672F0F /* organai-se.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "organai-se.mp4"; sourceTree = "<group>"; };
+		B57EBF0024E0250800672F0F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B5A151C824718D5A007B9704 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		B5A4DB702482BE94008B97F8 /* icons8-synchronize-24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-synchronize-24.png"; sourceTree = "<group>"; };
 		B5D7E877241BB0490037862F /* DateFormatHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatHandler.swift; sourceTree = "<group>"; };
@@ -166,6 +180,13 @@
 		B51B4C4523FD62140043CAD5 /* Organ.AI */ = {
 			isa = PBXGroup;
 			children = (
+				B57EBF0024E0250800672F0F /* GoogleService-Info.plist */,
+				B57EBEFA24DFF1F900672F0F /* Constants.swift */,
+				B57EBEFB24DFF1F900672F0F /* Utilities.swift */,
+				B57EBEF424DFF0F400672F0F /* HomeViewController.swift */,
+				B57EBEF224DFF0F300672F0F /* LoginViewController.swift */,
+				B57EBEF524DFF0F500672F0F /* SignUpViewController.swift */,
+				B57EBEF324DFF0F300672F0F /* ViewController.swift */,
 				B5F75FAE247CE6EE00A89238 /* AutocompleteExampleViewController.swift */,
 				B5F75FB8247CE6F300A89238 /* ChatViewController.swift */,
 				B5F75FB1247CE6F000A89238 /* CustomMessagesFlowLayout.swift */,
@@ -180,6 +201,7 @@
 				B5F75FB6247CE6F200A89238 /* String+Extension.swift */,
 				B5F75FB3247CE6F100A89238 /* UIColor+Extensions.swift */,
 				B5F75FB7247CE6F300A89238 /* UIViewController+Extensions.swift */,
+				B57EBEFE24DFF21B00672F0F /* organai-se.mp4 */,
 				B51B4C5F23FD623C0043CAD5 /* Controller */,
 				B51B4C5E23FD62380043CAD5 /* View */,
 				B51B4C5D23FD62230043CAD5 /* Model */,
@@ -193,7 +215,6 @@
 				B51B4C5423FD62150043CAD5 /* LaunchScreen.storyboard */,
 				B51B4C5723FD62150043CAD5 /* Info.plist */,
 				B51B4C4F23FD62140043CAD5 /* Organ_AI.xcdatamodeld */,
-				B5883CEB242D0FB0003ECBF0 /* GoogleService-Info.plist */,
 				B54CB245243113DD00E471DB /* String+FormerDemo.swift */,
 				B54CB244243113DC00E471DB /* UIColor+FormerDemo.swift */,
 				B560F90424B87DE000F63E07 /* PickAvailabilityViewController.swift */,
@@ -306,11 +327,12 @@
 			files = (
 				B5A4DB712482BE94008B97F8 /* icons8-synchronize-24.png in Resources */,
 				B51B4C5623FD62150043CAD5 /* LaunchScreen.storyboard in Resources */,
-				B5883CEC242D0FB0003ECBF0 /* GoogleService-Info.plist in Resources */,
+				B57EBEFF24DFF27B00672F0F /* organai-se.mp4 in Resources */,
 				B5F75FC3247CE6F400A89238 /* IncomingTextCell.xib in Resources */,
 				B51B4C5323FD62150043CAD5 /* Assets.xcassets in Resources */,
 				B51B4C4E23FD62140043CAD5 /* Main.storyboard in Resources */,
 				B52452F9247D7BB400539A69 /* 9e6fa009-d057-40fc-9e1f-b5f2715013ae.png in Resources */,
+				B57EBF0124E0250800672F0F /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -364,6 +386,9 @@
 				B5F75FBA247CE6F400A89238 /* SampleData.swift in Sources */,
 				B5F75FBC247CE6F400A89238 /* AutocompleteExampleViewController.swift in Sources */,
 				B5DE2BCA242D9F23001120E3 /* FirestoreHandler.swift in Sources */,
+				B57EBEF824DFF0F500672F0F /* HomeViewController.swift in Sources */,
+				B57EBEFD24DFF1FA00672F0F /* Utilities.swift in Sources */,
+				B57EBEF924DFF0F500672F0F /* SignUpViewController.swift in Sources */,
 				B5F75FC5247CE6F400A89238 /* UIViewController+Extensions.swift in Sources */,
 				B5F75FBD247CE6F400A89238 /* CustomMessageSizeCalculator_2.swift in Sources */,
 				B54732E72443466D00027D5D /* OEMentions.swift in Sources */,
@@ -381,10 +406,12 @@
 				B571E8E5244497EE005379BC /* NativeEventExample.swift in Sources */,
 				B54CB2492431163C00E471DB /* AddEventViewController.swift in Sources */,
 				B5F75FC6247CE6F400A89238 /* ChatViewController.swift in Sources */,
+				B57EBEFC24DFF1FA00672F0F /* Constants.swift in Sources */,
 				B5F1CC6624BC8F8800139D57 /* PickAvailabilityGrayCollectionViewCell.swift in Sources */,
 				B51B4C5123FD62140043CAD5 /* Organ_AI.xcdatamodeld in Sources */,
 				B50D6CDF24BD47BF00FF4635 /* PickAvailabilityTimeCollectionViewCell.swift in Sources */,
 				B5D7E878241BB0490037862F /* DateFormatHandler.swift in Sources */,
+				B57EBEF724DFF0F500672F0F /* ViewController.swift in Sources */,
 				B5F75FBB247CE6F400A89238 /* Settings+UserDefaults.swift in Sources */,
 				B537C77323FF01D9005D0C5E /* CalendarTableViewCell.swift in Sources */,
 				B50D6CE124BD495800FF4635 /* emptyCellCollectionViewCell.swift in Sources */,
@@ -393,6 +420,7 @@
 				B5327A0F243A00E7003F2CF8 /* MessageViewController.swift in Sources */,
 				B54CB246243113DD00E471DB /* UIColor+FormerDemo.swift in Sources */,
 				B5DE2BCC242DA1E8001120E3 /* EventsCalendarManager.swift in Sources */,
+				B57EBEF624DFF0F500672F0F /* LoginViewController.swift in Sources */,
 				B56614B6242F43DB0035AECF /* OnboardingViewController.swift in Sources */,
 				B537C77123FEFAA9005D0C5E /* CalendarViewController.swift in Sources */,
 				B50D6CDD24BD47AD00FF4635 /* PickAvailabilityDateCollectionViewCell.swift in Sources */,

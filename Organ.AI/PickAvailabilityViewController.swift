@@ -10,6 +10,7 @@ import UIKit
 import MapKit
 import JFContactsPicker
 import ContactsUI
+import LocationPicker
 
 
 class PickAvailabilityViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, ContactsPickerDelegate
@@ -18,9 +19,9 @@ class PickAvailabilityViewController: UIViewController, UICollectionViewDelegate
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var participantCollectionView: UICollectionView!
     @IBOutlet weak var mapkit: MKMapView!
-    @IBOutlet weak var eventTitle: UILabel!
-    @IBOutlet weak var eventDescription: UILabel!
-    @IBOutlet weak var eventAddress: UILabel!
+    @IBOutlet weak var eventTitle: UITextField!
+    @IBOutlet weak var eventLocation: UIButton!
+    @IBOutlet weak var eventLocation_Label: UILabel!
     
     var contactName = [String]()
     var contactImage = [UIImage]()
@@ -53,17 +54,10 @@ class PickAvailabilityViewController: UIViewController, UICollectionViewDelegate
         {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "participantCell", for: indexPath) as! ParticipantCollectionViewCell
             
-                cell.label.text = contactName[indexPath.item]
+            cell.label.text = contactName[indexPath.item]
             cell.iamge.image = contactImage[indexPath.item]
-            
-            
-            
-            
-            
             return cell
-            
         }
-        
         
         
         if indexPath.item == 0
@@ -252,6 +246,52 @@ class PickAvailabilityViewController: UIViewController, UICollectionViewDelegate
     
     @IBAction func confirmMeeting(_ sender: Any) {
         performSegue(withIdentifier: "homeSegue", sender: nil)
+    }
+    @IBAction func pickLocationTapped(_ sender: Any) {
+        
+        print("tapped")
+        
+        let locationPicker = LocationPickerViewController()
+
+        // you can optionally set initial location
+ /*       let location = CLLocation(latitude: 35, longitude: 35)
+        let initialLocation = Location(name: location, placemark: "city")
+        locationPicker.location = initialLocation
+*/
+        // button placed on right bottom corner
+        locationPicker.showCurrentLocationButton = true // default: true
+
+        // default: navigation bar's `barTintColor` or `UIColor.white`
+        locationPicker.currentLocationButtonBackground = .blue
+
+        // ignored if initial location is given, shows that location instead
+        locationPicker.showCurrentLocationInitially = true // default: true
+
+        locationPicker.mapType = .standard // default: .Hybrid
+
+        // for searching, see `MKLocalSearchRequest`'s `region` property
+        locationPicker.useCurrentLocationAsHint = true // default: false
+
+        locationPicker.searchBarPlaceholder = "Search places" // default: "Search or enter an address"
+
+        locationPicker.searchHistoryLabel = "Previously searched" // default: "Search History"
+
+        // optional region distance to be used for creation region when user selects place from search results
+        locationPicker.resultRegionDistance = 500 // default: 600
+
+        locationPicker.completion = { location in
+            // do some awesome stuff with location
+            
+            let center = CLLocationCoordinate2D(latitude: (location?.coordinate.latitude)!, longitude: (location?.coordinate.longitude)!)
+            
+            let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+            self.mapkit.setRegion(region, animated: true)
+            
+        }
+        self.navigationController?.present(locationPicker, animated: true)
+        
+
+     //   navigationController?.pushViewController(locationPicker, animated: true)
     }
     
 }

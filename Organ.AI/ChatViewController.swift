@@ -456,13 +456,13 @@ extension ChatViewController: InputBarAccessoryViewDelegate {
                             
                             if let controller = self.storyboard?.instantiateViewController(identifier: "PickAvailabilityViewController") as? PickAvailabilityViewController
                             {
-                                controller.isModalInPresentation = true
+                                controller.isModalInPresentation = false
                                 
                                 
                                 print(self.activity[0])
                                 self.present(controller, animated: true) {
                                     controller.eventTitle.text = self.activity[0]
-                                    controller.eventAddress.text = self.placeholder[0]
+                                    controller.eventLocation_Label.text = self.placeholder[0]
                                     
                                     let contactStore = CNContactStore()
                                     

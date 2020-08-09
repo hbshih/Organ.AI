@@ -35,6 +35,10 @@ target 'Organ.AI' do
   pod 'SpreadsheetView'
   pod 'JFContactsPicker', '~> 2.0'
   
+  pod 'LocationPicker'
+  
+  pod 'FirebaseAuth'
+  
   # Pods for Organ.AI
 
 end
