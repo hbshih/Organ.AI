@@ -41,6 +41,7 @@
 		B57EBEFD24DFF1FA00672F0F /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57EBEFB24DFF1F900672F0F /* Utilities.swift */; };
 		B57EBEFF24DFF27B00672F0F /* organai-se.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = B57EBEFE24DFF21B00672F0F /* organai-se.mp4 */; };
 		B57EBF0124E0250800672F0F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B57EBF0024E0250800672F0F /* GoogleService-Info.plist */; };
+		B57EBF0324E02EB800672F0F /* MapPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57EBF0224E02EB800672F0F /* MapPickerViewController.swift */; };
 		B5A151C924718D5A007B9704 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A151C824718D5A007B9704 /* Message.swift */; };
 		B5A4DB712482BE94008B97F8 /* icons8-synchronize-24.png in Resources */ = {isa = PBXBuildFile; fileRef = B5A4DB702482BE94008B97F8 /* icons8-synchronize-24.png */; };
 		B5D7E878241BB0490037862F /* DateFormatHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D7E877241BB0490037862F /* DateFormatHandler.swift */; };
@@ -104,6 +105,7 @@
 		B57EBEFB24DFF1F900672F0F /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		B57EBEFE24DFF21B00672F0F /* organai-se.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "organai-se.mp4"; sourceTree = "<group>"; };
 		B57EBF0024E0250800672F0F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B57EBF0224E02EB800672F0F /* MapPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPickerViewController.swift; sourceTree = "<group>"; };
 		B5A151C824718D5A007B9704 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		B5A4DB702482BE94008B97F8 /* icons8-synchronize-24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-synchronize-24.png"; sourceTree = "<group>"; };
 		B5D7E877241BB0490037862F /* DateFormatHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatHandler.swift; sourceTree = "<group>"; };
@@ -218,6 +220,7 @@
 				B54CB245243113DD00E471DB /* String+FormerDemo.swift */,
 				B54CB244243113DC00E471DB /* UIColor+FormerDemo.swift */,
 				B560F90424B87DE000F63E07 /* PickAvailabilityViewController.swift */,
+				B57EBF0224E02EB800672F0F /* MapPickerViewController.swift */,
 			);
 			path = Organ.AI;
 			sourceTree = "<group>";
@@ -395,6 +398,7 @@
 				B52F34AB24082A7C00042A75 /* EventModel.swift in Sources */,
 				B5F75FC0247CE6F400A89238 /* MockUser.swift in Sources */,
 				B50B0AC32407F56B003A1E8D /* CalendarModel.swift in Sources */,
+				B57EBF0324E02EB800672F0F /* MapPickerViewController.swift in Sources */,
 				B55D8BE92446CA38006E7908 /* OrganaiHandler.swift in Sources */,
 				B53FFBC724DE9B6300DB71B0 /* ParticipantCollectionViewCell.swift in Sources */,
 				B5A151C924718D5A007B9704 /* Message.swift in Sources */,

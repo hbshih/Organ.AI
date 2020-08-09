@@ -40,6 +40,21 @@
             </objects>
             <point key="canvasLocation" x="-129" y="134"/>
         </scene>
+        <!--Map Picker View Controller-->
+        <scene sceneID="iju-ZM-Fhw">
+            <objects>
+                <viewController id="IxZ-OT-N5I" customClass="MapPickerViewController" customModule="Organ_AI" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="M7h-0G-pgK">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="c9K-OI-hZm"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4L8-zf-Zsg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-858" y="1096"/>
+        </scene>
         <!--Onboarding View Controller-->
         <scene sceneID="G8x-hI-FyX">
             <objects>
