@@ -197,6 +197,8 @@ class PickAvailabilityViewController: UIViewController, UICollectionViewDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationController?.isNavigationBarHidden = true
+        
         collectionView?.collectionViewLayout = columnLayout
         collectionView?.contentInsetAdjustmentBehavior = .always
         collectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
@@ -252,6 +254,25 @@ class PickAvailabilityViewController: UIViewController, UICollectionViewDelegate
         print("tapped")
         
         
+    }
+    
+    var location: Location? {
+        didSet {
+            eventLocation_Label.text = location.flatMap({ $0.title }) ?? "No location selected"
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "LocationPicker" {
+            
+            
+            let locationPicker = segue.destination as! LocationPickerViewController
+            locationPicker.location = location
+            locationPicker.showCurrentLocationButton = true
+            locationPicker.useCurrentLocationAsHint = true
+            locationPicker.selectCurrentLocationInitially = true
+            locationPicker.completion = { self.location = $0 }
+        }
     }
     
 }

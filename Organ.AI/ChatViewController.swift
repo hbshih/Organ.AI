@@ -454,6 +454,64 @@ extension ChatViewController: InputBarAccessoryViewDelegate {
                             
                             msg = "This is all the available timeslots of \(self.person.joined(separator: ",")). Pick a time that you prefer and I will book it for you:"
                             
+                            if let navi = self.storyboard?.instantiateViewController(identifier: "MainNavi") as? UINavigationController
+                            {
+                                
+                                if let controller = navi.viewControllers.first as? PickAvailabilityViewController
+                                {
+                                    controller.isModalInPresentation = false
+                                    
+                                    
+                                    print(self.activity[0])
+                                    self.present(navi, animated: true) {
+                                        controller.eventTitle.text = self.activity[0]
+                                        controller.eventLocation_Label.text = self.placeholder[0]
+                                        
+                                        let contactStore = CNContactStore()
+                                        
+                                        for contacts in self.person{
+                                            
+                                            let predicate = CNContact.predicateForContacts(matchingName: contacts)
+                                            let keys = [CNContactGivenNameKey, CNContactFamilyNameKey, CNContactImageDataKey, CNContactImageDataAvailableKey, CNContactThumbnailImageDataKey]
+                                            do {
+                                                let fetched = try contactStore.unifiedContacts(matching: predicate, keysToFetch: keys as [CNKeyDescriptor])
+                                                
+                                                print(fetched)
+                                                
+                                                for fetch in fetched
+                                                {
+                                                    let name = "\(fetch.givenName) \(fetch.familyName)"
+                                                    controller.contactName.append(name)
+                                                    if fetch.imageDataAvailable
+                                                    {
+                                                        controller.contactImage.append(UIImage(data: fetch.imageData!)!)
+                                                    }else
+                                                    {
+                                                        controller.contactImage.append(UIImage(named: "user")!)
+                                                    }
+                                                }
+                                                
+                                                controller.participantCollectionView.reloadData()
+                                                
+                                                
+                                                
+                                                //     controller.contact.append(contentsOf: fetched)
+                                                
+                                            // controller.contact = fetched
+                                            //    controller.participantCollectionView.reloadData()
+                                                
+                                                
+                                            } catch let error as NSError {
+                                                
+                                                print("Did not catch anything")
+                                                //...
+                                            }
+                                        }
+                                    }
+                                }
+                                
+                            }
+                            /*
                             if let controller = self.storyboard?.instantiateViewController(identifier: "PickAvailabilityViewController") as? PickAvailabilityViewController
                             {
                                 controller.isModalInPresentation = false
@@ -505,7 +563,7 @@ extension ChatViewController: InputBarAccessoryViewDelegate {
                                         }
                                     }
                                 }
-                            }
+                            }*/
                             
                             
                             /*self.insertMessage(MockMessage(text: msg, user: MockUser(senderId: "ajdsklf", displayName: "Booking Assistant"), messageId: "asjdfkl", date: Date()))

@@ -24,7 +24,6 @@
 		B5327A0F243A00E7003F2CF8 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5327A0E243A00E6003F2CF8 /* MessageViewController.swift */; };
 		B537C77123FEFAA9005D0C5E /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B537C77023FEFAA9005D0C5E /* CalendarViewController.swift */; };
 		B537C77323FF01D9005D0C5E /* CalendarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B537C77223FF01D9005D0C5E /* CalendarTableViewCell.swift */; };
-		B53FFBC724DE9B6300DB71B0 /* ParticipantCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53FFBC624DE9B6300DB71B0 /* ParticipantCollectionViewCell.swift */; };
 		B54732E72443466D00027D5D /* OEMentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54732E62443466D00027D5D /* OEMentions.swift */; };
 		B54CB246243113DD00E471DB /* UIColor+FormerDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54CB244243113DC00E471DB /* UIColor+FormerDemo.swift */; };
 		B54CB247243113DD00E471DB /* String+FormerDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54CB245243113DD00E471DB /* String+FormerDemo.swift */; };
@@ -42,6 +41,11 @@
 		B57EBEFF24DFF27B00672F0F /* organai-se.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = B57EBEFE24DFF21B00672F0F /* organai-se.mp4 */; };
 		B57EBF0124E0250800672F0F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B57EBF0024E0250800672F0F /* GoogleService-Info.plist */; };
 		B57EBF0324E02EB800672F0F /* MapPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57EBF0224E02EB800672F0F /* MapPickerViewController.swift */; };
+		B58CF53A24E9027200D57332 /* ParticipantCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58CF53924E9027200D57332 /* ParticipantCollectionViewCell.swift */; };
+		B58CF53D24E9163E00D57332 /* LocationPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58CF53C24E9163E00D57332 /* LocationPickerViewController.swift */; };
+		B58CF53F24E9169E00D57332 /* LocationSearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58CF53E24E9169E00D57332 /* LocationSearchResultsViewController.swift */; };
+		B58CF54124E916A400D57332 /* SearchHistoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58CF54024E916A400D57332 /* SearchHistoryManager.swift */; };
+		B58CF54324E916CC00D57332 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58CF54224E916CC00D57332 /* Location.swift */; };
 		B5A151C924718D5A007B9704 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A151C824718D5A007B9704 /* Message.swift */; };
 		B5A4DB712482BE94008B97F8 /* icons8-synchronize-24.png in Resources */ = {isa = PBXBuildFile; fileRef = B5A4DB702482BE94008B97F8 /* icons8-synchronize-24.png */; };
 		B5D7E878241BB0490037862F /* DateFormatHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D7E877241BB0490037862F /* DateFormatHandler.swift */; };
@@ -88,7 +92,6 @@
 		B5327A0E243A00E6003F2CF8 /* MessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
 		B537C77023FEFAA9005D0C5E /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		B537C77223FF01D9005D0C5E /* CalendarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTableViewCell.swift; sourceTree = "<group>"; };
-		B53FFBC624DE9B6300DB71B0 /* ParticipantCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipantCollectionViewCell.swift; sourceTree = "<group>"; };
 		B54732E62443466D00027D5D /* OEMentions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OEMentions.swift; sourceTree = "<group>"; };
 		B54CB244243113DC00E471DB /* UIColor+FormerDemo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+FormerDemo.swift"; sourceTree = "<group>"; };
 		B54CB245243113DD00E471DB /* String+FormerDemo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+FormerDemo.swift"; sourceTree = "<group>"; };
@@ -106,6 +109,11 @@
 		B57EBEFE24DFF21B00672F0F /* organai-se.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "organai-se.mp4"; sourceTree = "<group>"; };
 		B57EBF0024E0250800672F0F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B57EBF0224E02EB800672F0F /* MapPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPickerViewController.swift; sourceTree = "<group>"; };
+		B58CF53924E9027200D57332 /* ParticipantCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParticipantCollectionViewCell.swift; sourceTree = "<group>"; };
+		B58CF53C24E9163E00D57332 /* LocationPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPickerViewController.swift; sourceTree = "<group>"; };
+		B58CF53E24E9169E00D57332 /* LocationSearchResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSearchResultsViewController.swift; sourceTree = "<group>"; };
+		B58CF54024E916A400D57332 /* SearchHistoryManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchHistoryManager.swift; sourceTree = "<group>"; };
+		B58CF54224E916CC00D57332 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		B5A151C824718D5A007B9704 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		B5A4DB702482BE94008B97F8 /* icons8-synchronize-24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-synchronize-24.png"; sourceTree = "<group>"; };
 		B5D7E877241BB0490037862F /* DateFormatHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatHandler.swift; sourceTree = "<group>"; };
@@ -203,6 +211,7 @@
 				B5F75FB6247CE6F200A89238 /* String+Extension.swift */,
 				B5F75FB3247CE6F100A89238 /* UIColor+Extensions.swift */,
 				B5F75FB7247CE6F300A89238 /* UIViewController+Extensions.swift */,
+				B58CF53924E9027200D57332 /* ParticipantCollectionViewCell.swift */,
 				B57EBEFE24DFF21B00672F0F /* organai-se.mp4 */,
 				B51B4C5F23FD623C0043CAD5 /* Controller */,
 				B51B4C5E23FD62380043CAD5 /* View */,
@@ -210,7 +219,10 @@
 				B51B4C4623FD62140043CAD5 /* AppDelegate.swift */,
 				B51B4C4823FD62140043CAD5 /* SceneDelegate.swift */,
 				B51B4C4C23FD62140043CAD5 /* Main.storyboard */,
-				B53FFBC624DE9B6300DB71B0 /* ParticipantCollectionViewCell.swift */,
+				B58CF53C24E9163E00D57332 /* LocationPickerViewController.swift */,
+				B58CF54224E916CC00D57332 /* Location.swift */,
+				B58CF53E24E9169E00D57332 /* LocationSearchResultsViewController.swift */,
+				B58CF54024E916A400D57332 /* SearchHistoryManager.swift */,
 				B51B4C5223FD62150043CAD5 /* Assets.xcassets */,
 				B5A4DB702482BE94008B97F8 /* icons8-synchronize-24.png */,
 				B52452F8247D7BB400539A69 /* 9e6fa009-d057-40fc-9e1f-b5f2715013ae.png */,
@@ -280,6 +292,7 @@
 				B51B4C4023FD62140043CAD5 /* Frameworks */,
 				B51B4C4123FD62140043CAD5 /* Resources */,
 				9EDDB3D2E8987CD5454B0DA8 /* [CP] Embed Pods Frameworks */,
+				8EE91ABC1C9FC17A33AECF75 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -342,6 +355,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		8EE91ABC1C9FC17A33AECF75 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Organ.AI/Pods-Organ.AI-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Organ.AI/Pods-Organ.AI-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Organ.AI/Pods-Organ.AI-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		9EDDB3D2E8987CD5454B0DA8 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -388,6 +418,7 @@
 				B5022345241679580064BEA0 /* eventDetailTableViewCell.swift in Sources */,
 				B5F75FBA247CE6F400A89238 /* SampleData.swift in Sources */,
 				B5F75FBC247CE6F400A89238 /* AutocompleteExampleViewController.swift in Sources */,
+				B58CF54124E916A400D57332 /* SearchHistoryManager.swift in Sources */,
 				B5DE2BCA242D9F23001120E3 /* FirestoreHandler.swift in Sources */,
 				B57EBEF824DFF0F500672F0F /* HomeViewController.swift in Sources */,
 				B57EBEFD24DFF1FA00672F0F /* Utilities.swift in Sources */,
@@ -396,11 +427,13 @@
 				B5F75FBD247CE6F400A89238 /* CustomMessageSizeCalculator_2.swift in Sources */,
 				B54732E72443466D00027D5D /* OEMentions.swift in Sources */,
 				B52F34AB24082A7C00042A75 /* EventModel.swift in Sources */,
+				B58CF53A24E9027200D57332 /* ParticipantCollectionViewCell.swift in Sources */,
+				B58CF53D24E9163E00D57332 /* LocationPickerViewController.swift in Sources */,
 				B5F75FC0247CE6F400A89238 /* MockUser.swift in Sources */,
+				B58CF54324E916CC00D57332 /* Location.swift in Sources */,
 				B50B0AC32407F56B003A1E8D /* CalendarModel.swift in Sources */,
 				B57EBF0324E02EB800672F0F /* MapPickerViewController.swift in Sources */,
 				B55D8BE92446CA38006E7908 /* OrganaiHandler.swift in Sources */,
-				B53FFBC724DE9B6300DB71B0 /* ParticipantCollectionViewCell.swift in Sources */,
 				B5A151C924718D5A007B9704 /* Message.swift in Sources */,
 				B560F90524B87DE000F63E07 /* PickAvailabilityViewController.swift in Sources */,
 				B5F75FC1247CE6F400A89238 /* UIColor+Extensions.swift in Sources */,
@@ -422,6 +455,7 @@
 				B5F75FC2247CE6F400A89238 /* IncomingTextCell.swift in Sources */,
 				B51B4C4723FD62140043CAD5 /* AppDelegate.swift in Sources */,
 				B5327A0F243A00E7003F2CF8 /* MessageViewController.swift in Sources */,
+				B58CF53F24E9169E00D57332 /* LocationSearchResultsViewController.swift in Sources */,
 				B54CB246243113DD00E471DB /* UIColor+FormerDemo.swift in Sources */,
 				B5DE2BCC242DA1E8001120E3 /* EventsCalendarManager.swift in Sources */,
 				B57EBEF624DFF0F500672F0F /* LoginViewController.swift in Sources */,

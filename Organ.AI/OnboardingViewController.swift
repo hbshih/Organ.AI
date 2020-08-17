@@ -7,10 +7,20 @@
 //
 
 import UIKit
-class OnboardingViewController: UIViewController {
+import GoogleSignIn
+import GoogleAPIClientForREST
+
+
+class OnboardingViewController: UIViewController, GIDSignInUIDelegate{
+    
+
+    
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         
         
@@ -28,4 +38,30 @@ class OnboardingViewController: UIViewController {
         }
     }
     
+    
+  //  weak var holding: HoldingController?
+    @IBAction func googleCalendarAccess(_ sender: Any) {
+        
+     //   holding?.currentServer = .GOOGLE
+      //  holding?.uiDelegate = self
+      //  holding?.delegate = self
+     //   signInWithServers()
+    }
+    
+    func signInWithServers(){
+       // holding?.currentInteractor.signIn(from: self)
+    }
+
+    //Sends to the next file
+  /*  func changePages()
+    {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            guard let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "chooseOption") as? ChooseExport else {
+                return
+            }
+            nextVC.serverUser = self.holding?.currentInteractor
+            nextVC.holder = self.holding
+            self.holding?.transition(from: self, to: nextVC, with: .rightToLeft)
+        }
+    }*/
 }

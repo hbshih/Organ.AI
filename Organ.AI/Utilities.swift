@@ -33,6 +33,7 @@ class Utilities {
         // Filled rounded corner style
         button.backgroundColor = UIColor.init(red: 48/255, green: 173/255, blue: 99/255, alpha: 1)
         button.layer.cornerRadius = 25.0
+        button.layer.borderColor = UIColor.white.cgColor
         button.tintColor = UIColor.white
     }
     
@@ -40,9 +41,9 @@ class Utilities {
         
         // Hollow rounded corner style
         button.layer.borderWidth = 2
-        button.layer.borderColor = UIColor.black.cgColor
+        button.layer.borderColor = UIColor.white.cgColor
         button.layer.cornerRadius = 25.0
-        button.tintColor = UIColor.black
+        button.tintColor = UIColor.white
     }
     
     static func isPasswordValid(_ password : String) -> Bool {

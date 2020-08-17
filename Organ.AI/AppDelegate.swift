@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import Firebase
+import GoogleSignIn
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -21,6 +22,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
           window?.rootViewController = AutocompleteExampleViewController()
          //     NavigationController(rootViewController: AutocompleteExampleViewController())
           window?.makeKeyAndVisible()
+        
+     /*   var configureError: NSError?
+    //    GGLContext.sharedInstance().configureWithError(&configureError)
+        assert(configureError == nil, "Error configuring Google services: \(String(describing: configureError))")
+        return true*/
         
         FirebaseApp.configure()
         return true

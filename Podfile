@@ -39,6 +39,13 @@ target 'Organ.AI' do
   
   pod 'FirebaseAuth'
   
+ # pod 'GoogleAPIClientForREST/Calendar'
+  #    pod 'GoogleAPIClientForREST/Calendar', '~> 1.2.1'
+  #pod 'GoogleSignIn'
+  pod 'SwiftyJSON'
+  pod 'GoogleAPIClientForREST/Calendar', '~> 1.2.1'
+  pod 'GoogleSignIn', '~> 4.4.0'
+  
   # Pods for Organ.AI
 
 end

@@ -8,9 +8,12 @@
 
 import UIKit
 import AVKit
+import FirebaseAuth
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var videoBackgroundView: UIView!
+    
     var videoPlayer:AVPlayer?
     
     var videoPlayerLayer:AVPlayerLayer?
@@ -18,10 +21,22 @@ class ViewController: UIViewController {
     @IBOutlet weak var signUpButton: UIButton!
     
     @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var login_google: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        if Auth.auth().currentUser != nil {
+          // User is signed in.
+          // ...
+            
+            performSegue(withIdentifier: "logInAutoSegue", sender: nil)
+            
+        } else {
+          // No user is signed in.
+          // ...
+        }
         
         setUpElements()
     }
@@ -30,12 +45,14 @@ class ViewController: UIViewController {
         
         // Set up video in the background
         setUpVideo()
+        
     }
     
     func setUpElements() {
         
         Utilities.styleFilledButton(signUpButton)
         Utilities.styleHollowButton(loginButton)
+        Utilities.styleHollowButton(login_google)
         
     }
     
@@ -61,15 +78,22 @@ class ViewController: UIViewController {
         // Create the layer
         videoPlayerLayer = AVPlayerLayer(player: videoPlayer!)
         
-        // Adjust the size and frame
-        videoPlayerLayer?.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height)
         
-        view.layer.insertSublayer(videoPlayerLayer!, at: 0)
+        // Adjust the size and frame
+        videoPlayerLayer?.frame = CGRect(x: -800, y: -400, width: self.view.frame.size.width * 5, height: self.view.frame.size.height*2)
+        
+        videoBackgroundView.layer.insertSublayer(videoPlayerLayer!, at: 0)
+        
+       // view.layer.insertSublayer(videoPlayerLayer!, at: 0)
         
         // Add it to the view and play it
         videoPlayer?.playImmediately(atRate: 1.0)
     }
 
-
+    @IBAction func SignInwithGoogle(_ sender: Any) {
+        
+        
+    }
+    
 }
 
