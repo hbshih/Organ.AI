@@ -52,7 +52,7 @@ class ViewController: UIViewController {
         
         Utilities.styleFilledButton(signUpButton)
         Utilities.styleHollowButton(loginButton)
-        Utilities.styleHollowButton(login_google)
+//        Utilities.styleHollowButton(login_google)
         
     }
     

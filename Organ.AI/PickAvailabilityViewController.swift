@@ -11,10 +11,68 @@ import MapKit
 import JFContactsPicker
 import ContactsUI
 import LocationPicker
+import KVKCalendar
 
 
 class PickAvailabilityViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, ContactsPickerDelegate
 {
+    
+    /*Calendar*/
+    
+    private var events = [Event]()
+       
+       // Set First day
+        var selectDate: Date?
+       
+       
+       private lazy var style: Style = {
+           var style = Style()
+           
+           style.defaultType = .week
+           
+           if UIDevice.current.userInterfaceIdiom == .phone {
+               style.month.isHiddenSeporator = true
+               style.timeline.widthTime = 40
+               style.timeline.offsetTimeX = 1
+               style.timeline.offsetLineLeft = 2
+           } else {
+               style.timeline.widthEventViewer = 500
+           }
+           style.timeline.startFromFirstEvent = false
+           //style.timezone = TimeZone.
+           style.followInSystemTheme = true
+           style.timeline.offsetTimeY = 30
+           style.timeline.offsetEvent = 3
+           style.timeline.currentLineHourWidth = 10
+           style.allDay.isPinned = true
+           style.startWeekDay = .sunday
+           style.timeHourSystem = .twentyFourHour
+           style.event.isEnableMoveEvent = true
+           style.timezone = TimeZone(abbreviation: "GMT+1")!
+           return style
+       }()
+       
+       private lazy var calendarView: CalendarView = {
+        let calendar = CalendarView(frame: view.frame, date: selectDate ?? Date(), style: style)
+           calendar.delegate = self
+           calendar.dataSource = self
+           return calendar
+       }()
+       
+     /*  private lazy var segmentedControl: UISegmentedControl = {
+           let array = CalendarType.allCases
+           let control = UISegmentedControl(items: array.map({ $0.rawValue.capitalized }))
+           control.tintColor = .systemRed
+           control.selectedSegmentIndex = 0
+           control.addTarget(self, action: #selector(switchCalendar), for: .valueChanged)
+           return control
+       }()*/
+       
+       private lazy var eventViewer: EventViewer = {
+           let view = EventViewer(frame: CGRect(x: 0, y: 0, width: 500, height: calendarView.frame.height))
+           return view
+       }()
+    
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var participantCollectionView: UICollectionView!
@@ -22,6 +80,11 @@ class PickAvailabilityViewController: UIViewController, UICollectionViewDelegate
     @IBOutlet weak var eventTitle: UITextField!
     @IBOutlet weak var eventLocation: UIButton!
     @IBOutlet weak var eventLocation_Label: UILabel!
+    @IBOutlet weak var pickAvailabilityView: UIView!
+    @IBOutlet weak var eventNotes: UITextView!
+  //  var startdate: Date?
+    
+    var selectedSlots = [Event]()
     
     var contactName = [String]()
     var contactImage = [UIImage]()
@@ -202,9 +265,10 @@ class PickAvailabilityViewController: UIViewController, UICollectionViewDelegate
         collectionView?.collectionViewLayout = columnLayout
         collectionView?.contentInsetAdjustmentBehavior = .always
         collectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
+        
         // Do any additional setup after loading the view.
         
-        coordinates(forAddress: "Stockholm 111 23")
+        coordinates(forAddress: "Regeringsgatan 29, 111 53 Stockholm")
         {
             (location) in
             guard let location = location else {
@@ -220,9 +284,31 @@ class PickAvailabilityViewController: UIViewController, UICollectionViewDelegate
             let pLong = location.longitude
             let center = CLLocationCoordinate2D(latitude: pLat, longitude: pLong)
             
-            let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+            let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005))
             self.mapkit.setRegion(region, animated: true)
         }
+        
+        pickAvailabilityView.addSubview(calendarView)
+      //    view.addSubview(calendarView)
+        //  navigationItem.titleView = segmentedControl
+        //  navigationItem.rightBarButtonItem = todayButton
+          
+          calendarView.addEventViewToDay(view: eventViewer)
+          
+          loadEvents { [weak self] (events) in
+              DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                  //self?.events = events
+                //  self?.calendarView.reloadData()
+              }
+          }
+        
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        var frame = view.frame
+        frame.origin.y = 0
+        calendarView.reloadFrame(frame)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -247,8 +333,15 @@ class PickAvailabilityViewController: UIViewController, UICollectionViewDelegate
     }
     
     @IBAction func confirmMeeting(_ sender: Any) {
+        
+        
+        //upload event to DB
+        
         performSegue(withIdentifier: "homeSegue", sender: nil)
     }
+    
+    
+    
     @IBAction func pickLocationTapped(_ sender: Any) {
         
         print("tapped")
@@ -263,6 +356,33 @@ class PickAvailabilityViewController: UIViewController, UICollectionViewDelegate
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "homeSegue"
+        {
+            print("segueing")
+            print(selectedSlots)
+            if let VC = segue.destination as? UINavigationController
+            {
+                if let controller = VC.viewControllers.first as? CalendarViewController
+                {
+                    print("checl")
+         //           print(selectedSlots[0].start)
+                    if selectedSlots.count > 0
+                    {
+                    controller.newEventStartDate = selectedSlots[0].start
+                    controller.newEventEndDate = selectedSlots[0].end
+                    controller.newEventTitle = eventTitle.text
+                    controller.newEventLocation = "WeWork"
+                    controller.newEventNotes = eventNotes.text
+                        controller.triggerNotificationTimer = true
+                    }
+                }
+            }
+            
+
+            
+        }
+        
         if segue.identifier == "LocationPicker" {
             
             
@@ -275,4 +395,267 @@ class PickAvailabilityViewController: UIViewController, UICollectionViewDelegate
         }
     }
     
+}
+
+extension PickAvailabilityViewController: CalendarDelegate {
+ 
+    /*func didChangeEvent(_ event: Event, start: Date?, end: Date?) {
+        var eventTemp = event
+        guard let startTemp = start, let endTemp = end else { return }
+        
+        let startTime = timeFormatter(date: startTemp)
+        let endTime = timeFormatter(date: endTemp)
+        eventTemp.start = startTemp
+        eventTemp.end = endTemp
+        eventTemp.text = "\(startTime) - \(endTime)\n new time"
+        
+        if let idx = events.firstIndex(where: { $0.compare(eventTemp) }) {
+            events.remove(at: idx)
+            events.append(eventTemp)
+      //      calendarView.reloadData()
+        }
+    }*/
+    
+    func didSelectDate(_ date: Date?, type: CalendarType, frame: CGRect?) {
+        selectDate = date ?? Date()
+        calendarView.reloadData()
+    }
+    
+    func didSelectEvent(_ event: Event, type: CalendarType, frame: CGRect?) {
+        
+        
+        var eventTemp = event
+    
+        if eventTemp.backgroundColor == UIColor.black
+        {
+            let color = UIColor.cyan
+            eventTemp.backgroundColor = color
+            eventTemp.text = "Selected"
+            
+            selectedSlots.append(event)
+            
+        }else
+        {
+            let color = UIColor.black
+            eventTemp.backgroundColor = color
+            eventTemp.text = "Available"
+            
+            if let idx = selectedSlots.firstIndex(where: { $0.compare(event)})
+            {
+                selectedSlots.remove(at: idx)
+            }
+            
+        }
+                
+        if let idx = events.firstIndex(where: { $0.compare(eventTemp) }) {
+            events.remove(at: idx)
+            events.append(eventTemp)
+            calendarView.reloadData()
+        }
+        
+       // print(event)
+        //print(events)
+        print(selectedSlots)
+    }
+    
+    func didSelectMore(_ date: Date, frame: CGRect?) {
+        print(date)
+    }
+    
+    func eventViewerFrame(_ frame: CGRect) {
+        eventViewer.reloadFrame(frame: frame)
+    }
+}
+
+extension PickAvailabilityViewController: CalendarDataSource {
+    func eventsForCalendar() -> [Event] {
+        return events
+    }
+    
+    private var dates: [Date] {
+        return Array(0...10).compactMap({ Calendar.current.date(byAdding: .day, value: $0, to: Date()) })
+    }
+    /*
+    func willDisplayDate(_ date: Date?, events: [Event]) -> DateStyle? {
+        guard dates.first(where: { $0.year == date?.year && $0.month == date?.month && $0.day == date?.day }) != nil else { return nil }
+        
+        return DateStyle(backgroundColor: .orange, textColor: .black, dotBackgroundColor: .red)
+    }*/
+    
+    func willDisplayEventView(_ event: Event, frame: CGRect, date: Date?) -> EventViewGeneral? {
+        guard event.ID == "2" else { return nil }
+        
+        return CustomViewEvent(style: style, event: event, frame: frame)
+    }
+}
+
+extension PickAvailabilityViewController {
+    func loadEvents(completion: ([Event]) -> Void) {
+        let decoder = JSONDecoder()
+        
+        guard let url = URL(string: "https://us-central1-organai-service.cloudfunctions.net/getParticipantAvailability"),
+            let payload = "{\"event_id\": \"R57FXMD6IBccm1P1pGkS\"}".data(using: .utf8) else
+        {
+            print("hey")
+            return
+        }
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        //  request.addValue("your_api_key", forHTTPHeaderField: "x-api-key")
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = payload
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            guard error == nil else { print(error!.localizedDescription); return }
+          //  guard let data = data else { print("Empty data"); return }
+            
+            let decoder = JSONDecoder()
+                       
+            if let data = data, let dataList = try? decoder.decode(jsonData.self, from: data) {
+                        
+          //      print(dataList.users!)
+                //print(dataList.users!.username)
+                
+                for i in 0..<7
+                {
+                    for j in 0..<dataList.users.bookedSlots[0][i].bookedSlots.count
+                    {
+                        let startT = "\(dataList.users.bookedSlots[0][i].date) \(dataList.users.bookedSlots[0][i].bookedSlots[j].start_time) +08:00"
+                        
+                        let converted_startT = self.formatter(date: startT)
+                        let endT = converted_startT.addingTimeInterval(Double(dataList.users.bookedSlots[0][i].bookedSlots[j].duration)*60.0*60.0)
+                        
+                        self.events.append(Event.init(ID: "\(i) \(j)", text: "Available", start: converted_startT, end: endT, color: EventColor(.white), backgroundColor: .black, textColor: .white, isAllDay: false, isContainsFile: false, textForMonth: "asd", eventData: nil, recurringType: .none))
+                    }
+                }
+                
+                print(self.events)
+
+                
+                DispatchQueue.main.async {
+                    
+                    self.calendarView.reloadData()
+                }
+                       } else {
+                           print("Error...")
+                       }
+            
+            
+            
+            
+        }.resume()
+        completion(events)
+    }
+    
+    func timeFormatter(date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = style.timeHourSystem.format
+        return formatter.string(from: date)
+    }
+    
+    func formatter(date: String) -> Date {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "E MMM dd yyyy HH:mm Z"
+        return formatter.date(from: date) ?? Date()
+    }
+}
+
+extension PickAvailabilityViewController: UIPopoverPresentationControllerDelegate { }
+
+struct ItemData: Decodable {
+    let data: [Item]
+    
+    enum CodingKeys: String, CodingKey {
+        case data
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        data = try container.decode([Item].self, forKey: CodingKeys.data)
+    }
+}
+
+struct jsonData: Decodable
+{
+    var users: users
+}
+
+struct users: Decodable
+{
+    var username: String
+    var bookedSlots: [[occupied]]
+}
+
+struct occupied: Decodable
+{
+    var date: String
+    var bookedSlots: [bookedDetails]
+}
+
+struct bookedDetails: Decodable {
+    var start_time: String
+    var duration: Double
+}
+
+struct Item: Decodable {
+    let id: String, title: String, start: String, end: String
+    let color: UIColor, colorText: UIColor
+    let files: [String]
+    let allDay: Bool
+    
+    enum CodingKeys: String, CodingKey {
+        case id, title, start, end, color, files
+        case colorText = "text_color"
+        case allDay = "all_day"
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        id = try container.decode(String.self, forKey: CodingKeys.id)
+        title = try container.decode(String.self, forKey: CodingKeys.title)
+        start = try container.decode(String.self, forKey: CodingKeys.start)
+        end = try container.decode(String.self, forKey: CodingKeys.end)
+        allDay = try container.decode(Int.self, forKey: CodingKeys.allDay) != 0
+        files = try container.decode([String].self, forKey: CodingKeys.files)
+        let strColor = try container.decode(String.self, forKey: CodingKeys.color)
+        color = UIColor.hexStringToColor(hex: strColor)
+        let strColorText = try container.decode(String.self, forKey: CodingKeys.colorText)
+        colorText = UIColor.hexStringToColor(hex: strColorText)
+    }
+}
+
+extension UIColor {
+    static func hexStringToColor(hex: String) -> UIColor {
+        var cString = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
+        
+        if cString.hasPrefix("#") {
+            cString.remove(at: cString.startIndex)
+        }
+        
+        if cString.count != 6 {
+            return .gray
+        }
+        var rgbValue: UInt32 = 0
+        Scanner(string: cString).scanHexInt32(&rgbValue)
+        
+        return UIColor(red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
+                       green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
+                       blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
+                       alpha: 1.0)
+    }
+}
+
+final class CustomViewEvent: EventViewGeneral {
+    override init(style: Style, event: Event, frame: CGRect) {
+        super.init(style: style, event: event, frame: frame)
+        
+        let imageView = UIImageView(image: UIImage(named: "ic_stub"))
+        imageView.frame = CGRect(origin: CGPoint(x: 3, y: 1), size: CGSize(width: frame.width - 6, height: frame.height - 2))
+        imageView.contentMode = .scaleAspectFit
+        addSubview(imageView)
+        backgroundColor = event.backgroundColor
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }

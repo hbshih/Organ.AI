@@ -39,19 +39,19 @@
 		B57EBEFC24DFF1FA00672F0F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57EBEFA24DFF1F900672F0F /* Constants.swift */; };
 		B57EBEFD24DFF1FA00672F0F /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57EBEFB24DFF1F900672F0F /* Utilities.swift */; };
 		B57EBEFF24DFF27B00672F0F /* organai-se.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = B57EBEFE24DFF21B00672F0F /* organai-se.mp4 */; };
-		B57EBF0124E0250800672F0F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B57EBF0024E0250800672F0F /* GoogleService-Info.plist */; };
 		B57EBF0324E02EB800672F0F /* MapPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57EBF0224E02EB800672F0F /* MapPickerViewController.swift */; };
 		B58CF53A24E9027200D57332 /* ParticipantCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58CF53924E9027200D57332 /* ParticipantCollectionViewCell.swift */; };
 		B58CF53D24E9163E00D57332 /* LocationPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58CF53C24E9163E00D57332 /* LocationPickerViewController.swift */; };
 		B58CF53F24E9169E00D57332 /* LocationSearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58CF53E24E9169E00D57332 /* LocationSearchResultsViewController.swift */; };
 		B58CF54124E916A400D57332 /* SearchHistoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58CF54024E916A400D57332 /* SearchHistoryManager.swift */; };
 		B58CF54324E916CC00D57332 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58CF54224E916CC00D57332 /* Location.swift */; };
+		B58CF5AF24EBC16C00D57332 /* EventViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58CF5AE24EBC16C00D57332 /* EventViewer.swift */; };
+		B58CF5B124EBDCFD00D57332 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B58CF5B024EBDCFD00D57332 /* GoogleService-Info.plist */; };
 		B5A151C924718D5A007B9704 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A151C824718D5A007B9704 /* Message.swift */; };
 		B5A4DB712482BE94008B97F8 /* icons8-synchronize-24.png in Resources */ = {isa = PBXBuildFile; fileRef = B5A4DB702482BE94008B97F8 /* icons8-synchronize-24.png */; };
 		B5D7E878241BB0490037862F /* DateFormatHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D7E877241BB0490037862F /* DateFormatHandler.swift */; };
 		B5DE2BCA242D9F23001120E3 /* FirestoreHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DE2BC9242D9F23001120E3 /* FirestoreHandler.swift */; };
 		B5DE2BCC242DA1E8001120E3 /* EventsCalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DE2BCB242DA1E8001120E3 /* EventsCalendarManager.swift */; };
-		B5F1CC6224BC866600139D57 /* PickAvailabilityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F1CC6124BC866600139D57 /* PickAvailabilityViewController.swift */; };
 		B5F1CC6424BC86CA00139D57 /* PickAvailabilityCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F1CC6324BC86CA00139D57 /* PickAvailabilityCollectionViewCell.swift */; };
 		B5F1CC6624BC8F8800139D57 /* PickAvailabilityGrayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F1CC6524BC8F8800139D57 /* PickAvailabilityGrayCollectionViewCell.swift */; };
 		B5F75FBA247CE6F400A89238 /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F75FAC247CE6ED00A89238 /* SampleData.swift */; };
@@ -107,13 +107,14 @@
 		B57EBEFA24DFF1F900672F0F /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B57EBEFB24DFF1F900672F0F /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		B57EBEFE24DFF21B00672F0F /* organai-se.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "organai-se.mp4"; sourceTree = "<group>"; };
-		B57EBF0024E0250800672F0F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B57EBF0224E02EB800672F0F /* MapPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPickerViewController.swift; sourceTree = "<group>"; };
 		B58CF53924E9027200D57332 /* ParticipantCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParticipantCollectionViewCell.swift; sourceTree = "<group>"; };
 		B58CF53C24E9163E00D57332 /* LocationPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPickerViewController.swift; sourceTree = "<group>"; };
 		B58CF53E24E9169E00D57332 /* LocationSearchResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSearchResultsViewController.swift; sourceTree = "<group>"; };
 		B58CF54024E916A400D57332 /* SearchHistoryManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchHistoryManager.swift; sourceTree = "<group>"; };
 		B58CF54224E916CC00D57332 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		B58CF5AE24EBC16C00D57332 /* EventViewer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventViewer.swift; sourceTree = "<group>"; };
+		B58CF5B024EBDCFD00D57332 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B5A151C824718D5A007B9704 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		B5A4DB702482BE94008B97F8 /* icons8-synchronize-24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-synchronize-24.png"; sourceTree = "<group>"; };
 		B5D7E877241BB0490037862F /* DateFormatHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatHandler.swift; sourceTree = "<group>"; };
@@ -190,7 +191,7 @@
 		B51B4C4523FD62140043CAD5 /* Organ.AI */ = {
 			isa = PBXGroup;
 			children = (
-				B57EBF0024E0250800672F0F /* GoogleService-Info.plist */,
+				B58CF5B024EBDCFD00D57332 /* GoogleService-Info.plist */,
 				B57EBEFA24DFF1F900672F0F /* Constants.swift */,
 				B57EBEFB24DFF1F900672F0F /* Utilities.swift */,
 				B57EBEF424DFF0F400672F0F /* HomeViewController.swift */,
@@ -219,6 +220,7 @@
 				B51B4C4623FD62140043CAD5 /* AppDelegate.swift */,
 				B51B4C4823FD62140043CAD5 /* SceneDelegate.swift */,
 				B51B4C4C23FD62140043CAD5 /* Main.storyboard */,
+				B58CF5AE24EBC16C00D57332 /* EventViewer.swift */,
 				B58CF53C24E9163E00D57332 /* LocationPickerViewController.swift */,
 				B58CF54224E916CC00D57332 /* Location.swift */,
 				B58CF53E24E9169E00D57332 /* LocationSearchResultsViewController.swift */,
@@ -292,7 +294,6 @@
 				B51B4C4023FD62140043CAD5 /* Frameworks */,
 				B51B4C4123FD62140043CAD5 /* Resources */,
 				9EDDB3D2E8987CD5454B0DA8 /* [CP] Embed Pods Frameworks */,
-				8EE91ABC1C9FC17A33AECF75 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -310,7 +311,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1130;
-				LastUpgradeCheck = 1130;
+				LastUpgradeCheck = 1160;
 				ORGANIZATIONNAME = Organ.AI;
 				TargetAttributes = {
 					B51B4C4223FD62140043CAD5 = {
@@ -341,6 +342,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B58CF5B124EBDCFD00D57332 /* GoogleService-Info.plist in Resources */,
 				B5A4DB712482BE94008B97F8 /* icons8-synchronize-24.png in Resources */,
 				B51B4C5623FD62150043CAD5 /* LaunchScreen.storyboard in Resources */,
 				B57EBEFF24DFF27B00672F0F /* organai-se.mp4 in Resources */,
@@ -348,30 +350,12 @@
 				B51B4C5323FD62150043CAD5 /* Assets.xcassets in Resources */,
 				B51B4C4E23FD62140043CAD5 /* Main.storyboard in Resources */,
 				B52452F9247D7BB400539A69 /* 9e6fa009-d057-40fc-9e1f-b5f2715013ae.png in Resources */,
-				B57EBF0124E0250800672F0F /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		8EE91ABC1C9FC17A33AECF75 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Organ.AI/Pods-Organ.AI-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Organ.AI/Pods-Organ.AI-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Organ.AI/Pods-Organ.AI-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		9EDDB3D2E8987CD5454B0DA8 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -448,6 +432,7 @@
 				B51B4C5123FD62140043CAD5 /* Organ_AI.xcdatamodeld in Sources */,
 				B50D6CDF24BD47BF00FF4635 /* PickAvailabilityTimeCollectionViewCell.swift in Sources */,
 				B5D7E878241BB0490037862F /* DateFormatHandler.swift in Sources */,
+				B58CF5AF24EBC16C00D57332 /* EventViewer.swift in Sources */,
 				B57EBEF724DFF0F500672F0F /* ViewController.swift in Sources */,
 				B5F75FBB247CE6F400A89238 /* Settings+UserDefaults.swift in Sources */,
 				B537C77323FF01D9005D0C5E /* CalendarTableViewCell.swift in Sources */,
@@ -466,7 +451,6 @@
 				B5F75FC7247CE6F400A89238 /* CustomMessageSizeCalculator.swift in Sources */,
 				B5F75FC4247CE6F400A89238 /* String+Extension.swift in Sources */,
 				B51B4C4923FD62140043CAD5 /* SceneDelegate.swift in Sources */,
-				B5F1CC6224BC866600139D57 /* PickAvailabilityViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -532,10 +516,7 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
+				GCC_PREPROCESSOR_DEFINITIONS = "DISABLE_PUSH_NOTIFICATIONS=1";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -590,6 +571,7 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = "DISABLE_PUSH_NOTIFICATIONS=1";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -612,13 +594,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.7;
 				DEVELOPMENT_TEAM = 64KKU33NVH;
 				INFOPLIST_FILE = Organ.AI/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Organ.AI.Organ-AI";
+				PRODUCT_BUNDLE_IDENTIFIER = com.organai.mvp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -631,13 +614,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.7;
 				DEVELOPMENT_TEAM = 64KKU33NVH;
 				INFOPLIST_FILE = Organ.AI/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Organ.AI.Organ-AI";
+				PRODUCT_BUNDLE_IDENTIFIER = com.organai.mvp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

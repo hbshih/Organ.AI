@@ -162,7 +162,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Ul-KG-64b">
                                 <rect key="frame" x="0.0" y="44" width="414" height="350"/>
                                 <subviews>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="sIV-O4-956">
+                                    <collectionView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="sIV-O4-956">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="350"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="nXV-bH-Zs6">
@@ -505,9 +505,11 @@
                         <outlet property="collectionView" destination="sIV-O4-956" id="CT5-iS-gzi"/>
                         <outlet property="eventLocation" destination="vds-iK-Pjb" id="oKZ-cZ-cb5"/>
                         <outlet property="eventLocation_Label" destination="EIo-rE-hUN" id="nyc-Wt-5Pg"/>
+                        <outlet property="eventNotes" destination="roH-gg-49F" id="pzq-Mr-JYh"/>
                         <outlet property="eventTitle" destination="Hmt-pG-WNj" id="Vx0-5E-tDG"/>
                         <outlet property="mapkit" destination="u1s-Wl-nvt" id="olb-GP-RbJ"/>
                         <outlet property="participantCollectionView" destination="wNp-lS-pMi" id="wUr-dh-97Q"/>
+                        <outlet property="pickAvailabilityView" destination="9Ul-KG-64b" id="RRr-Bq-8aj"/>
                         <segue destination="rK4-Tj-ND2" kind="show" identifier="homeSegue" id="Mpm-je-qSC"/>
                     </connections>
                 </viewController>
@@ -707,40 +709,8 @@
                                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="MT4-Jk-S4C">
                                                             <rect key="frame" x="0.0" y="55" width="382" height="55"/>
                                                             <subviews>
-                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xnz-hA-CwD">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="127.5" height="55"/>
-                                                                    <subviews>
-                                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Participant_3" translatesAutoresizingMaskIntoConstraints="NO" id="THm-Pp-skp">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="55" height="55"/>
-                                                                            <constraints>
-                                                                                <constraint firstAttribute="width" constant="55" id="EbV-aN-LMw"/>
-                                                                            </constraints>
-                                                                            <userDefinedRuntimeAttributes>
-                                                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                                    <real key="value" value="27.5"/>
-                                                                                </userDefinedRuntimeAttribute>
-                                                                            </userDefinedRuntimeAttributes>
-                                                                        </imageView>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Erik Flores" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JMy-mv-us7">
-                                                                            <rect key="frame" x="60" y="20.5" width="67.5" height="14.5"/>
-                                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                                            <nil key="textColor"/>
-                                                                            <nil key="highlightedColor"/>
-                                                                        </label>
-                                                                    </subviews>
-                                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                                                    <constraints>
-                                                                        <constraint firstItem="JMy-mv-us7" firstAttribute="centerY" secondItem="xnz-hA-CwD" secondAttribute="centerY" id="6pF-kj-mP3"/>
-                                                                        <constraint firstAttribute="height" constant="55" id="Y8N-M0-kzj"/>
-                                                                        <constraint firstItem="THm-Pp-skp" firstAttribute="leading" secondItem="xnz-hA-CwD" secondAttribute="leading" id="ieB-Ty-sov"/>
-                                                                        <constraint firstItem="THm-Pp-skp" firstAttribute="top" secondItem="xnz-hA-CwD" secondAttribute="top" id="k1M-Y7-m6e"/>
-                                                                        <constraint firstAttribute="trailing" secondItem="JMy-mv-us7" secondAttribute="trailing" id="oZv-Gv-eKK"/>
-                                                                        <constraint firstAttribute="bottom" secondItem="THm-Pp-skp" secondAttribute="bottom" id="qRL-FO-SUt"/>
-                                                                        <constraint firstItem="JMy-mv-us7" firstAttribute="leading" secondItem="THm-Pp-skp" secondAttribute="trailing" constant="5" id="vjn-PU-kyK"/>
-                                                                    </constraints>
-                                                                </view>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0rU-ZP-aDf">
-                                                                    <rect key="frame" x="127.5" y="0.0" width="127" height="55"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="191" height="55"/>
                                                                     <subviews>
                                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Participant_2" translatesAutoresizingMaskIntoConstraints="NO" id="ktd-gy-NQl">
                                                                             <rect key="frame" x="0.0" y="0.0" width="55" height="55"/>
@@ -754,7 +724,7 @@
                                                                             </userDefinedRuntimeAttributes>
                                                                         </imageView>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Benjamin Shih" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Awy-4y-yF8">
-                                                                            <rect key="frame" x="60" y="13" width="67" height="29"/>
+                                                                            <rect key="frame" x="60" y="20.5" width="131" height="14.5"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
@@ -772,7 +742,7 @@
                                                                     </constraints>
                                                                 </view>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UW9-Sq-w60">
-                                                                    <rect key="frame" x="254.5" y="0.0" width="127.5" height="55"/>
+                                                                    <rect key="frame" x="191" y="0.0" width="191" height="55"/>
                                                                     <subviews>
                                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Participant" translatesAutoresizingMaskIntoConstraints="NO" id="pVN-r7-rTN">
                                                                             <rect key="frame" x="0.0" y="0.0" width="55" height="55"/>
@@ -786,7 +756,7 @@
                                                                             </userDefinedRuntimeAttributes>
                                                                         </imageView>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ather Gattami" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DIk-Wd-58G">
-                                                                            <rect key="frame" x="60" y="13" width="67.5" height="29"/>
+                                                                            <rect key="frame" x="60" y="20.5" width="131" height="14.5"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
@@ -1135,7 +1105,7 @@ You are free Today!</string>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="jta-Rc-uGo">
-                                <rect key="frame" x="40" y="652" width="334" height="170"/>
+                                <rect key="frame" x="40" y="702" width="334" height="120"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bvt-Bw-Nca">
                                         <rect key="frame" x="0.0" y="0.0" width="334" height="50"/>
@@ -1152,14 +1122,6 @@ You are free Today!</string>
                                         <state key="normal" title="Login"/>
                                         <connections>
                                             <segue destination="TZx-oi-f5P" kind="show" id="UnY-cx-2IA"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p2a-Aj-aci">
-                                        <rect key="frame" x="0.0" y="140" width="334" height="30"/>
-                                        <state key="normal" title="Sign In with Google"/>
-                                        <connections>
-                                            <action selector="SignInwithGoogle:" destination="fD3-M6-rJE" eventType="touchUpInside" id="H0m-h5-jBU"/>
-                                            <segue destination="WBo-eX-8V3" kind="show" id="2Lg-qB-qL6"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -1192,7 +1154,6 @@ You are free Today!</string>
                     <navigationItem key="navigationItem" id="tV2-OF-Oay"/>
                     <connections>
                         <outlet property="loginButton" destination="urZ-mH-LVE" id="sas-gK-H53"/>
-                        <outlet property="login_google" destination="p2a-Aj-aci" id="dqF-Jr-UFI"/>
                         <outlet property="signUpButton" destination="bvt-Bw-Nca" id="EmT-a8-D78"/>
                         <outlet property="videoBackgroundView" destination="tPl-r2-YQ1" id="HIB-2T-sLt"/>
                         <segue destination="l1i-wd-kYJ" kind="show" id="nJD-F9-smF"/>
@@ -1465,8 +1426,8 @@ You are free Today!</string>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="P89-a5-rKe"/>
-        <segue reference="YZs-wi-KMo"/>
+        <segue reference="c55-HR-rh1"/>
+        <segue reference="Mpm-je-qSC"/>
         <segue reference="Fsv-e4-Hnx"/>
     </inferredMetricsTieBreakers>
     <resources>

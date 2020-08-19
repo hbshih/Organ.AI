@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>405553763812-qlp6ct0ap8038v77mpbm1dteoj9p5lo7.apps.googleusercontent.com</string>
+	<string>405553763812-vpsl1vfqvuptb57oh187sp8bhdki8b9h.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.405553763812-qlp6ct0ap8038v77mpbm1dteoj9p5lo7</string>
+	<string>com.googleusercontent.apps.405553763812-vpsl1vfqvuptb57oh187sp8bhdki8b9h</string>
 	<key>API_KEY</key>
 	<string>AIzaSyAXlglrB5lMMFOMbj2pULnELvk_cYfYPp4</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +13,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>Organ.AI.Organ-AI</string>
+	<string>com.organai.mvp</string>
 	<key>PROJECT_ID</key>
 	<string>organai-service</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,7 +29,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:405553763812:ios:34c9f26179601a701523f1</string>
+	<string>1:405553763812:ios:01d4079c386ef5541523f1</string>
 	<key>DATABASE_URL</key>
 	<string>https://organai-service.firebaseio.com</string>
 </dict>

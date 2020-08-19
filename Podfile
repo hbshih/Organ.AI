@@ -32,7 +32,7 @@ target 'Organ.AI' do
   
   pod 'UITextView+Placeholder'
   
-  pod 'SpreadsheetView'
+#  pod 'SpreadsheetView'
   pod 'JFContactsPicker', '~> 2.0'
   
   pod 'LocationPicker'
@@ -43,8 +43,12 @@ target 'Organ.AI' do
   #    pod 'GoogleAPIClientForREST/Calendar', '~> 1.2.1'
   #pod 'GoogleSignIn'
   pod 'SwiftyJSON'
-  pod 'GoogleAPIClientForREST/Calendar', '~> 1.2.1'
-  pod 'GoogleSignIn', '~> 4.4.0'
+  pod 'GoogleAPIClientForREST/Calendar'
+ # pod 'GoogleSignIn'
+  
+  pod 'KVKCalendar'
+  
+  pod 'SCLAlertView'
   
   # Pods for Organ.AI
 

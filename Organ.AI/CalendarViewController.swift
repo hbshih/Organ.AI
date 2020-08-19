@@ -10,6 +10,9 @@ import UIKit
 import FSCalendar
 import SwiftCheckboxDialog
 import JFContactsPicker
+import SCLAlertView
+import EventKit
+import EventKitUI
 
 struct cellData
 {
@@ -27,6 +30,7 @@ class CalendarViewController: UIViewController, UITableViewDataSource, UITableVi
     @IBOutlet weak var calendarHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var NoEventLabel: UILabel!
     @IBOutlet weak var navBar: UINavigationItem!
+    var triggerNotificationTimer = false
     
     // Data Accesible
     var tableViewData = [cellData]()
@@ -113,6 +117,12 @@ class CalendarViewController: UIViewController, UITableViewDataSource, UITableVi
         
     }
     
+    var newEventStartDate: Date?
+    var newEventEndDate: Date?
+    var newEventTitle: String?
+    var newEventLocation: String?
+    var newEventNotes: String?
+    
     override func viewDidAppear(_ animated: Bool) {
                 tableViewData = EventsCalendarManager().loadEvents(selectedCalendars: ["Testing Calendar"])
         
@@ -120,6 +130,80 @@ class CalendarViewController: UIViewController, UITableViewDataSource, UITableVi
         tableView.backgroundColor = .clear
         
         calendar.reloadData()
+        
+        print(tableViewData)
+        
+        if triggerNotificationTimer
+        {
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 10.0) {
+                
+                         let appearance = SCLAlertView.SCLAppearance(
+                           kTitleFont: UIFont(name: "HelveticaNeue", size: 20)!,
+                           kTextFont: UIFont(name: "HelveticaNeue", size: 14)!,
+                           kButtonFont: UIFont(name: "HelveticaNeue-Bold", size: 14)!,
+                           showCloseButton: false,
+                           dynamicAnimatorActive: true,
+                           buttonsLayout: .vertical
+                       )
+                    
+                    
+                    
+                       let alert = SCLAlertView(appearance: appearance)
+                    _ = alert.addButton("Add Event To Your Calendar"){
+                        
+                        let newEvent = EKEvent(eventStore: EventsCalendarManager().eventStore)
+                        
+                        newEvent.title = self.newEventTitle
+                        newEvent.startDate = self.newEventStartDate
+                        newEvent.endDate = self.newEventEndDate
+                        newEvent.location = self.newEventLocation
+                        
+                      /*  let startTime = DateFormatHandler().stringToDate(string_date: VC.time["time"]!)
+                        newEvent.startDate = startTime
+                        newEvent.endDate = startTime.addingTimeInterval(Double(VC.duration)*60.0*60.0)
+                        newEvent.title = VC.activity[0]
+                        newEvent.location = VC.placeholder[0]*/
+                        EventsCalendarManager().addEventToCalendar(event: newEvent) { (error) in
+                            DispatchQueue.main.async
+                                {
+                                    print("done add \(newEvent)")
+                                    // self.navigationController?.popToRootViewController(animated: true)
+                                    //      print(newEvent.eventIdentifier.)
+                                    
+                                    print(self.calendarEventDetail)
+                                    
+                               //     calendarEventDetail
+                                    
+                                    print(self.newEventTitle)
+                                    print(self.newEventStartDate)
+                                    print(self.newEventEndDate)
+                                    print(self.newEventLocation)
+                                    
+                                    self.tableViewData.append(cellData(opened: false, title: DateFormatHandler().dateToFormattedString(date: self.newEventStartDate!), sectionData: ["Date": DateFormatHandler().dateToFormattedString(date: self.newEventStartDate!), "StartingTime": DateFormatHandler().dateToFormattedTimeString(date: self.newEventStartDate!), "EndingTime": DateFormatHandler().dateToFormattedTimeString(date: self.newEventEndDate!), "Title": self.newEventTitle!, "Detail": self.newEventNotes!, "Location": "WeWork", "Invitees": ["Ben"]]
+                                    ))
+                                    
+                                    print(self.calendarEventDetail)
+                                    
+                                    self.tableView.reloadData()
+                                    self.calendar.reloadData()
+                            }
+                        }
+                        
+                    }
+                       _ = alert.addButton("Delete Event") {
+                           print("Second button tapped")
+                       }
+                       
+                    let icon = UIImage(named:"checked")
+                
+                       let color = UIColor.orange
+                    
+                    _ = alert.showCustom("Invitation Accepted", subTitle: "Your meeting with Ben Shih has been confirmed", color: color, icon: icon!)
+                }
+                
+            }
+            
     }
     
     override func viewWillAppear(_ animated: Bool) {

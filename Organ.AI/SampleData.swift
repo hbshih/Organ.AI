@@ -247,13 +247,13 @@ final internal class SampleData {
         case "000001":
             return Avatar(image: UIImage(named: "Participant"), initials: initials)
         case "000002":
-            return Avatar(image: UIImage(named: "Participant"), initials: initials)
+            return Avatar(image: UIImage(named: "Participant_3"), initials: initials)
         case "000003":
-            return Avatar(image: UIImage(named: "Participant"), initials: initials)
+            return Avatar(image: UIImage(named: "Screenshot 2020-08-19 at 1.46.05 AM"), initials: initials)
         case "000000":
-            return Avatar(image: nil, initials: "SS")
+            return Avatar(image: UIImage(named: "secretary"), initials: "SS")
         default:
-            return Avatar(image: nil, initials: initials)
+            return Avatar(image: UIImage(named: "secretary"), initials: initials)
         }
     }
 

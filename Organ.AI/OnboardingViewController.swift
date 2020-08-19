@@ -7,11 +7,11 @@
 //
 
 import UIKit
-import GoogleSignIn
+//import GoogleSignIn
 import GoogleAPIClientForREST
 
 
-class OnboardingViewController: UIViewController, GIDSignInUIDelegate{
+class OnboardingViewController: UIViewController{
     
 
     

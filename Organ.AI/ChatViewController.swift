@@ -465,7 +465,11 @@ extension ChatViewController: InputBarAccessoryViewDelegate {
                                     print(self.activity[0])
                                     self.present(navi, animated: true) {
                                         controller.eventTitle.text = self.activity[0]
-                                        controller.eventLocation_Label.text = self.placeholder[0]
+                                        //controller.eventLocation_Label.text = self.placeholder[0]
+                                        controller.eventLocation_Label.text = "WeWork"
+                                        controller.selectDate = DateFormatHandler().stringToDate(string_date: self.time["from"]!)
+                                            
+                                      //      self.time["from"]
                                         
                                         let contactStore = CNContactStore()
                                         
