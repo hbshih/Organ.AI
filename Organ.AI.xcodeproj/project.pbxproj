@@ -30,6 +30,7 @@
 		B54CB2492431163C00E471DB /* AddEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54CB2482431163C00E471DB /* AddEventViewController.swift */; };
 		B55D8BE92446CA38006E7908 /* OrganaiHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55D8BE82446CA38006E7908 /* OrganaiHandler.swift */; };
 		B560F90524B87DE000F63E07 /* PickAvailabilityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B560F90424B87DE000F63E07 /* PickAvailabilityViewController.swift */; };
+		B5655B0D24EE190D009D03B2 /* CalendarHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5655B0C24EE190D009D03B2 /* CalendarHolder.swift */; };
 		B56614B6242F43DB0035AECF /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56614B5242F43DB0035AECF /* OnboardingViewController.swift */; };
 		B571E8E5244497EE005379BC /* NativeEventExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = B571E8E4244497EE005379BC /* NativeEventExample.swift */; };
 		B57EBEF624DFF0F500672F0F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57EBEF224DFF0F300672F0F /* LoginViewController.swift */; };
@@ -98,6 +99,7 @@
 		B54CB2482431163C00E471DB /* AddEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEventViewController.swift; sourceTree = "<group>"; };
 		B55D8BE82446CA38006E7908 /* OrganaiHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganaiHandler.swift; sourceTree = "<group>"; };
 		B560F90424B87DE000F63E07 /* PickAvailabilityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickAvailabilityViewController.swift; sourceTree = "<group>"; };
+		B5655B0C24EE190D009D03B2 /* CalendarHolder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarHolder.swift; sourceTree = "<group>"; };
 		B56614B5242F43DB0035AECF /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		B571E8E4244497EE005379BC /* NativeEventExample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NativeEventExample.swift; sourceTree = "<group>"; };
 		B57EBEF224DFF0F300672F0F /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 				B57EBEF424DFF0F400672F0F /* HomeViewController.swift */,
 				B57EBEF224DFF0F300672F0F /* LoginViewController.swift */,
 				B57EBEF524DFF0F500672F0F /* SignUpViewController.swift */,
+				B5655B0C24EE190D009D03B2 /* CalendarHolder.swift */,
 				B57EBEF324DFF0F300672F0F /* ViewController.swift */,
 				B5F75FAE247CE6EE00A89238 /* AutocompleteExampleViewController.swift */,
 				B5F75FB8247CE6F300A89238 /* ChatViewController.swift */,
@@ -294,6 +297,7 @@
 				B51B4C4023FD62140043CAD5 /* Frameworks */,
 				B51B4C4123FD62140043CAD5 /* Resources */,
 				9EDDB3D2E8987CD5454B0DA8 /* [CP] Embed Pods Frameworks */,
+				DD813986112F09C5C87FEBF6 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -391,6 +395,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		DD813986112F09C5C87FEBF6 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Organ.AI/Pods-Organ.AI-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Organ.AI/Pods-Organ.AI-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Organ.AI/Pods-Organ.AI-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -427,6 +448,7 @@
 				B571E8E5244497EE005379BC /* NativeEventExample.swift in Sources */,
 				B54CB2492431163C00E471DB /* AddEventViewController.swift in Sources */,
 				B5F75FC6247CE6F400A89238 /* ChatViewController.swift in Sources */,
+				B5655B0D24EE190D009D03B2 /* CalendarHolder.swift in Sources */,
 				B57EBEFC24DFF1FA00672F0F /* Constants.swift in Sources */,
 				B5F1CC6624BC8F8800139D57 /* PickAvailabilityGrayCollectionViewCell.swift in Sources */,
 				B51B4C5123FD62140043CAD5 /* Organ_AI.xcdatamodeld in Sources */,
@@ -594,7 +616,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.7;
+				CURRENT_PROJECT_VERSION = 1.8;
 				DEVELOPMENT_TEAM = 64KKU33NVH;
 				INFOPLIST_FILE = Organ.AI/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -614,7 +636,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.7;
+				CURRENT_PROJECT_VERSION = 1.8;
 				DEVELOPMENT_TEAM = 64KKU33NVH;
 				INFOPLIST_FILE = Organ.AI/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

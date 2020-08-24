@@ -9,10 +9,12 @@
 import UIKit
 import CoreData
 import Firebase
-//import GoogleSignIn
+
+import GoogleSignIn
+import GoogleAPIClientForREST
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     
     var window: UIWindow?
 
@@ -22,15 +24,45 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
           window?.rootViewController = AutocompleteExampleViewController()
          //     NavigationController(rootViewController: AutocompleteExampleViewController())
           window?.makeKeyAndVisible()
-        
-     /*   var configureError: NSError?
-    //    GGLContext.sharedInstance().configureWithError(&configureError)
+
+        var configureError: NSError?
         assert(configureError == nil, "Error configuring Google services: \(String(describing: configureError))")
-        return true*/
+        GIDSignIn.sharedInstance().clientID = "405553763812-vpsl1vfqvuptb57oh187sp8bhdki8b9h.apps.googleusercontent.com"
+        GIDSignIn.sharedInstance().scopes = ["https://www.googleapis.com/auth/calendar"]
+        GIDSignIn.sharedInstance().delegate = self
         
         FirebaseApp.configure()
         return true
     }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any]) -> Bool {
+  
+    return GIDSignIn.sharedInstance().handle(url)
+    }
+    
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!,
+              withError error: Error!) {
+      if let error = error {
+        if (error as NSError).code == GIDSignInErrorCode.hasNoAuthInKeychain.rawValue {
+          print("The user has not signed in before or they have since signed out.")
+        } else {
+          print("\(error.localizedDescription)")
+        }
+        return
+      }
+      // Perform any operations on signed in user here.
+      let userId = user.userID                  // For client-side use only!
+      let idToken = user.authentication.idToken // Safe to send to the server
+      let fullName = user.profile.name
+      let givenName = user.profile.givenName
+      let familyName = user.profile.familyName
+      let email = user.profile.email
+        
+
+        
+      // ...
+    }
+
 
     // MARK: UISceneSession Lifecycle
 

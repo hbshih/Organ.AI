@@ -50,6 +50,8 @@ target 'Organ.AI' do
   
   pod 'SCLAlertView'
   
+  pod 'GoogleSignIn'
+  
   # Pods for Organ.AI
 
 end

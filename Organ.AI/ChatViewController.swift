@@ -467,7 +467,12 @@ extension ChatViewController: InputBarAccessoryViewDelegate {
                                         controller.eventTitle.text = self.activity[0]
                                         //controller.eventLocation_Label.text = self.placeholder[0]
                                         controller.eventLocation_Label.text = "WeWork"
-                                        controller.selectDate = DateFormatHandler().stringToDate(string_date: self.time["from"]!)
+                                        
+ 
+                                            controller.selectDate = Date()
+
+                                        
+                                        
                                             
                                       //      self.time["from"]
                                         
