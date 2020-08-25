@@ -39,15 +39,6 @@ class ViewController: UIViewController, GIDSignInDelegate {
         print(familyName)
         print(token)
         
-        self.service.authorizer = user.authentication.fetcherAuthorizer()
-        
-        let query: GTLRCalendarQuery_CalendarListList = GTLRCalendarQuery_CalendarListList.query()
-        query.showHidden = true
-        query.showDeleted = true
-        self.service.executeQuery(
-            query,
-            delegate: self,
-            didFinish: #selector(self.returnCalendars(ticket:finishedWithObject:error:)))
         
         /*
         let query = GTLRCalendarQuery_
@@ -80,35 +71,7 @@ class ViewController: UIViewController, GIDSignInDelegate {
         
     }
     
-    // Display the start dates and event summaries in the UITextView
-      @objc func displayResultWithTicket(
-          ticket: GTLRServiceTicket,
-          finishedWithObject response : GTLRCalendar_Events,
-          error : NSError?) {
-
-          if let error = error {
-            print(error.localizedDescription)
-            //  showAlert(title: "Error", message: error.localizedDescription)
-              return
-          }
-
-          var outputText = ""
-          if let events = response.items, !events.isEmpty {
-              for event in events {
-                  let start = event.start!.dateTime ?? event.start!.date!
-                  let startString = DateFormatter.localizedString(
-                      from: start.date,
-                      dateStyle: .short,
-                      timeStyle: .short)
-                  outputText += "\(startString) - \(event.summary!)\n"
-              }
-          } else {
-              outputText = "No upcoming events found."
-          }
-          print(outputText)
-      }
-
-    
+   
     // Present a view that prompts the user to sign in with Google
     func signIn(signIn: GIDSignIn!,
                 presentViewController viewController: UIViewController!) {
@@ -148,30 +111,6 @@ class ViewController: UIViewController, GIDSignInDelegate {
         //getEvents(for: "primary")
     }
     
-    @objc
-    func returnCalendars(
-        ticket: GTLRServiceTicket,
-        finishedWithObject response : GTLRCalendar_CalendarList,
-        error : NSError?) {
-        
-        if let error = error {
-            print("return calendar failed")
-            print(error)
-            
-           // delegate?.returnedError(error: CustomError(error.localizedDescription))
-            return
-        }
-        if let calendars = response.items, !calendars.isEmpty {
-            
-            print(calendars)
-            
-        //    calendars.forEach({calendar in self.calendarHolder?.addCalendar(calendar: Calendar(from: calendar))})
-       //     delegate?.returnedResults(data: calendars)
-        } else {
-         //   delegate?.returnedError(error: "You need a Google Calendar for this app to work")
-        }
-    }
-    
     fileprivate lazy var calendarService: GTLRCalendarService? = {
         let service = GTLRCalendarService()
         // Have the service object set tickets to fetch consecutive pages
@@ -193,34 +132,8 @@ class ViewController: UIViewController, GIDSignInDelegate {
         return service
     }()
     
-    func getEvents(for calendarId: String) {
-        guard let service = self.calendarService else {
-            return
-        }
-        
-        // You can pass start and end dates with function parameters
-        let startDateTime = GTLRDateTime(date: Calendar.current.startOfDay(for: Date()))
-        let endDateTime = GTLRDateTime(date: Date().addingTimeInterval(60*60*24))
-        
-        let eventsListQuery = GTLRCalendarQuery_EventsList.query(withCalendarId: calendarId)
-        eventsListQuery.timeMin = startDateTime
-        eventsListQuery.timeMax = endDateTime
-        
-        _ = service.executeQuery(eventsListQuery, completionHandler: { (ticket, result, error) in
-            guard error == nil, let items = (result as? GTLRCalendar_Events)?.items else {
-                
-                print(error)
-                return
-            }
-            
-            if items.count > 0 {
-                print(items)
-                // Do stuff with your events
-            } else {
-                // No events
-            }
-        })
-    }
+    var calendars: [Calendar]?
+    
     
     
     @IBOutlet weak var videoBackgroundView: UIView!
@@ -268,7 +181,7 @@ class ViewController: UIViewController, GIDSignInDelegate {
     func setUpElements() {
         
         Utilities.styleFilledButton(signUpButton)
-        Utilities.styleHollowButton(loginButton)
+        Utilities.styleFilledButton(loginButton)
         //        Utilities.styleHollowButton(login_google)
         
     }

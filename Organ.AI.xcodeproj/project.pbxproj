@@ -31,8 +31,11 @@
 		B55D8BE92446CA38006E7908 /* OrganaiHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55D8BE82446CA38006E7908 /* OrganaiHandler.swift */; };
 		B560F90524B87DE000F63E07 /* PickAvailabilityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B560F90424B87DE000F63E07 /* PickAvailabilityViewController.swift */; };
 		B5655B0D24EE190D009D03B2 /* CalendarHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5655B0C24EE190D009D03B2 /* CalendarHolder.swift */; };
-		B56614B6242F43DB0035AECF /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56614B5242F43DB0035AECF /* OnboardingViewController.swift */; };
+		B56614B6242F43DB0035AECF /* ImportCalendars in Sources */ = {isa = PBXBuildFile; fileRef = B56614B5242F43DB0035AECF /* ImportCalendars */; };
 		B571E8E5244497EE005379BC /* NativeEventExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = B571E8E4244497EE005379BC /* NativeEventExample.swift */; };
+		B57B489124F4A3DF00C7DD62 /* ImportCalendarEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57B489024F4A3DF00C7DD62 /* ImportCalendarEventsViewController.swift */; };
+		B57B489324F4B1CF00C7DD62 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57B489224F4B1CF00C7DD62 /* OnboardingViewController.swift */; };
+		B57B489524F4CE0900C7DD62 /* GoogleCalendarHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57B489424F4CE0900C7DD62 /* GoogleCalendarHandler.swift */; };
 		B57EBEF624DFF0F500672F0F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57EBEF224DFF0F300672F0F /* LoginViewController.swift */; };
 		B57EBEF724DFF0F500672F0F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57EBEF324DFF0F300672F0F /* ViewController.swift */; };
 		B57EBEF824DFF0F500672F0F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57EBEF424DFF0F400672F0F /* HomeViewController.swift */; };
@@ -100,8 +103,12 @@
 		B55D8BE82446CA38006E7908 /* OrganaiHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganaiHandler.swift; sourceTree = "<group>"; };
 		B560F90424B87DE000F63E07 /* PickAvailabilityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickAvailabilityViewController.swift; sourceTree = "<group>"; };
 		B5655B0C24EE190D009D03B2 /* CalendarHolder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarHolder.swift; sourceTree = "<group>"; };
-		B56614B5242F43DB0035AECF /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		B56614B5242F43DB0035AECF /* ImportCalendars */ = {isa = PBXFileReference; lastKnownFileType = text; path = ImportCalendars; sourceTree = "<group>"; };
 		B571E8E4244497EE005379BC /* NativeEventExample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NativeEventExample.swift; sourceTree = "<group>"; };
+		B57B489024F4A3DF00C7DD62 /* ImportCalendarEventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportCalendarEventsViewController.swift; sourceTree = "<group>"; };
+		B57B489224F4B1CF00C7DD62 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		B57B489424F4CE0900C7DD62 /* GoogleCalendarHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleCalendarHandler.swift; sourceTree = "<group>"; };
+		B57B489624F4ECF300C7DD62 /* organai-se.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "organai-se.mp4"; path = "../../../Downloads/organai-se.mp4"; sourceTree = "<group>"; };
 		B57EBEF224DFF0F300672F0F /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B57EBEF324DFF0F300672F0F /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B57EBEF424DFF0F400672F0F /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -228,9 +235,10 @@
 				B58CF54224E916CC00D57332 /* Location.swift */,
 				B58CF53E24E9169E00D57332 /* LocationSearchResultsViewController.swift */,
 				B58CF54024E916A400D57332 /* SearchHistoryManager.swift */,
+				B57B489624F4ECF300C7DD62 /* organai-se.mp4 */,
+				B52452F8247D7BB400539A69 /* 9e6fa009-d057-40fc-9e1f-b5f2715013ae.png */,
 				B51B4C5223FD62150043CAD5 /* Assets.xcassets */,
 				B5A4DB702482BE94008B97F8 /* icons8-synchronize-24.png */,
-				B52452F8247D7BB400539A69 /* 9e6fa009-d057-40fc-9e1f-b5f2715013ae.png */,
 				B51B4C5423FD62150043CAD5 /* LaunchScreen.storyboard */,
 				B51B4C5723FD62150043CAD5 /* Info.plist */,
 				B51B4C4F23FD62140043CAD5 /* Organ_AI.xcdatamodeld */,
@@ -238,6 +246,9 @@
 				B54CB244243113DC00E471DB /* UIColor+FormerDemo.swift */,
 				B560F90424B87DE000F63E07 /* PickAvailabilityViewController.swift */,
 				B57EBF0224E02EB800672F0F /* MapPickerViewController.swift */,
+				B57B489024F4A3DF00C7DD62 /* ImportCalendarEventsViewController.swift */,
+				B57B489224F4B1CF00C7DD62 /* OnboardingViewController.swift */,
+				B57B489424F4CE0900C7DD62 /* GoogleCalendarHandler.swift */,
 			);
 			path = Organ.AI;
 			sourceTree = "<group>";
@@ -259,7 +270,7 @@
 				B537C77223FF01D9005D0C5E /* CalendarTableViewCell.swift */,
 				B537C77023FEFAA9005D0C5E /* CalendarViewController.swift */,
 				B5022344241679580064BEA0 /* eventDetailTableViewCell.swift */,
-				B56614B5242F43DB0035AECF /* OnboardingViewController.swift */,
+				B56614B5242F43DB0035AECF /* ImportCalendars */,
 				B54CB2482431163C00E471DB /* AddEventViewController.swift */,
 				B5327A0E243A00E6003F2CF8 /* MessageViewController.swift */,
 				B571E8E4244497EE005379BC /* NativeEventExample.swift */,
@@ -430,6 +441,7 @@
 				B57EBEF924DFF0F500672F0F /* SignUpViewController.swift in Sources */,
 				B5F75FC5247CE6F400A89238 /* UIViewController+Extensions.swift in Sources */,
 				B5F75FBD247CE6F400A89238 /* CustomMessageSizeCalculator_2.swift in Sources */,
+				B57B489324F4B1CF00C7DD62 /* OnboardingViewController.swift in Sources */,
 				B54732E72443466D00027D5D /* OEMentions.swift in Sources */,
 				B52F34AB24082A7C00042A75 /* EventModel.swift in Sources */,
 				B58CF53A24E9027200D57332 /* ParticipantCollectionViewCell.swift in Sources */,
@@ -451,6 +463,7 @@
 				B5655B0D24EE190D009D03B2 /* CalendarHolder.swift in Sources */,
 				B57EBEFC24DFF1FA00672F0F /* Constants.swift in Sources */,
 				B5F1CC6624BC8F8800139D57 /* PickAvailabilityGrayCollectionViewCell.swift in Sources */,
+				B57B489124F4A3DF00C7DD62 /* ImportCalendarEventsViewController.swift in Sources */,
 				B51B4C5123FD62140043CAD5 /* Organ_AI.xcdatamodeld in Sources */,
 				B50D6CDF24BD47BF00FF4635 /* PickAvailabilityTimeCollectionViewCell.swift in Sources */,
 				B5D7E878241BB0490037862F /* DateFormatHandler.swift in Sources */,
@@ -458,6 +471,7 @@
 				B57EBEF724DFF0F500672F0F /* ViewController.swift in Sources */,
 				B5F75FBB247CE6F400A89238 /* Settings+UserDefaults.swift in Sources */,
 				B537C77323FF01D9005D0C5E /* CalendarTableViewCell.swift in Sources */,
+				B57B489524F4CE0900C7DD62 /* GoogleCalendarHandler.swift in Sources */,
 				B50D6CE124BD495800FF4635 /* emptyCellCollectionViewCell.swift in Sources */,
 				B5F75FC2247CE6F400A89238 /* IncomingTextCell.swift in Sources */,
 				B51B4C4723FD62140043CAD5 /* AppDelegate.swift in Sources */,
@@ -466,7 +480,7 @@
 				B54CB246243113DD00E471DB /* UIColor+FormerDemo.swift in Sources */,
 				B5DE2BCC242DA1E8001120E3 /* EventsCalendarManager.swift in Sources */,
 				B57EBEF624DFF0F500672F0F /* LoginViewController.swift in Sources */,
-				B56614B6242F43DB0035AECF /* OnboardingViewController.swift in Sources */,
+				B56614B6242F43DB0035AECF /* ImportCalendars in Sources */,
 				B537C77123FEFAA9005D0C5E /* CalendarViewController.swift in Sources */,
 				B50D6CDD24BD47AD00FF4635 /* PickAvailabilityDateCollectionViewCell.swift in Sources */,
 				B50D6CDB24BD43ED00FF4635 /* ColumnFlowLayout.swift in Sources */,

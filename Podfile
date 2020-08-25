@@ -51,6 +51,7 @@ target 'Organ.AI' do
   pod 'SCLAlertView'
   
   pod 'GoogleSignIn'
+  pod "PickerView"
   
   # Pods for Organ.AI
 

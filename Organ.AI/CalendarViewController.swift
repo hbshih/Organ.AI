@@ -79,6 +79,8 @@ class CalendarViewController: UIViewController, UITableViewDataSource, UITableVi
         let fh = FirestoreHandler()
         fh.getData(collection: "User")
         
+
+        
         /*
         var calendarData = calendarManager.getCalendar()
         //  print("All Calendar Data: \(calendarData)")
@@ -124,12 +126,23 @@ class CalendarViewController: UIViewController, UITableViewDataSource, UITableVi
     var newEventNotes: String?
     
     override func viewDidAppear(_ animated: Bool) {
-                tableViewData = EventsCalendarManager().loadEvents(selectedCalendars: ["Testing Calendar"])
         
-        tableView.reloadData()
-        tableView.backgroundColor = .clear
+        if tableViewData.count > 0
+        {
+            tableView.reloadData()
+            calendar.reloadData()
+        }else
+        {
+             tableViewData = EventsCalendarManager().loadEvents(selectedCalendars: ["Testing Calendar"])
+            tableView.reloadData()
+            
+            
+            calendar.reloadData()
+        }
         
-        calendar.reloadData()
+               
+        
+tableView.backgroundColor = .clear
         
         print(tableViewData)
         

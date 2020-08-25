@@ -86,12 +86,14 @@
                                         </state>
                                         <connections>
                                             <action selector="checkAccess:" destination="l1i-wd-kYJ" eventType="touchUpInside" id="NjZ-As-4an"/>
-                                            <action selector="googleCalendarAccess:" destination="l1i-wd-kYJ" eventType="touchUpInside" id="1xC-qP-udU"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oKk-S7-9yV">
                                         <rect key="frame" x="124.5" y="149" width="115" height="30"/>
                                         <state key="normal" title="Google Calendar"/>
+                                        <connections>
+                                            <action selector="googleCalendarAccess:" destination="l1i-wd-kYJ" eventType="touchUpInside" id="jFm-8v-YC1"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -127,11 +129,12 @@
                     <navigationItem key="navigationItem" id="yAF-Ag-S18"/>
                     <connections>
                         <segue destination="rK4-Tj-ND2" kind="show" identifier="homeSegue" id="YZs-wi-KMo"/>
+                        <segue destination="iuh-e2-pNF" kind="show" identifier="pickCalendarSegue" id="JKm-cP-ynF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JUU-Eh-WPW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="968" y="-1250"/>
+            <point key="canvasLocation" x="739" y="-1365"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="cul-5V-EEt">
@@ -1105,7 +1108,7 @@ You are free Today!</string>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="jta-Rc-uGo">
-                                <rect key="frame" x="40" y="602" width="334" height="220"/>
+                                <rect key="frame" x="40" y="652" width="334" height="170"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bvt-Bw-Nca">
                                         <rect key="frame" x="0.0" y="0.0" width="334" height="50"/>
@@ -1129,14 +1132,6 @@ You are free Today!</string>
                                         <state key="normal" title="Google Sign In"/>
                                         <connections>
                                             <action selector="SignInwithGoogle:" destination="fD3-M6-rJE" eventType="touchUpInside" id="OSn-dQ-nT6"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RYD-25-Bei">
-                                        <rect key="frame" x="0.0" y="190" width="334" height="30"/>
-                                        <state key="normal" title="Get Calendar"/>
-                                        <connections>
-                                            <action selector="SignInwithGoogle:" destination="fD3-M6-rJE" eventType="touchUpInside" id="XCd-a8-kCg"/>
-                                            <action selector="getUserCalendar:" destination="fD3-M6-rJE" eventType="touchUpInside" id="Spq-Ez-WO1"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -1440,10 +1435,66 @@ You are free Today!</string>
             </objects>
             <point key="canvasLocation" x="967" y="2435"/>
         </scene>
+        <!--Import Calendar Events View Controller-->
+        <scene sceneID="qEO-qP-eiK">
+            <objects>
+                <viewController id="iuh-e2-pNF" customClass="ImportCalendarEventsViewController" customModule="Organ_AI" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Jyy-g3-iMO">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="ceI-yG-Wov">
+                                <rect key="frame" x="-100" y="0.0" width="614" height="896"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aKM-L3-jrC" customClass="PickerView" customModule="PickerView">
+                                <rect key="frame" x="25" y="148" width="364" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="600" id="7Nk-M1-rbc"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <integer key="value" value="25"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oAO-fY-slX">
+                                <rect key="frame" x="184" y="74" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="SelectedTapped:" destination="iuh-e2-pNF" eventType="touchUpInside" id="1em-wD-bNX"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="wn7-Gg-QTy" firstAttribute="trailing" secondItem="aKM-L3-jrC" secondAttribute="trailing" constant="25" id="2Vo-Pe-Yfa"/>
+                            <constraint firstItem="ceI-yG-Wov" firstAttribute="trailing" secondItem="wn7-Gg-QTy" secondAttribute="trailing" constant="100" id="Q4l-hR-tgd"/>
+                            <constraint firstAttribute="bottom" secondItem="ceI-yG-Wov" secondAttribute="bottom" id="T5j-ei-Sdy"/>
+                            <constraint firstItem="ceI-yG-Wov" firstAttribute="top" secondItem="Jyy-g3-iMO" secondAttribute="top" id="fMh-WD-bOb"/>
+                            <constraint firstItem="ceI-yG-Wov" firstAttribute="leading" secondItem="wn7-Gg-QTy" secondAttribute="leading" constant="-100" id="hmC-gb-iCJ"/>
+                            <constraint firstItem="aKM-L3-jrC" firstAttribute="centerY" secondItem="ceI-yG-Wov" secondAttribute="centerY" id="iaG-od-rtC"/>
+                            <constraint firstItem="oAO-fY-slX" firstAttribute="top" secondItem="wn7-Gg-QTy" secondAttribute="top" constant="30" id="oZ7-fg-e4J"/>
+                            <constraint firstItem="aKM-L3-jrC" firstAttribute="centerX" secondItem="ceI-yG-Wov" secondAttribute="centerX" id="r0x-i4-s1M"/>
+                            <constraint firstItem="oAO-fY-slX" firstAttribute="centerX" secondItem="Jyy-g3-iMO" secondAttribute="centerX" id="sH8-jl-2hl"/>
+                            <constraint firstItem="aKM-L3-jrC" firstAttribute="leading" secondItem="wn7-Gg-QTy" secondAttribute="leading" constant="25" id="upq-Mp-FTw"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="wn7-Gg-QTy"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="HIH-Cn-Rvr"/>
+                    <connections>
+                        <outlet property="pickerView" destination="aKM-L3-jrC" id="y93-ze-YaP"/>
+                        <segue destination="rK4-Tj-ND2" kind="show" identifier="homeSegue" id="57T-56-fyK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="e1d-Bg-fqj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1865" y="-1947"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="c55-HR-rh1"/>
-        <segue reference="Mpm-je-qSC"/>
+        <segue reference="57T-56-fyK"/>
         <segue reference="Fsv-e4-Hnx"/>
     </inferredMetricsTieBreakers>
     <resources>
