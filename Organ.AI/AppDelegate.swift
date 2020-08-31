@@ -12,6 +12,7 @@ import Firebase
 
 import GoogleSignIn
 import GoogleAPIClientForREST
+import IQKeyboardManager
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
@@ -30,6 +31,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         GIDSignIn.sharedInstance().clientID = "405553763812-vpsl1vfqvuptb57oh187sp8bhdki8b9h.apps.googleusercontent.com"
         GIDSignIn.sharedInstance().scopes = ["https://www.googleapis.com/auth/calendar"]
         GIDSignIn.sharedInstance().delegate = self
+        
+        IQKeyboardManager.shared().isEnabled = true
         
         FirebaseApp.configure()
         return true

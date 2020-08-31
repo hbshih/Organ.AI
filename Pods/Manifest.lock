@@ -353,6 +353,7 @@ PODS:
   - InputBarAccessoryView (4.3.3):
     - InputBarAccessoryView/Core (= 4.3.3)
   - InputBarAccessoryView/Core (4.3.3)
+  - IQKeyboardManager (6.5.6)
   - JFContactsPicker (2.0.0)
   - KVKCalendar (0.3.5)
   - leveldb-library (1.22)
@@ -384,6 +385,7 @@ DEPENDENCIES:
   - FSCalendar
   - GoogleAPIClientForREST/Calendar
   - GoogleSignIn
+  - IQKeyboardManager
   - JFContactsPicker (~> 2.0)
   - KVKCalendar
   - LocationPicker
@@ -423,6 +425,7 @@ SPEC REPOS:
     - GTMAppAuth
     - GTMSessionFetcher
     - InputBarAccessoryView
+    - IQKeyboardManager
     - JFContactsPicker
     - KVKCalendar
     - leveldb-library
@@ -464,6 +467,7 @@ SPEC CHECKSUMS:
   GTMAppAuth: 4deac854479704f348309e7b66189e604cf5e01e
   GTMSessionFetcher: 6f5c8abbab8a9bce4bb3f057e317728ec6182b10
   InputBarAccessoryView: 8e7fc09e9cba75e0fee5da13450e15c194806f69
+  IQKeyboardManager: 2a6e97afdafc7becf0cb17a9a8d795e3a980717f
   JFContactsPicker: 2d2a8aeaf15932bd81a384d4f847c8d13200dfd9
   KVKCalendar: c40fdec2471b970197d794f11402fa8146bc1505
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
@@ -478,6 +482,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
   "UITextView+Placeholder": d7b0c400921f66523f3a85d74f774512e14f6502
 
-PODFILE CHECKSUM: 0e6c07294590cbe1100db932bab7a977cbc3638d
+PODFILE CHECKSUM: 9fff7538596fa861c03acd132d2b2dd1ed925748
 
 COCOAPODS: 1.9.0
