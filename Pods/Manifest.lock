@@ -277,6 +277,9 @@ PODS:
     - GoogleUtilities/Environment (~> 6.7)
     - GoogleUtilities/UserDefaults (~> 6.7)
     - PromisesObjC (~> 1.2)
+  - FlagPhoneNumber (0.8.0):
+    - FlagPhoneNumber/libPhoneNumberiOS (= 0.8.0)
+  - FlagPhoneNumber/libPhoneNumberiOS (0.8.0)
   - Former (1.8.1)
   - FSCalendar (2.8.1)
   - GoogleAPIClientForREST/Calendar (1.4.2):
@@ -376,6 +379,7 @@ DEPENDENCIES:
   - Firebase/Firestore
   - FirebaseAuth
   - FirebaseFirestoreSwift
+  - FlagPhoneNumber
   - Former
   - FSCalendar
   - GoogleAPIClientForREST/Calendar
@@ -406,6 +410,7 @@ SPEC REPOS:
     - FirebaseFirestore
     - FirebaseFirestoreSwift
     - FirebaseInstallations
+    - FlagPhoneNumber
     - Former
     - FSCalendar
     - GoogleAPIClientForREST
@@ -446,6 +451,7 @@ SPEC CHECKSUMS:
   FirebaseFirestore: ff82cd15f8ed3b417c307eb729e3e2e68aad0bdd
   FirebaseFirestoreSwift: 0cda93628782ca5a817cfecd2a8c0187436c0ae5
   FirebaseInstallations: 45f9d44d3a8d6f780fa337ee8987dad87210fcbc
+  FlagPhoneNumber: 3712455b95f66cb0f2016fef7d9e34cddf8c7f9a
   Former: f36edb5c1ac03755f8d6d03b26044b62de8c0b2d
   FSCalendar: 5245140456fcbcac5824c203b98bd8068bdfee1a
   GoogleAPIClientForREST: 9f49df9fac7867b459187e687fed3066b2be049a
@@ -472,6 +478,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
   "UITextView+Placeholder": d7b0c400921f66523f3a85d74f774512e14f6502
 
-PODFILE CHECKSUM: 113e3cc7eedb965a416bb7207b3f3511972a29e0
+PODFILE CHECKSUM: 0e6c07294590cbe1100db932bab7a977cbc3638d
 
 COCOAPODS: 1.9.0

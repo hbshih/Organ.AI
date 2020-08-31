@@ -52,6 +52,7 @@ target 'Organ.AI' do
   
   pod 'GoogleSignIn'
   pod "PickerView"
+  pod "FlagPhoneNumber"
   
   # Pods for Organ.AI
 

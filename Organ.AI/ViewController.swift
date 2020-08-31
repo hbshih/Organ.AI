@@ -153,6 +153,9 @@ class ViewController: UIViewController, GIDSignInDelegate {
         
         GIDSignIn.sharedInstance()?.restorePreviousSignIn()
         
+        signUpButton.imageEdgeInsets = UIEdgeInsets(top: 0,left: 30,bottom: 0,right: 30)
+        signUpButton.imageView?.contentMode = .scaleAspectFit
+        
         if Auth.auth().currentUser != nil {
             // User is signed in.
             // ...
@@ -174,56 +177,36 @@ class ViewController: UIViewController, GIDSignInDelegate {
     override func viewWillAppear(_ animated: Bool) {
         
         // Set up video in the background
-        setUpVideo()
+
         
     }
     
     func setUpElements() {
         
         Utilities.styleFilledButton(signUpButton)
-        Utilities.styleFilledButton(loginButton)
+        Utilities.styleHollowButton(loginButton)
         //        Utilities.styleHollowButton(login_google)
         
     }
     
-    func setUpVideo() {
-        
-        // Get the path to the resource in the bundle
-        let bundlePath = Bundle.main.path(forResource: "organai-se", ofType: "mp4")
-        
-        guard bundlePath != nil else {
-            return
-        }
-        
-        // Create a URL from it
-        let url = URL(fileURLWithPath: bundlePath!)
-        
-        // Create the video player item
-        let item = AVPlayerItem(url: url)
-        
-        // Create the player
-        videoPlayer = AVPlayer(playerItem: item)
-        videoPlayer?.isMuted = true
-        
-        // Create the layer
-        videoPlayerLayer = AVPlayerLayer(player: videoPlayer!)
-        
-        
-        // Adjust the size and frame
-        videoPlayerLayer?.frame = CGRect(x: -800, y: -400, width: self.view.frame.size.width * 5, height: self.view.frame.size.height*2)
-        
-        videoBackgroundView.layer.insertSublayer(videoPlayerLayer!, at: 0)
-        
-        // view.layer.insertSublayer(videoPlayerLayer!, at: 0)
-        
-        // Add it to the view and play it
-        videoPlayer?.playImmediately(atRate: 1.0)
-    }
+
     
     @IBAction func SignInwithGoogle(_ sender: Any) {
         
         GIDSignIn.sharedInstance()?.signIn()
         
+    }
+    
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "alreadyHaveAccount"
+        {
+            if let vc = segue.destination as? PhoneVerificationViewController
+            {
+                vc.isSignUp = false
+            }
+        }
     }
     
 }

@@ -9,6 +9,7 @@
 import UIKit
 import FirebaseAuth
 import Firebase
+import FirebaseFirestore
 
 class SignUpViewController: UIViewController {
 
@@ -18,14 +19,15 @@ class SignUpViewController: UIViewController {
     
     @IBOutlet weak var emailTextField: UITextField!
     
-    @IBOutlet weak var passwordTextField: UITextField!
     
     @IBOutlet weak var signUpButton: UIButton!
     
     @IBOutlet weak var errorLabel: UILabel!
     
-    @IBOutlet weak var phoneNumberTextField: UITextField!
+    let User = Auth.auth().currentUser
     
+    
+      
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -42,8 +44,6 @@ class SignUpViewController: UIViewController {
         Utilities.styleTextField(firstNameTextField)
         Utilities.styleTextField(lastNameTextField)
         Utilities.styleTextField(emailTextField)
-        Utilities.styleTextField(phoneNumberTextField)
-        Utilities.styleTextField(passwordTextField)
         Utilities.styleFilledButton(signUpButton)
     }
     
@@ -53,22 +53,11 @@ class SignUpViewController: UIViewController {
         // Check that all fields are filled in
         if firstNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
             lastNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
-            emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
-            passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
-            phoneNumberTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == ""
+            emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == ""
             {
             
             return "Please fill in all fields."
         }
-        
-        // Check if the password is secure
-        let cleanedPassword = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-        
-        if Utilities.isPasswordValid(cleanedPassword) == false {
-            // Password isn't secure enough
-            return "Please make sure your password is at least 8 characters, contains a special character and a number."
-        }
-        
         return nil
     }
     
@@ -89,39 +78,25 @@ class SignUpViewController: UIViewController {
             let firstName = firstNameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let lastName = lastNameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-            let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-            let phoneNumber = phoneNumberTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             
-            // Create the user
-            Auth.auth().createUser(withEmail: email, password: password) { (result, err) in
+            if User != nil
+            {
+                // User was created successfully, now store the first name and last name
+                let db = Firestore.firestore()
                 
-                // Check for errors
-                if err != nil {
-                    
-                    // There was an error creating the user
-                    self.showError("Error creating user")
-                }
-                else {
-                    
-                    // User was created successfully, now store the first name and last name
-                    let db = Firestore.firestore()
-                    
-                    db.collection("users").addDocument(data: ["firstname":firstName, "lastname":lastName, "uid": result!.user.uid, "phone_number": phoneNumber, "email": result!.user.email!]) { (error) in
-                        
-                        if error != nil {
-                            // Show error message
-                            self.showError("Error saving user data")
-                        }
+                db.collection("users").document(User!.uid).setData(["firstname":firstName, "lastname":lastName, "uid": User!.uid, "phone_number": User!.phoneNumber!, "email": email], merge: true) { (error) in
+                    if error != nil
+                    {
+                        self.showError("Error saving user data")
+                    }else
+                    {
+                        // Transition to the home screen
+                        self.transitionToHome()
                     }
-                    
-                    // Transition to the home screen
-                    self.transitionToHome()
                 }
-                
             }
             
-            
-            
+
         }
     }
     
