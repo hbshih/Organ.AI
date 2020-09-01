@@ -78,44 +78,7 @@ class CalendarViewController: UIViewController, UITableViewDataSource, UITableVi
         
         let fh = FirestoreHandler()
         fh.getData(collection: "User")
-        
 
-        
-        /*
-        var calendarData = calendarManager.getCalendar()
-        //  print("All Calendar Data: \(calendarData)")
-        
-        var event_id = calendarData["event_id"] as! [String]
-        var calendar_id = calendarData["id"] as! String
-        var date_occupied = calendarData["date_occupied"] as! [String: [String]]
-        
-        var eventManager = EventModel()
-        
-        for event in event_id
-        {
-            
-        }
-        
-        for eventID in userEventIDMatching
-        {
-            if calendarEventDetail.keys.contains(eventID)
-            {
-                tableViewData.append(cellData(opened: false, title: calendarEventDetail[eventID]!["Date"] as! String, sectionData: calendarEventDetail[eventID]!))
-            }
-        }
-        
-        UserDefaults.standard.array(forKey: "")
-        
-        */
-        
-        
-        
-        
-        
-        /*
-        tableViewData = [cellData(opened: false, title: "2020/03/14", sectionData: ["id1"]),
-                         cellData(opened: false, title: "2020/03/14", sectionData: ["id2"]),
-                         cellData(opened: false, title: "2020/03/18", sectionData: ["id3"])]*/
         
     }
     
